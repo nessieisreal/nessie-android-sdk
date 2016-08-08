@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
 
-import com.reimaginebanking.api.nessieandroidsdk.NessieException;
+import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.ATM;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.AtmService;
@@ -38,11 +38,11 @@ public class AtmClient {
     public void getATMs(final NessieResultsListener mlistener){
         service.getATMs(this.key, new Callback<List<ATM>>() {
             public void success(List<ATM> atms, Response response) {
-                mlistener.onSuccess(atms, null);
+                mlistener.onSuccess(atms);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -50,11 +50,11 @@ public class AtmClient {
     public void getATM(String atmID, final NessieResultsListener mlistener){
         service.getATM(this.key, atmID, new Callback<ATM>() {
             public void success(ATM atm, Response response) {
-                mlistener.onSuccess(atm, null);
+                mlistener.onSuccess(atm);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }

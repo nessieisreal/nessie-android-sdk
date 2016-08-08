@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
 
-import com.reimaginebanking.api.nessieandroidsdk.NessieException;
+import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
@@ -39,11 +39,11 @@ public class AccountClient {
     public void getAccounts(final NessieResultsListener mlistener){
         service.getAccounts(this.key, new Callback<List<Account>>() {
             public void success(List<Account> accounts, Response response) {
-                mlistener.onSuccess(accounts, null);
+                mlistener.onSuccess(accounts);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -51,11 +51,11 @@ public class AccountClient {
     public void getAccount(String accountID, final NessieResultsListener mlistener){
         service.getAccount(this.key, accountID, new Callback<Account>() {
             public void success(Account account, Response response) {
-                mlistener.onSuccess(account, null);
+                mlistener.onSuccess(account);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -63,11 +63,11 @@ public class AccountClient {
     public void getCustomerAccounts(String customerID, final NessieResultsListener mlistener){
         service.getCustomerAccounts(this.key, customerID, new Callback<List<Account>>() {
             public void success(List<Account> accounts, Response response) {
-                mlistener.onSuccess(accounts, null);
+                mlistener.onSuccess(accounts);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -76,11 +76,11 @@ public class AccountClient {
     public void createAccount(String customerID, Account newAccount, final NessieResultsListener mlistener){
         service.createAccount(this.key, customerID, newAccount, new Callback<RequestResponse>() {
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -88,11 +88,11 @@ public class AccountClient {
     public void updateAccount(String accountId, Account updatedAccount, final NessieResultsListener mlistener){
         service.updateAccount(this.key, accountId, updatedAccount, new Callback<RequestResponse>() {
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -101,11 +101,11 @@ public class AccountClient {
         service.deleteAccount(this.key, accountID, new Callback<RequestResponse>() {
             public void success(RequestResponse requestResponse, Response response) {
                 requestResponse = new RequestResponse(response.getStatus(), "Account Deleted");
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }

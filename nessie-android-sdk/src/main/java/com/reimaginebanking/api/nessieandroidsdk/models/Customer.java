@@ -1,9 +1,5 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
 /**
  * Created by kco942 on 4/9/15.
  */
@@ -12,27 +8,29 @@ public class Customer {
     private String first_name;
     private String last_name;
     private Address address;
-    @SerializedName("account_ids")
-    private List<String> accounts;
 
     public Customer(){
         _id = null;
         first_name = null;
         last_name = null;
         address = null;
-        accounts = null;
     }
 
     public Customer(Address address){
         this.address = address;
     }
 
-    public Customer(String _id, String first_name, String last_name, Address address, List<String> accounts) {
+    public Customer(String _id, String first_name, String last_name, Address address) {
         this._id = _id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.address = address;
-        this.accounts = accounts;
+    }
+
+    public Customer(Builder builder){
+        this.first_name = builder.firstName;
+        this.last_name = builder.lastName;
+        this.address = builder.address;
     }
 
     public String get_id() {
@@ -51,10 +49,6 @@ public class Customer {
         return address;
     }
 
-    public List<String> getAccounts() {
-        return accounts;
-    }
-
     public void set_id(String _id) {
         this._id = _id;
     }
@@ -71,10 +65,6 @@ public class Customer {
         this.address = address;
     }
 
-    public void setAccounts(List<String> accounts) {
-        this.accounts = accounts;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
@@ -82,7 +72,34 @@ public class Customer {
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", address=" + address +
-                ", accounts=" + accounts +
                 '}';
+    }
+
+    public static class Builder{
+        private String firstName;
+        private String lastName;
+        private Address address;
+
+        public Builder(){}
+
+        public Builder firstName(String firstName){
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName){
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder address(Address address){
+            this.address = address;
+            return this;
+        }
+
+        public Customer build(){
+            Customer customer = new Customer(this);
+            return customer;
+        }
     }
 }

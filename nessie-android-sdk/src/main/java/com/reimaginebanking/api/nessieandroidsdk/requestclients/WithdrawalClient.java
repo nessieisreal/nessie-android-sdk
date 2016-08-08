@@ -1,6 +1,6 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
-import com.reimaginebanking.api.nessieandroidsdk.NessieException;
+import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
@@ -39,12 +39,12 @@ public class WithdrawalClient {
         service.getWithdrawals(this.key, accountId, new Callback<List<Withdrawal>>() {
             @Override
             public void success(List<Withdrawal> transactions, Response response) {
-                mlistener.onSuccess(transactions, null);
+                mlistener.onSuccess(transactions);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -53,12 +53,12 @@ public class WithdrawalClient {
         service.getWithdrawal(this.key, withdrawalId, new Callback<Withdrawal>() {
             @Override
             public void success(Withdrawal transaction, Response response) {
-                mlistener.onSuccess(transaction, null);
+                mlistener.onSuccess(transaction);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -68,12 +68,12 @@ public class WithdrawalClient {
 
             @Override
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -82,12 +82,12 @@ public class WithdrawalClient {
         service.updateWithdrawal(this.key, withdrawalId, withdrawal, new Callback<RequestResponse>() {
             @Override
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -96,12 +96,12 @@ public class WithdrawalClient {
         service.deleteWithdrawal(this.key, withdrawalId, new Callback<RequestResponse>() {
             @Override
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
