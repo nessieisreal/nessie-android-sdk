@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
 
-import com.reimaginebanking.api.nessieandroidsdk.NessieException;
+import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Branch;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.BranchService;
@@ -38,11 +38,11 @@ public class BranchClient {
     public void getBranches(final NessieResultsListener mlistener){
         service.getBranches(this.key, new Callback<List<Branch>>() {
             public void success(List<Branch> branches, Response response) {
-                mlistener.onSuccess(branches, null);
+                mlistener.onSuccess(branches);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -50,11 +50,11 @@ public class BranchClient {
     public void getBranch(String branchID, final NessieResultsListener mlistener){
         service.getBranch(this.key, branchID, new Callback<Branch>() {
             public void success(Branch branch, Response response) {
-                mlistener.onSuccess(branch, null);
+                mlistener.onSuccess(branch);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }

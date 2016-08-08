@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
 
-import com.reimaginebanking.api.nessieandroidsdk.NessieException;
+import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
@@ -40,12 +40,12 @@ public class MerchantClient {
         service.getMerchants(this.key, new Callback<List<Merchant>>() {
             @Override
             public void success(List<Merchant> merchants, Response response) {
-                mlistener.onSuccess(merchants, null);
+                mlistener.onSuccess(merchants);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -54,12 +54,12 @@ public class MerchantClient {
         service.getMerchant(this.key, merchantId, new Callback<Merchant>() {
             @Override
             public void success(Merchant merchant, Response response) {
-                mlistener.onSuccess(merchant, null);
+                mlistener.onSuccess(merchant);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -69,12 +69,12 @@ public class MerchantClient {
 
             @Override
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }
@@ -83,12 +83,12 @@ public class MerchantClient {
         service.updateMerchant(this.key, merchantId, updatedMerchant, new Callback<RequestResponse>() {
             @Override
             public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse, null);
+                mlistener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
+                mlistener.onFailure(new NessieError(error));
             }
         });
     }

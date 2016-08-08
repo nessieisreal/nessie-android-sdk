@@ -8,6 +8,6 @@ import retrofit.RetrofitError;
  */
 public class NessieErrorHandler implements ErrorHandler {
     public Throwable handleError(RetrofitError cause) {
-        return new NessieException(cause);
+        return new NessieError(cause);
     }
 }
