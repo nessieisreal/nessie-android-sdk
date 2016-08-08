@@ -4,7 +4,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.ATM;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.AtmService;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ import retrofit.client.Response;
  */
 public class AtmClient {
 
-    private NessieService service;
+    private AtmService service;
 
     private String key;
 
     private static AtmClient INSTANCE;
 
-    private AtmClient(String key, NessieService service) {
+    private AtmClient(String key, AtmService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static AtmClient getInstance(String key, NessieService service){
+    public static AtmClient getInstance(String key, AtmService service){
         if (INSTANCE == null) {
             INSTANCE = new AtmClient(key, service);
         }

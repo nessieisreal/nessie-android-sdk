@@ -4,7 +4,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.WithdrawalService;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ import retrofit.client.Response;
  */
 public class WithdrawalClient {
 
-    private NessieService service;
+    private WithdrawalService service;
 
     private String key;
 
     private static WithdrawalClient INSTANCE;
 
-    private WithdrawalClient(String key, NessieService service) {
+    private WithdrawalClient(String key, WithdrawalService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static WithdrawalClient getInstance(String key, NessieService service){
+    public static WithdrawalClient getInstance(String key, WithdrawalService service){
         if (INSTANCE == null) {
             INSTANCE = new WithdrawalClient(key, service);
         }

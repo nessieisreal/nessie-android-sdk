@@ -4,7 +4,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Purchase;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.PurchaseService;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ import retrofit.client.Response;
  */
 public class PurchaseClient {
 
-    private NessieService service;
+    private PurchaseService service;
 
     private String key;
 
     private static PurchaseClient INSTANCE;
 
-    private PurchaseClient(String key, NessieService service) {
+    private PurchaseClient(String key, PurchaseService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static PurchaseClient getInstance(String key, NessieService service){
+    public static PurchaseClient getInstance(String key, PurchaseService service){
         if (INSTANCE == null) {
             INSTANCE = new PurchaseClient(key, service);
         }

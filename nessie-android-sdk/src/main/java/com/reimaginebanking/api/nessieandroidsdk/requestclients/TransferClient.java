@@ -4,7 +4,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.TransferService;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ import retrofit.client.Response;
  */
 public class TransferClient {
 
-    private NessieService service;
+    private TransferService service;
 
     private String key;
 
     private static TransferClient INSTANCE;
 
-    private TransferClient(String key, NessieService service) {
+    private TransferClient(String key, TransferService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static TransferClient getInstance(String key, NessieService service){
+    public static TransferClient getInstance(String key, TransferService service){
         if (INSTANCE == null) {
             INSTANCE = new TransferClient(key, service);
         }

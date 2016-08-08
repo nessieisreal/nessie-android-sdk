@@ -8,7 +8,7 @@ import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.EnterpriseService;
 
 import java.util.List;
 
@@ -21,18 +21,18 @@ import retrofit.client.Response;
  */
 public class EnterpriseClient {
 
-    private NessieService service;
+    private EnterpriseService service;
 
     private String key;
 
     private static EnterpriseClient INSTANCE;
 
-    private EnterpriseClient(String key, NessieService service) {
+    private EnterpriseClient(String key, EnterpriseService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static EnterpriseClient getInstance(String key, NessieService service){
+    public static EnterpriseClient getInstance(String key, EnterpriseService service){
         if (INSTANCE == null) {
             INSTANCE = new EnterpriseClient(key, service);
         }

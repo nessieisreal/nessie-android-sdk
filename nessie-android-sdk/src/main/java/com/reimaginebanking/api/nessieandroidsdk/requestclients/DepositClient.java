@@ -4,7 +4,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.DepositService;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ import retrofit.client.Response;
  */
 public class DepositClient {
 
-    private NessieService service;
+    private DepositService service;
 
     private String key;
 
     private static DepositClient INSTANCE;
 
-    private DepositClient(String key, NessieService service) {
+    private DepositClient(String key, DepositService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static DepositClient getInstance(String key, NessieService service){
+    public static DepositClient getInstance(String key, DepositService service){
         if (INSTANCE == null) {
             INSTANCE = new DepositClient(key, service);
         }

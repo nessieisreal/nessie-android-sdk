@@ -7,7 +7,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.BillService;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 
@@ -23,18 +23,18 @@ import retrofit.client.Response;
  */
 public class BillClient {
 
-    private NessieService service;
+    private BillService service;
 
     private String key;
 
     private static BillClient INSTANCE;
 
-    private BillClient(String key, NessieService service) {
+    private BillClient(String key, BillService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static BillClient getInstance(String key, NessieService service){
+    public static BillClient getInstance(String key, BillService service){
         if (INSTANCE == null) {
             INSTANCE = new BillClient(key, service);
         }

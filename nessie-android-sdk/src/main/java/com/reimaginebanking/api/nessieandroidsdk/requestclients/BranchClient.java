@@ -4,7 +4,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Branch;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.BranchService;
 
 import java.util.List;
 
@@ -17,18 +17,18 @@ import retrofit.client.Response;
  */
 public class BranchClient {
 
-    private NessieService service;
+    private BranchService service;
 
     private String key;
 
     private static BranchClient INSTANCE;
 
-    private BranchClient(String key, NessieService service) {
+    private BranchClient(String key, BranchService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static BranchClient getInstance(String key, NessieService service){
+    public static BranchClient getInstance(String key, BranchService service){
         if (INSTANCE == null) {
             INSTANCE = new BranchClient(key, service);
         }
