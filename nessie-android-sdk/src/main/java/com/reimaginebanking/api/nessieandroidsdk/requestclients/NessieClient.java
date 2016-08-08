@@ -5,7 +5,17 @@ import com.google.gson.GsonBuilder;
 
 import com.reimaginebanking.api.nessieandroidsdk.Adapters.BillTypeAdapter;
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.AccountService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.AtmService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.BillService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.BranchService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.CustomerService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.DepositService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.EnterpriseService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.MerchantService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.PurchaseService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.TransferService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.WithdrawalService;
 
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
@@ -15,9 +25,33 @@ import retrofit.converter.GsonConverter;
  */
 public class NessieClient {
 
-    private NessieService service;
-
     private String key;
+
+    /* SERVICES */
+
+    private AccountService accountService;
+
+    private AtmService atmService;
+
+    private BillService billService;
+
+    private BranchService branchService;
+
+    private CustomerService customerService;
+
+    private DepositService depositService;
+
+    private EnterpriseService enterpriseService;
+
+    private MerchantService merchantService;
+
+    private PurchaseService purchaseService;
+
+    private TransferService transferService;
+
+    private WithdrawalService withdrawalService;
+
+    /* CLIENTS */
 
     private static NessieClient INSTANCE;
 
@@ -45,6 +79,7 @@ public class NessieClient {
 
 
     private NessieClient(String key) {
+        this.key = key;
 
         Gson gson = new GsonBuilder()
             .registerTypeAdapter(Bill.class, new BillTypeAdapter())
@@ -55,21 +90,31 @@ public class NessieClient {
             .setConverter(new GsonConverter(gson))
             .build();
 
-        service = restAdapter.create(NessieService.class);
-        this.key = key;
+        // Instantiate services
+        accountService = restAdapter.create(AccountService.class);
+        atmService = restAdapter.create(AtmService.class);
+        billService = restAdapter.create(BillService.class);
+        branchService = restAdapter.create(BranchService.class);
+        customerService = restAdapter.create(CustomerService.class);
+        depositService = restAdapter.create(DepositService.class);
+        enterpriseService = restAdapter.create(EnterpriseService.class);
+        merchantService = restAdapter.create(MerchantService.class);
+        purchaseService = restAdapter.create(PurchaseService.class);
+        transferService = restAdapter.create(TransferService.class);
+        withdrawalService = restAdapter.create(WithdrawalService.class);
 
         // Instantiate other clients for access through NessieClient
-        ACCOUNT = AccountClient.getInstance(this.key, service);
-        ATM = AtmClient.getInstance(this.key, service);
-        BILL = BillClient.getInstance(this.key, service);
-        BRANCH = BranchClient.getInstance(this.key, service);
-        CUSTOMER = CustomerClient.getInstance(this.key, service);
-        DEPOSIT = DepositClient.getInstance(this.key, service);
-        ENTERPRISE = EnterpriseClient.getInstance(this.key, service);
-        MERCHANT = MerchantClient.getInstance(this.key, service);
-        PURCHASE = PurchaseClient.getInstance(this.key, service);
-        TRANSFER = TransferClient.getInstance(this.key, service);
-        WITHDRAWAL = WithdrawalClient.getInstance(this.key, service);
+        ACCOUNT = AccountClient.getInstance(this.key, accountService);
+        ATM = AtmClient.getInstance(this.key, atmService);
+        BILL = BillClient.getInstance(this.key, billService);
+        BRANCH = BranchClient.getInstance(this.key, branchService);
+        CUSTOMER = CustomerClient.getInstance(this.key, customerService);
+        DEPOSIT = DepositClient.getInstance(this.key, depositService);
+        ENTERPRISE = EnterpriseClient.getInstance(this.key, enterpriseService);
+        MERCHANT = MerchantClient.getInstance(this.key, merchantService);
+        PURCHASE = PurchaseClient.getInstance(this.key, purchaseService);
+        TRANSFER = TransferClient.getInstance(this.key, transferService);
+        WITHDRAWAL = WithdrawalClient.getInstance(this.key, withdrawalService);
     }
 
     public static NessieClient getInstance(String key){

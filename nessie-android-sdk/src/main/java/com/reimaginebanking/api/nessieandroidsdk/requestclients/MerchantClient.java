@@ -5,7 +5,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.MerchantService;
 
 import java.util.List;
 
@@ -18,18 +18,18 @@ import retrofit.client.Response;
  */
 public class MerchantClient {
 
-    private NessieService service;
+    private MerchantService service;
 
     private String key;
 
     private static MerchantClient INSTANCE;
 
-    private MerchantClient(String key, NessieService service) {
+    private MerchantClient(String key, MerchantService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static MerchantClient getInstance(String key, NessieService service){
+    public static MerchantClient getInstance(String key, MerchantService service){
         if (INSTANCE == null) {
             INSTANCE = new MerchantClient(key, service);
         }

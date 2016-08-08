@@ -5,7 +5,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieException;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
-import com.reimaginebanking.api.nessieandroidsdk.requestservices.NessieService;
+import com.reimaginebanking.api.nessieandroidsdk.requestservices.CustomerService;
 
 import java.util.List;
 
@@ -18,18 +18,18 @@ import retrofit.client.Response;
  */
 public class CustomerClient {
 
-    private NessieService service;
+    private CustomerService service;
 
     private String key;
 
     private static CustomerClient INSTANCE;
 
-    private CustomerClient(String key, NessieService service) {
+    private CustomerClient(String key, CustomerService service) {
         this.key = key;
         this.service = service;
     }
 
-    public static CustomerClient getInstance(String key, NessieService service){
+    public static CustomerClient getInstance(String key, CustomerService service){
         if (INSTANCE == null) {
             INSTANCE = new CustomerClient(key, service);
         }
@@ -48,16 +48,8 @@ public class CustomerClient {
         });
     }
 
-    public void getCustomers(final NessieResultsListener mlistener){
-        service.getCustomers(this.key, new Callback<List<Customer>>() {
-            public void success(List<Customer> customers, Response response) {
-                mlistener.onSuccess(customers, null);
-            }
-
-            public void failure(RetrofitError error) {
-                mlistener.onSuccess(null, new NessieException(error));
-            }
-        });
+    public void getCustomers(final Callback<List<Customer>> cb){
+        service.getCustomers(this.key, cb);
     }
 
     public void getCustomer(String customerID, final NessieResultsListener mlistener){
