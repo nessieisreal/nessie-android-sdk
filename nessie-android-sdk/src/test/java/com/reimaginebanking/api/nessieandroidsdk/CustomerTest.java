@@ -3,6 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk;
 import com.reimaginebanking.api.nessieandroidsdk.models.Address;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.models.CustomerCreatedResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 
 import org.junit.Test;
 
@@ -92,6 +93,22 @@ public class CustomerTest extends NessieTest {
             public void onFailure(NessieError error) {
                 // need to update this once the NessieError object param contains the 'culprit'
                 assertTrue(true);
+            }
+        });
+    }
+
+    /* POST /customers */
+    @Test
+    public void testUpdateCustomer() throws Exception {
+        Customer customer = new Customer.Builder()
+            .address(new Address(null, null, "0000", null, null))
+            .build();
+
+        client.CUSTOMER.updateCustomer("123", customer, new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                RequestResponse response = (RequestResponse) result;
+                assertEquals("Accepted customer update", response.getMessage());
             }
         });
     }
