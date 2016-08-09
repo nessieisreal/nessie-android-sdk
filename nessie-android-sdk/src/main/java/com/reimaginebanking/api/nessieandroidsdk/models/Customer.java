@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
 /**
- * Created by kco942 on 4/9/15.
+ * An object representing a Customer from the API.
  */
 public class Customer {
     private String _id;

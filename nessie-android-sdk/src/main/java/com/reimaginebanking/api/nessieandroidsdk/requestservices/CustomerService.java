@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
+import com.reimaginebanking.api.nessieandroidsdk.models.CustomerCreatedResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public interface CustomerService {
 
     @Headers("Content-Type: application/json")
     @POST("/customers")
-    void createCustomer(@Query("key") String key, @Body Customer customer, Callback<RequestResponse> cb);
+    void createCustomer(@Query("key") String key, @Body Customer customer, Callback<CustomerCreatedResponse> cb);
 
     @Headers("Content-Type: application/json")
     @PUT("/customers/{id}")
