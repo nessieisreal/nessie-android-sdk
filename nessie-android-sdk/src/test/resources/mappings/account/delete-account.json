@@ -1,0 +1,18 @@
+{
+  "request" : {
+    "url" : "/accounts/123?key=12345",
+    "method" : "DELETE"
+  },
+  "response" : {
+    "status" : 204,
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 15:11:13 GMT",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "Connection" : "Keep-Alive"
+    }
+  }
+}

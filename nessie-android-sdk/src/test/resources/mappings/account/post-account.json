@@ -1,0 +1,26 @@
+{
+  "request" : {
+    "url" : "/customers/123/accounts?key=12345",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\n  \"type\": \"Credit Card\",\n  \"nickname\": \"TEST\",\n  \"rewards\": 10,\n  \"balance\": 10,\n  \"account_number\": \"1234567890123456\"\n}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "account/post-account.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 15:09:28 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "233",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}
