@@ -1,0 +1,23 @@
+{
+  "request" : {
+    "url" : "/branches?key=12345",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "branch/branches.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 17:36:31 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "93456",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"TqUtyMIbK6qQBQPsuCtD3A==\"",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}
