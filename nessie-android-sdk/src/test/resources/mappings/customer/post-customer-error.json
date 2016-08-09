@@ -3,18 +3,18 @@
     "url" : "/customers?key=12345",
     "method" : "POST",
     "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"first_name\": \"New\",\n  \"last_name\": \"Customer\",\n  \"address\": {\n    \"street_number\": \"1111\",\n    \"street_name\": \"Test\",\n    \"city\": \"Pittsburgh\",\n    \"state\": \"PA\",\n    \"zip\": \"00000\"\n  }\n}",
+      "equalToJson" : "{\n  \"first_name\": \"\",\n  \"last_name\": \"\"\n}",
       "jsonCompareMode" : "LENIENT"
     } ]
   },
   "response" : {
-    "status" : 201,
-    "bodyFileName" : "post-customer.json",
+    "status" : 400,
+    "bodyFileName" : "customer/post-customer-error.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Tue, 09 Aug 2016 03:55:46 GMT",
+      "Date" : "Tue, 09 Aug 2016 04:13:18 GMT",
       "Content-Type" : "application/json; charset=utf-8",
-      "Content-Length" : "237",
+      "Content-Length" : "113",
       "Connection" : "keep-alive",
       "X-Powered-By" : "Express",
       "Access-Control-Allow-Origin" : "*",
