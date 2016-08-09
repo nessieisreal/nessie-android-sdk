@@ -1,0 +1,1 @@
+{"message":"Created bill and added it to the account","code":201,"objectCreated":{"status":"pending","payee":"Verizon","nickname":"Cable Bill","payment_date":"2016-08-09","recurring_date":1,"payment_amount":100,"creation_date":"2016-08-09","account_id":"56c66be6a73e492741507b32","_id":"57aa259cbc727e4b519f25d4"}}

@@ -1,0 +1,1 @@
+{"message":"Created deposit and added it to the account","code":201,"objectCreated":{"medium":"balance","transaction_date":"2016-08-09","status":"pending","description":"DEPOSIT","amount":100,"payee_id":"56c66be6a73e492741507b31","type":"deposit","_id":"57aa2f23bc727e4b519f25d7"}}

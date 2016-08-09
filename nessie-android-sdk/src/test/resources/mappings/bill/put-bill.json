@@ -1,0 +1,26 @@
+{
+  "request" : {
+    "url" : "/bills/123?key=12345",
+    "method" : "PUT",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\n  \"nickname\": \"TEST UPDATE\"\n}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 202,
+    "bodyFileName" : "bill/put-bill.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 18:51:31 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "51",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}
