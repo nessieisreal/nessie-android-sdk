@@ -1,0 +1,22 @@
+{
+  "request" : {
+    "url" : "/accounts/123/customer?key=12345",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "customerByAccount.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 03:48:17 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "175",
+      "Connection" : "keep-alive",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"af-6bb4684a\""
+    }
+  }
+}
