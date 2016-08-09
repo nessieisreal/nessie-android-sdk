@@ -78,17 +78,24 @@ public class NessieClient {
     public final WithdrawalClient WITHDRAWAL;
 
 
-    private NessieClient(String key) {
+    private NessieClient(String key, RestAdapter ra) {
         this.key = key;
 
         Gson gson = new GsonBuilder()
             .registerTypeAdapter(Bill.class, new BillTypeAdapter())
             .create();
 
-        RestAdapter restAdapter = new RestAdapter.Builder()
-            .setEndpoint("http://api.reimaginebanking.com")
-            .setConverter(new GsonConverter(gson))
-            .build();
+        RestAdapter restAdapter;
+
+        if (ra == null) {
+            restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://api.reimaginebanking.com")
+                .setConverter(new GsonConverter(gson))
+                .build();
+        } else {
+            restAdapter = ra;
+        }
+
 
         // Instantiate services
         accountService = restAdapter.create(AccountService.class);
@@ -119,7 +126,15 @@ public class NessieClient {
 
     public static NessieClient getInstance(String key){
         if (INSTANCE == null) {
-            INSTANCE = new NessieClient(key);
+            INSTANCE = new NessieClient(key, null);
+        }
+
+        return INSTANCE;
+    }
+
+    public static NessieClient getInstance(String key, RestAdapter ra) {
+        if (INSTANCE == null) {
+            INSTANCE = new NessieClient(key, ra);
         }
 
         return INSTANCE;
