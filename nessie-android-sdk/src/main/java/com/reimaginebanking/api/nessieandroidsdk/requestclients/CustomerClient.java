@@ -4,6 +4,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
+import com.reimaginebanking.api.nessieandroidsdk.models.CustomerCreatedResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.CustomerService;
 
@@ -73,8 +74,8 @@ public class CustomerClient {
     }
 
     public void createCustomer(Customer newCustomer, final NessieResultsListener mlistener){
-        service.createCustomer(this.key, newCustomer, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
+        service.createCustomer(this.key, newCustomer, new Callback<CustomerCreatedResponse>() {
+            public void success(CustomerCreatedResponse requestResponse, Response response) {
                 mlistener.onSuccess(requestResponse);
             }
 

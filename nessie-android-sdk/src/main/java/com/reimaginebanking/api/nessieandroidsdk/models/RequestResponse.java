@@ -9,6 +9,7 @@ public class RequestResponse {
     private int code;
     private String message;
     private List<String> culprit;
+    private Object objectCreated;
 
     public RequestResponse(int code, String message) {
         this.code = code;
@@ -19,6 +20,12 @@ public class RequestResponse {
         this.code = code;
         this.message = message;
         this.culprit = culprit;
+    }
+
+    public RequestResponse(int code, String message, Object objectCreated) {
+        this.code = code;
+        this.message = message;
+        this.objectCreated = objectCreated;
     }
 
     public int getCode() {
@@ -45,11 +52,21 @@ public class RequestResponse {
         this.culprit = culprit;
     }
 
+    public Object getObjectCreated() {
+        return objectCreated;
+    }
+
+    public void setObjectCreated(Object objectCreated) {
+        this.objectCreated = objectCreated;
+    }
+
     @Override
     public String toString() {
         return "RequestResponse{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                '}';
+            "code=" + code +
+            ", message='" + message + '\'' +
+            ", culprit=" + culprit +
+            ", objectCreated=" + objectCreated +
+            '}';
     }
 }

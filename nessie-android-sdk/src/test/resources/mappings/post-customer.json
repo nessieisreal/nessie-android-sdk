@@ -1,0 +1,25 @@
+{
+  "request" : {
+    "url" : "/customers?key=12345",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\n  \"first_name\": \"New\",\n  \"last_name\": \"Customer\",\n  \"address\": {\n    \"street_number\": \"1111\",\n    \"street_name\": \"Test\",\n    \"city\": \"Pittsburgh\",\n    \"state\": \"PA\",\n    \"zip\": \"00000\"\n  }\n}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "post-customer.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 03:55:46 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "237",
+      "Connection" : "keep-alive",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With"
+    }
+  }
+}

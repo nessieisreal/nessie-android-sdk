@@ -5,7 +5,7 @@
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "customerByAccount.json",
+    "bodyFileName" : "customer-by-account.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
       "Date" : "Tue, 09 Aug 2016 03:48:17 GMT",
