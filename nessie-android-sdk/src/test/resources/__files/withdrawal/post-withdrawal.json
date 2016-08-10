@@ -1,0 +1,1 @@
+{"message":"Created withdrawal and added it to the account","code":201,"objectCreated":{"medium":"balance","transaction_date":"2016-08-09","status":"pending","amount":100,"description":"TEST","type":"withdrawal","payer_id":"56c66be6a73e492741507b31","_id":"57aa3556bc727e4b519f25de"}}

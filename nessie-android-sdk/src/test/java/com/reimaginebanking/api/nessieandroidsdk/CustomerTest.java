@@ -2,7 +2,7 @@ package com.reimaginebanking.api.nessieandroidsdk;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Address;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
-import com.reimaginebanking.api.nessieandroidsdk.models.CustomerCreatedResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 
 import org.junit.Test;
@@ -73,7 +73,7 @@ public class CustomerTest extends NessieTest {
         client.CUSTOMER.createCustomer(customer, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                CustomerCreatedResponse response = (CustomerCreatedResponse) result;
+                PostResponse response = (PostResponse) result;
                 Customer newCustomer = (Customer) response.getObjectCreated();
                 assertEquals("New", newCustomer.getFirst_name());
                 assertEquals("Customer", newCustomer.getLast_name());

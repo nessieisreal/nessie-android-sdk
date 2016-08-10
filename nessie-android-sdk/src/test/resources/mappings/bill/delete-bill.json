@@ -5,7 +5,6 @@
   },
   "response" : {
     "status" : 204,
-    "bodyFileName" : "bill/delete-bill.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
       "Date" : "Tue, 09 Aug 2016 19:02:57 GMT",
