@@ -1,0 +1,23 @@
+{
+  "request" : {
+    "url" : "/accounts/123/withdrawals?key=12345",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "withdrawal/withdrawals-by-account.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Tue, 09 Aug 2016 19:56:30 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "794",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"31a-b52b5903\"",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}
