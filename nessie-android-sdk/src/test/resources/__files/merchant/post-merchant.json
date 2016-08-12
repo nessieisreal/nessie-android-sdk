@@ -1,0 +1,1 @@
+{"message":"Created merchant","code":201,"objectCreated":{"name":"Grocery Store","category":"Food","address":{"street_number":"1111","street_name":"Pittsburgh St","city":"Pittsburgh","state":"PA","zip":"12345"},"geocode":{"lat":-79.9959,"lng":40.4406},"creation_date":"2016-08-12","_id":"57ade56abc727e4b519f2652"}}

@@ -1,0 +1,1 @@
+{"message":"Created purchase and added it to the account","code":201,"objectCreated":{"merchant_id":"57ade559bc727e4b519f2651","medium":"balance","purchase_date":"2016-08-12","amount":100,"status":"pending","description":"Grocery purchase.","type":"merchant","payer_id":"56c66be6a73e492741507b31","_id":"57ade6a5bc727e4b519f2654"}}

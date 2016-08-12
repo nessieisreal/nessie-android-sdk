@@ -64,7 +64,7 @@ public class Account {
         return mRewards;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return mBalance;
     }
 
@@ -97,6 +97,14 @@ public class Account {
         private String bAccountNumber;
 
         public Builder(){}
+
+        public Builder(Account account) {
+            bType = account.getType();
+            bNickname = account.getNickname();
+            bRewards = account.getRewards();
+            bBalance = account.getBalance();
+            bAccountNumber = account.getAccountNumber();
+        }
 
         public Builder type(AccountType type){
             bType = type;

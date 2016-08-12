@@ -1,0 +1,1 @@
+{"message":"Created transaction and added it to the account","code":201,"objectCreated":{"medium":"balance","payee_id":"56c66be6a73e492741507b32","transaction_date":"2016-08-12","status":"pending","amount":100,"description":"Transferring money.","type":"p2p","payer_id":"56c66be6a73e492741507b31","_id":"57adebf1bc727e4b519f2659"}}

@@ -3,7 +3,7 @@
     "url" : "/deposits/123?key=12345",
     "method" : "PUT",
     "bodyPatterns" : [ {
-      "equalToJson" : "{\n \"amount\": 101\n}",
+      "equalToJson" : "{\n \"amount\": 101.0\n}",
       "jsonCompareMode" : "LENIENT"
     } ]
   },
