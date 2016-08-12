@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import com.reimaginebanking.api.nessieandroidsdk.Constants.AccountType;
 
-import java.util.List;
-
 /**
  * Created by kco942 on 4/9/15.
  */
@@ -15,8 +13,8 @@ public class Account {
     private AccountType type;
     private String nickname;
     private int rewards;
-    private double balance;
-    private List<String> bill_ids;
+    private int balance;
+    private String account_number;
     @SerializedName("customer_id")
     private String customer;
 
@@ -25,15 +23,16 @@ public class Account {
         this.nickname = builder.nickname;
         this.rewards = builder.rewards;
         this.balance = builder.balance;
+        this.account_number = builder.account_number;
     }
 
-    public Account(AccountType type, String nickname, int rewards, double balance, List<String> bill_ids, String customer) {
+    public Account(String _id, AccountType type, String nickname, int rewards, int balance, String account_number, String customer) {
         this._id = _id;
         this.type = type;
         this.nickname = nickname;
         this.rewards = rewards;
         this.balance = balance;
-        this.bill_ids = bill_ids;
+        this.account_number = account_number;
         this.customer = customer;
     }
 
@@ -57,8 +56,8 @@ public class Account {
         return balance;
     }
 
-    public List<String> getBill_ids() {
-        return bill_ids;
+    public String getAccountNumber() {
+        return account_number;
     }
 
     public String getCustomer() {
@@ -73,7 +72,7 @@ public class Account {
                 ", nickname='" + nickname + '\'' +
                 ", rewards=" + rewards +
                 ", balance=" + balance +
-                ", bill_ids=" + bill_ids +
+                ", account_number=" + account_number +
                 ", customer='" + customer + '\'' +
                 '}';
     }
@@ -82,7 +81,8 @@ public class Account {
         private AccountType type;
         private String nickname;
         private int rewards;
-        private double balance;
+        private int balance;
+        private String account_number;
 
         public Builder(){}
 
@@ -101,8 +101,13 @@ public class Account {
             return this;
         }
 
-        public Builder balance(double balance){
+        public Builder balance(int balance){
             this.balance = balance;
+            return this;
+        }
+
+        public Builder accountNumber(String account_number) {
+            this.account_number = account_number;
             return this;
         }
 

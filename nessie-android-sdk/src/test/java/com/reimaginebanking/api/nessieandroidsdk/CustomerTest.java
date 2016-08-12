@@ -73,8 +73,8 @@ public class CustomerTest extends NessieTest {
         client.CUSTOMER.createCustomer(customer, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                PostResponse response = (PostResponse) result;
-                Customer newCustomer = (Customer) response.getObjectCreated();
+                PostResponse<Customer> response = (PostResponse<Customer>) result;
+                Customer newCustomer = response.getObjectCreated();
                 assertEquals("New", newCustomer.getFirst_name());
                 assertEquals("Customer", newCustomer.getLast_name());
             }
@@ -91,7 +91,7 @@ public class CustomerTest extends NessieTest {
         client.CUSTOMER.createCustomer(invalidCustomer, new NessieTestResultsListener() {
             @Override
             public void onFailure(NessieError error) {
-                // need to update this once the NessieError object param contains the 'culprit'
+                // TODO: need to update this once the NessieError object param contains the 'culprit'
                 assertTrue(true);
             }
         });

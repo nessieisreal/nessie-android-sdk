@@ -4,6 +4,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.AccountService;
 
@@ -74,8 +75,8 @@ public class AccountClient {
 
 
     public void createAccount(String customerID, Account newAccount, final NessieResultsListener mlistener){
-        service.createAccount(this.key, customerID, newAccount, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
+        service.createAccount(this.key, customerID, newAccount, new Callback<PostResponse<Account>>() {
+            public void success(PostResponse<Account> requestResponse, Response response) {
                 mlistener.onSuccess(requestResponse);
             }
 

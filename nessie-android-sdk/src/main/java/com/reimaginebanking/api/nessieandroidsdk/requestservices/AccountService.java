@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public interface AccountService {
 
     @Headers("Content-Type: application/json")
     @POST("/customers/{id}/accounts")
-    void createAccount(@Query("key") String key, @Path("id") String id, @Body Account account, Callback<RequestResponse> cb);
+    void createAccount(@Query("key") String key, @Path("id") String id, @Body Account account, Callback<PostResponse<Account>> cb);
 
     @Headers("Content-Type: application/json")
     @PUT("/accounts/{id}")
