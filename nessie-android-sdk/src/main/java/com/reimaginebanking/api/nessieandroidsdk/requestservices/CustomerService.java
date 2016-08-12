@@ -30,7 +30,7 @@ public interface CustomerService {
 
     @Headers("Content-Type: application/json")
     @POST("/customers")
-    void createCustomer(@Query("key") String key, @Body Customer customer, Callback<PostResponse> cb);
+    void createCustomer(@Query("key") String key, @Body Customer customer, Callback<PostResponse<Customer>> cb);
 
     @Headers("Content-Type: application/json")
     @PUT("/customers/{id}")

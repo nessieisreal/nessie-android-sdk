@@ -74,8 +74,8 @@ public class CustomerClient {
     }
 
     public void createCustomer(Customer newCustomer, final NessieResultsListener mlistener){
-        service.createCustomer(this.key, newCustomer, new Callback<PostResponse>() {
-            public void success(PostResponse requestResponse, Response response) {
+        service.createCustomer(this.key, newCustomer, new Callback<PostResponse<Customer>>() {
+            public void success(PostResponse<Customer> requestResponse, Response response) {
                 mlistener.onSuccess(requestResponse);
             }
 
