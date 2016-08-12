@@ -1,171 +1,187 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import com.reimaginebanking.api.nessieandroidsdk.Constants.BillStatus;
 
 /**
- * Created by kco942 on 4/9/15.
+ * A class representing a Bill object.
  */
 public class Bill {
-    private String _id;
-    private BillStatus status;
-    private String payee;
-    private String nickname;
-    private String creation_date;
-    private String payment_date;
-    private int recurring_date;
-    private String upcoming_payment_date;
-    private double payment_amount;
 
-    public Bill(){
+    @SerializedName("_id")
+    private String mId;
 
-    }
+    @SerializedName("status")
+    private BillStatus mStatus;
 
-    public Bill(Builder builder){
-        this.status = builder.status;
-        this.payee = builder.payee;
-        this.nickname = builder.nickname;
-        this.payment_date = builder.payment_date;
-        this.recurring_date = builder.recurring_date;
-        this.payment_amount = builder.payment_amount;
-    }
+    @SerializedName("payee")
+    private String mPayee;
+
+    @SerializedName("nickname")
+    private String mNickname;
+
+    @SerializedName("creation_date")
+    private String mCreationDate;
+
+    @SerializedName("payment_ate")
+    private String mPaymentDate;
+
+    @SerializedName("recurringDate")
+    private int mRecurringDate;
+
+    @SerializedName("upcoming_payment_date")
+    private String mUpcomingPaymentDate;
+
+    @SerializedName("paymentAmount")
+    private double mPaymentAmount;
 
     public Bill(String _id, BillStatus status, String payee, String nickname, String creation_date, String payment_date, int recurring_date, String upcoming_payment_date, double payment_amount) {
-        this._id = _id;
-        this.status = status;
-        this.payee = payee;
-        this.nickname = nickname;
-        this.creation_date = creation_date;
-        this.payment_date = payment_date;
-        this.recurring_date = recurring_date;
-        this.upcoming_payment_date = upcoming_payment_date;
-        this.payment_amount = payment_amount;
+        mId = _id;
+        mStatus = status;
+        mPayee = payee;
+        mNickname = nickname;
+        mCreationDate = creation_date;
+        mPaymentDate = payment_date;
+        mRecurringDate = recurring_date;
+        mUpcomingPaymentDate = upcoming_payment_date;
+        mPaymentAmount = payment_amount;
     }
 
-    public String get_id() {
-        return _id;
+    public Bill(Builder builder) {
+        mStatus = builder.bStatus;
+        mPayee = builder.bPayee;
+        mNickname = builder.bNickname;
+        mPaymentDate = builder.bPaymentDate;
+        mRecurringDate = builder.bRecurringDate;
+        mPaymentAmount = builder.bPaymentAmount;
+    }
+
+    public String getId() {
+        return mId;
     }
 
     public BillStatus getStatus() {
-        return status;
+        return mStatus;
     }
 
     public String getPayee() {
-        return payee;
+        return mPayee;
     }
 
     public String getNickname() {
-        return nickname;
+        return mNickname;
     }
 
-    public String getCreation_date() {
-        return creation_date;
+    public String getCreationDate() {
+        return mCreationDate;
     }
 
-    public String getPayment_date() {
-        return payment_date;
+    public String getPaymentDate() {
+        return mPaymentDate;
     }
 
-    public int getRecurring_date() {
-        return recurring_date;
+    public int getRecurringDate() {
+        return mRecurringDate;
     }
 
-    public String getUpcoming_payment_date() {
-        return upcoming_payment_date;
+    public String getUpcomingPaymentDate() {
+        return mUpcomingPaymentDate;
     }
 
-    public double getPayment_amount() {
-        return payment_amount;
+    public double getPaymentAmount() {
+        return mPaymentAmount;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public void setId(String _id) {
+        mId = _id;
     }
 
     public void setStatus(BillStatus status) {
-        this.status = status;
+        mStatus = status;
     }
 
-    public void setPayee(String payee) {
-        this.payee = payee;
+    public void setPayee(String mPayee) {
+        mPayee = mPayee;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        mNickname = nickname;
     }
 
-    public void setCreation_date(String creation_date) {
-        this.creation_date = creation_date;
+    public void setCreationDate(String creation_date) {
+        mCreationDate = creation_date;
     }
 
-    public void setPayment_date(String payment_date) {
-        this.payment_date = payment_date;
+    public void setPaymentDate(String payment_date) {
+        mPaymentDate = payment_date;
     }
 
-    public void setRecurring_date(int recurring_date) {
-        this.recurring_date = recurring_date;
+    public void setRecurringDate(int recurring_date) {
+        mRecurringDate = recurring_date;
     }
 
-    public void setUpcoming_payment_date(String upcoming_payment_date) {
-        this.upcoming_payment_date = upcoming_payment_date;
+    public void setUpcomingPaymentDate(String upcoming_payment_date) {
+        mUpcomingPaymentDate = upcoming_payment_date;
     }
 
-    public void setPayment_amount(double payment_amount) {
-        this.payment_amount = payment_amount;
+    public void setPaymentAmount(double payment_amount) {
+        mPaymentAmount = payment_amount;
     }
 
     @Override
     public String toString() {
 
         return "Bill{" +
-                "_id='" + _id + '\'' +
-                ", status='" + status + '\'' +
-                ", payee='" + payee + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", creation_date='" + creation_date + '\'' +
-                ", payment_date='" + payment_date + '\'' +
-                ", recurring_date=" + recurring_date +
-                ", upcoming_payment_date='" + upcoming_payment_date + '\'' +
-                ", payment_amount=" + payment_amount +
+                "mId='" + mId + '\'' +
+                ", mStatus='" + mStatus + '\'' +
+                ", mPayee='" + mPayee + '\'' +
+                ", mNickname='" + mNickname + '\'' +
+                ", mCreationDate='" + mCreationDate + '\'' +
+                ", mPaymentDate='" + mPaymentDate + '\'' +
+                ", mRecurringDate=" + mRecurringDate +
+                ", mUpcomingPaymentDate='" + mUpcomingPaymentDate + '\'' +
+                ", mPaymentAmount=" + mPaymentAmount +
                 '}';
     }
 
     public static class Builder{
-        private BillStatus status;
-        private String payee;
-        private String nickname;
-        private String payment_date;
-        private int recurring_date;
-        private double payment_amount;
+        private BillStatus bStatus;
+        private String bPayee;
+        private String bNickname;
+        private String bPaymentDate;
+        private int bRecurringDate;
+        private double bPaymentAmount;
 
         public Builder(){}
 
         public Builder status(BillStatus status){
-            this.status = status;
+            bStatus = status;
             return this;
         }
 
         public Builder payee(String payee){
-            this.payee = payee;
+            bPayee = payee;
             return this;
         }
 
         public Builder nickname(String nickname){
-            this.nickname = nickname;
+            bNickname = nickname;
             return this;
         }
 
-        public Builder payment_date(String payment_date){
-            this.payment_date = payment_date;
+        public Builder paymentDate(String payment_date){
+            bPaymentDate = payment_date;
             return this;
         }
 
-        public Builder recurring_date(int recurring_date){
-            this.recurring_date = recurring_date;
+        public Builder recurringDate(int recurring_date){
+            bRecurringDate = recurring_date;
             return this;
         }
 
-        public Builder payment_amount(double payment_amount){
-            this.payment_amount = payment_amount;
+        public Builder paymentAmount(double payment_amount){
+            bPaymentAmount = payment_amount;
             return this;
         }
 

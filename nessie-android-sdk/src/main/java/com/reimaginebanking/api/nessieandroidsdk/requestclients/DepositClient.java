@@ -3,6 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.DepositService;
 
@@ -64,10 +65,10 @@ public class DepositClient {
     }
 
     public void createDeposit(String accountId, Deposit deposit, final NessieResultsListener mlistener){
-        service.createDeposit(this.key, accountId, deposit, new Callback<RequestResponse>() {
+        service.createDeposit(this.key, accountId, deposit, new Callback<PostResponse<Deposit>>() {
 
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
+            public void success(PostResponse<Deposit> requestResponse, Response response) {
                 mlistener.onSuccess(requestResponse);
             }
 

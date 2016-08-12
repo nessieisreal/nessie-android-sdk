@@ -1,73 +1,122 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
- * Created by kco942 on 4/9/15.
+ * A class representing a Branch object.
  */
 public class Branch {
-    private String _id;
-    private String name;
-    private Address address;
-    private String phone_number;
-    private List<String> hours;
+
+    @SerializedName("_id")
+    private String mId;
+
+    @SerializedName("name")
+    private String mName;
+
+    @SerializedName("address")
+    private Address mAddress;
+
+    @SerializedName("phone_number")
+    private String mPhoneNumber;
+
+    @SerializedName("hours")
+    private List<String> mHours;
 
     public Branch(String _id, String name, Address address, String phone_number, List<String> hours) {
-        this._id = _id;
-        this.name = name;
-        this.address = address;
-        this.phone_number = phone_number;
-        this.hours = hours;
+        mId = _id;
+        mName = name;
+        mAddress = address;
+        mPhoneNumber = phone_number;
+        mHours = hours;
     }
 
-    public String get_id() {
-        return _id;
+    public Branch(Builder builder) {
+        mName = builder.bName;
+        mAddress = builder.bAddress;
+        mPhoneNumber = builder.bPhoneNumber;
+        mHours = builder.bHours;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String _id) {
+        mId = _id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
     }
 
     public Address getAddress() {
-        return address;
+        return mAddress;
     }
 
     public void setAddress(Address address) {
-        this.address = address;
+        mAddress = address;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return mPhoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phone_number) {
+        mPhoneNumber = phone_number;
     }
 
     public List<String> getHours() {
-        return hours;
+        return mHours;
     }
 
     public void setHours(List<String> hours) {
-        this.hours = hours;
+        mHours = hours;
     }
 
     @Override
     public String toString() {
         return "Branch{" +
-                "_id='" + _id + '\'' +
-                ", name='" + name + '\'' +
-                ", address=" + address +
-                ", phone_number='" + phone_number + '\'' +
-                ", hours=" + hours +
+                "mId='" + mId + '\'' +
+                ", mName='" + mName + '\'' +
+                ", mAddress=" + mAddress +
+                ", mPhoneNumber='" + mPhoneNumber + '\'' +
+                ", mHours=" + mHours +
                 '}';
+    }
+
+    public static class Builder {
+
+        private String bId;
+        private String bName;
+        private Address bAddress;
+        private String bPhoneNumber;
+        private List<String> bHours;
+
+        public Builder name(String name) {
+            bName = name;
+            return this;
+        }
+
+        public Builder address(Address address) {
+            bAddress = address;
+            return this;
+        }
+
+        public Builder phoneNumber(String phoneNumber) {
+            bPhoneNumber = phoneNumber;
+            return this;
+        }
+
+        public Builder hours(List<String> hours) {
+            bHours = hours;
+            return this;
+        }
+
     }
 }

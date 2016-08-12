@@ -26,8 +26,8 @@ public class CustomerTest extends NessieTest {
             public void onSuccess(Object result) {
                 List<Customer> customers = (List<Customer>) result;
                 assertEquals(customers.size(), 3);
-                assertEquals("Emily", customers.get(0).getFirst_name());
-                assertEquals("Kinney", customers.get(0).getLast_name());
+                assertEquals("Emily", customers.get(0).getFirstName());
+                assertEquals("Kinney", customers.get(0).getLastName());
             }
         });
     }
@@ -39,8 +39,8 @@ public class CustomerTest extends NessieTest {
             @Override
             public void onSuccess(Object result) {
                 Customer customer = (Customer) result;
-                assertEquals("Emily", customer.getFirst_name());
-                assertEquals("Kinney", customer.getLast_name());
+                assertEquals("Emily", customer.getFirstName());
+                assertEquals("Kinney", customer.getLastName());
             }
         });
     }
@@ -52,8 +52,8 @@ public class CustomerTest extends NessieTest {
             @Override
             public void onSuccess(Object result) {
                 Customer customer = (Customer) result;
-                assertEquals("Emily", customer.getFirst_name());
-                assertEquals("Kinney", customer.getLast_name());
+                assertEquals("Emily", customer.getFirstName());
+                assertEquals("Kinney", customer.getLastName());
             }
         });
     }
@@ -75,8 +75,8 @@ public class CustomerTest extends NessieTest {
             public void onSuccess(Object result) {
                 PostResponse<Customer> response = (PostResponse<Customer>) result;
                 Customer newCustomer = response.getObjectCreated();
-                assertEquals("New", newCustomer.getFirst_name());
-                assertEquals("Customer", newCustomer.getLast_name());
+                assertEquals("New", newCustomer.getFirstName());
+                assertEquals("Customer", newCustomer.getLastName());
             }
         });
     }

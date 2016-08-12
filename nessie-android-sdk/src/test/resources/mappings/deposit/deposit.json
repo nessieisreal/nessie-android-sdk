@@ -8,16 +8,15 @@
     "bodyFileName" : "deposit/deposit.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Tue, 09 Aug 2016 19:31:26 GMT",
+      "Date" : "Fri, 12 Aug 2016 03:10:53 GMT",
       "Content-Type" : "application/json; charset=utf-8",
-      "Content-Length" : "196",
+      "Content-Length" : "197",
+      "Connection" : "keep-alive",
       "X-Powered-By" : "Express",
       "Access-Control-Allow-Origin" : "*",
       "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
       "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
-      "ETag" : "W/\"c4-f5b057f4\"",
-      "Connection" : "Keep-Alive",
-      "Age" : "0"
+      "ETag" : "W/\"c5-7cace572\""
     }
   }
 }

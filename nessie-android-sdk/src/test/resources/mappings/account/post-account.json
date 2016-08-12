@@ -12,15 +12,14 @@
     "bodyFileName" : "account/post-account.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Tue, 09 Aug 2016 15:09:28 GMT",
+      "Date" : "Fri, 12 Aug 2016 03:12:45 GMT",
       "Content-Type" : "application/json; charset=utf-8",
       "Content-Length" : "233",
+      "Connection" : "keep-alive",
       "X-Powered-By" : "Express",
       "Access-Control-Allow-Origin" : "*",
       "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
-      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
-      "Connection" : "Keep-Alive",
-      "Age" : "0"
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With"
     }
   }
 }

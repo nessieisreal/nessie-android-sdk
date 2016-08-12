@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public interface DepositService {
 
     //working
     @POST("/accounts/{accountId}/deposits")
-    void createDeposit(@Query("key") String key, @Path("accountId") String accountId, @Body Deposit deposit, Callback<RequestResponse> cb);
+    void createDeposit(@Query("key") String key, @Path("accountId") String accountId, @Body Deposit deposit, Callback<PostResponse<Deposit>>
+        cb);
 
     @PUT("/deposits/{depositId}")
     void updateDeposit(@Query("key") String key, @Path("depositId") String depositId, @Body Deposit deposit, Callback<RequestResponse> cb);
