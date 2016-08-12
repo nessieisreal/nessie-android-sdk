@@ -5,109 +5,121 @@ import com.google.gson.annotations.SerializedName;
 import com.reimaginebanking.api.nessieandroidsdk.Constants.AccountType;
 
 /**
- * Created by kco942 on 4/9/15.
+ * A class representing an Account object.
  */
 public class Account {
 
-    private String _id;
-    private AccountType type;
-    private String nickname;
-    private int rewards;
-    private int balance;
-    private String account_number;
-    @SerializedName("customer_id")
-    private String customer;
+    @SerializedName("_id")
+    private String mId;
 
-    public Account(Builder builder){
-        this.type = builder.type;
-        this.nickname = builder.nickname;
-        this.rewards = builder.rewards;
-        this.balance = builder.balance;
-        this.account_number = builder.account_number;
-    }
+    @SerializedName("type")
+    private AccountType mType;
+
+    @SerializedName("nickname")
+    private String mNickname;
+
+    @SerializedName("rewards")
+    private int mRewards;
+
+    @SerializedName("balance")
+    private int mBalance;
+
+    @SerializedName("accountNumber")
+    private String mAccountNumber;
+
+    @SerializedName("customer_id")
+    private String mCustomer;
 
     public Account(String _id, AccountType type, String nickname, int rewards, int balance, String account_number, String customer) {
-        this._id = _id;
-        this.type = type;
-        this.nickname = nickname;
-        this.rewards = rewards;
-        this.balance = balance;
-        this.account_number = account_number;
-        this.customer = customer;
+        mId = _id;
+        mType = type;
+        mNickname = nickname;
+        mRewards = rewards;
+        mBalance = balance;
+        mAccountNumber = account_number;
+        mCustomer = customer;
     }
 
-    public String get_id() {
-        return _id;
+    public Account(Builder builder){
+        mType = builder.bType;
+        mNickname = builder.bNickname;
+        mRewards = builder.bRewards;
+        mBalance = builder.bBalance;
+        mAccountNumber = builder.bAccountNumber;
+    }
+
+    public String getId() {
+        return mId;
     }
 
     public AccountType getType() {
-        return type;
+        return mType;
     }
 
     public String getNickname() {
-        return nickname;
+        return mNickname;
     }
 
     public int getRewards() {
-        return rewards;
+        return mRewards;
     }
 
     public double getBalance() {
-        return balance;
+        return mBalance;
     }
 
     public String getAccountNumber() {
-        return account_number;
+        return mAccountNumber;
     }
 
     public String getCustomer() {
-        return customer;
+        return mCustomer;
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "_id='" + _id + '\'' +
-                ", type='" + type.toString() + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", rewards=" + rewards +
-                ", balance=" + balance +
-                ", account_number=" + account_number +
-                ", customer='" + customer + '\'' +
+                "mId='" + mId + '\'' +
+                ", mType='" + mType.toString() + '\'' +
+                ", mNickname='" + mNickname + '\'' +
+                ", mRewards=" + mRewards +
+                ", mBalance=" + mBalance +
+                ", mAccountNumber=" + mAccountNumber +
+                ", mCustomer='" + mCustomer + '\'' +
                 '}';
     }
 
     public static class Builder{
-        private AccountType type;
-        private String nickname;
-        private int rewards;
-        private int balance;
-        private String account_number;
+        private AccountType bType;
+        private String bNickname;
+        private int bRewards;
+        private int bBalance;
+        private String bAccountNumber;
 
         public Builder(){}
 
         public Builder type(AccountType type){
-            this.type = type;
+            bType = type;
             return this;
         }
 
         public Builder nickname(String nickname){
-            this.nickname = nickname;
+            bNickname = nickname;
             return this;
         }
 
         public Builder rewards(int rewards){
-            this.rewards = rewards;
+            bRewards = rewards;
             return this;
         }
 
         public Builder balance(int balance){
-            this.balance = balance;
+            bBalance = balance;
             return this;
         }
 
         public Builder accountNumber(String account_number) {
-            this.account_number = account_number;
+            bAccountNumber = account_number;
             return this;
         }
 
