@@ -97,6 +97,7 @@ public class DepositClient {
         service.deleteDeposit(this.key, depositId, new Callback<RequestResponse>() {
             @Override
             public void success(RequestResponse requestResponse, Response response) {
+                requestResponse = new RequestResponse(response.getStatus(), "Deposit Deleted");
                 mlistener.onSuccess(requestResponse);
             }
 

@@ -1,24 +1,21 @@
 {
   "request" : {
-    "url" : "/accounts/123/withdrawals?key=12345",
-    "method" : "POST",
-    "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"medium\": \"balance\",\n  \"transaction_date\": \"2016-08-09\",\n  \"status\": \"pending\",\n  \"amount\": 100.0,\n  \"description\": \"TEST\"\n}",
-      "jsonCompareMode" : "LENIENT"
-    } ]
+    "url" : "/purchases/123?key=12345",
+    "method" : "GET"
   },
   "response" : {
-    "status" : 201,
-    "bodyFileName" : "withdrawal/post-withdrawal.json",
+    "status" : 200,
+    "bodyFileName" : "purchase/purchase.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Tue, 09 Aug 2016 19:56:06 GMT",
+      "Date" : "Fri, 12 Aug 2016 15:13:41 GMT",
       "Content-Type" : "application/json; charset=utf-8",
       "Content-Length" : "284",
       "X-Powered-By" : "Express",
       "Access-Control-Allow-Origin" : "*",
       "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
       "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"11c-5ba199fb\"",
       "Connection" : "Keep-Alive",
       "Age" : "0"
     }

@@ -1,24 +1,21 @@
 {
   "request" : {
-    "url" : "/withdrawals/123?key=12345",
-    "method" : "PUT",
-    "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"amount\": 101.0\n}",
-      "jsonCompareMode" : "LENIENT"
-    } ]
+    "url" : "/merchants/123/purchases?key=12345",
+    "method" : "GET"
   },
   "response" : {
-    "status" : 202,
-    "bodyFileName" : "withdrawal/put-withdrawal.json",
+    "status" : 200,
+    "bodyFileName" : "purchase/purchases.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Tue, 09 Aug 2016 19:50:47 GMT",
+      "Date" : "Fri, 12 Aug 2016 15:13:19 GMT",
       "Content-Type" : "application/json; charset=utf-8",
-      "Content-Length" : "57",
+      "Content-Length" : "1394",
       "X-Powered-By" : "Express",
       "Access-Control-Allow-Origin" : "*",
       "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
       "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"4itd6nqWe7Mn9sSrOyCjjw==\"",
       "Connection" : "Keep-Alive",
       "Age" : "0"
     }

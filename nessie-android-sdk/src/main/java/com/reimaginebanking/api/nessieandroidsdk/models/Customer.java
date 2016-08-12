@@ -69,6 +69,12 @@ public class Customer {
 
         public Builder(){}
 
+        public Builder(Customer customer) {
+            bFirstName = customer.getFirstName();
+            bLastName = customer.getLastName();
+            bAddress = customer.getAddress();
+        }
+
         public Builder firstName(String firstName){
             bFirstName = firstName;
             return this;

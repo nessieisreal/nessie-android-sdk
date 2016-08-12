@@ -79,7 +79,7 @@ public class Transfer {
     public String toString() {
         return "Transfer{" +
                 "_id='" + _id + '\'' +
-                ", transaction_date='" + transaction_date + '\'' +
+                ", transactionDate='" + transaction_date + '\'' +
                 ", status='" + status + '\'' +
                 ", type='" + type + '\'' +
                 ", payer_id='" + payer_id + '\'' +

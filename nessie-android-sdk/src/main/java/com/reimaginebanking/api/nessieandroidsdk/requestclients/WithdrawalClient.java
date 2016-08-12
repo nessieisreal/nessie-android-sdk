@@ -2,6 +2,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.WithdrawalService;
@@ -64,10 +65,10 @@ public class WithdrawalClient {
     }
 
     public void createWithdrawal(String accountId, Withdrawal withdrawal, final NessieResultsListener mlistener){
-        service.createWithdrawal(this.key, accountId, withdrawal, new Callback<RequestResponse>() {
+        service.createWithdrawal(this.key, accountId, withdrawal, new Callback<PostResponse<Withdrawal>>() {
 
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
+            public void success(PostResponse<Withdrawal> requestResponse, Response response) {
                 mlistener.onSuccess(requestResponse);
             }
 
@@ -96,6 +97,7 @@ public class WithdrawalClient {
         service.deleteWithdrawal(this.key, withdrawalId, new Callback<RequestResponse>() {
             @Override
             public void success(RequestResponse requestResponse, Response response) {
+                requestResponse = new RequestResponse(response.getStatus(), "Withdrawal Deleted");
                 mlistener.onSuccess(requestResponse);
             }
 

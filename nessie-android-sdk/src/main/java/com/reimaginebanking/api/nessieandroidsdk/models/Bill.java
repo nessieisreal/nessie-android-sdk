@@ -155,6 +155,15 @@ public class Bill {
 
         public Builder(){}
 
+        public Builder(Bill bill) {
+            bStatus = bill.getStatus();
+            bPayee = bill.getPayee();
+            bNickname = bill.getNickname();
+            bPaymentDate = bill.getPaymentDate();
+            bRecurringDate = bill.getRecurringDate();
+            bPaymentAmount = bill.getPaymentAmount();
+        }
+
         public Builder status(BillStatus status){
             bStatus = status;
             return this;
