@@ -5,7 +5,7 @@
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "transfer.json",
+    "bodyFileName" : "transfer/transfer.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
       "Date" : "Fri, 12 Aug 2016 15:33:53 GMT",

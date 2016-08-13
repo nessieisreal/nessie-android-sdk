@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
 
 import java.util.List;
@@ -26,12 +27,12 @@ public interface TransferService {
 
     @POST("/accounts/{accountId}/transfers")
     void createTransfer(@Query("key") String key, @Path("accountId") String accountId, @Body Transfer transfer,
-        Callback<RequestResponse> cb);
+        Callback<PostResponse<Transfer>> cb);
 
     @PUT("/transfers/{transferId}")
     void updateTransfer(@Query("key") String key, @Path("transferId") String transferId, @Body Transfer transfer,
-        Callback<RequestResponse> cb);
+        Callback<PutDeleteResponse> cb);
 
     @DELETE("/transfers/{transferId}")
-    void deleteTransfer(@Query("key") String key, @Path("transferId") String transferId, Callback<RequestResponse> cb);
+    void deleteTransfer(@Query("key") String key, @Path("transferId") String transferId, Callback<PutDeleteResponse> cb);
 }

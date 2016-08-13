@@ -4,7 +4,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import com.reimaginebanking.api.nessieandroidsdk.Constants.AccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import org.junit.Test;
 
@@ -12,7 +12,6 @@ import java.util.List;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.put;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -100,12 +99,6 @@ public class AccountTest extends NessieTest {
     /* PUT /accounts/{id} */
     @Test
     public void testUpdateAccount() throws Exception {
-
-        // TODO: remove this because we should be using the mapping file which is exact same request as from Swagger Docs
-        WireMock.stubFor(put(urlPathEqualTo("/accounts/123"))
-            .willReturn(aResponse()
-                .withBodyFile("account/put-account.json")));
-
         Account account = new Account.Builder()
             .nickname("TEST")
             .build();
@@ -113,7 +106,7 @@ public class AccountTest extends NessieTest {
         client.ACCOUNT.updateAccount("123", account, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
+                PutDeleteResponse response = (PutDeleteResponse) result;
 
                 assertEquals(202, response.getCode());
                 assertEquals("Accepted account update", response.getMessage());
@@ -129,8 +122,7 @@ public class AccountTest extends NessieTest {
         client.ACCOUNT.deleteAccount("123", new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
-
+                PutDeleteResponse response = (PutDeleteResponse) result;
                 assertEquals(204, response.getCode());
             }
         });

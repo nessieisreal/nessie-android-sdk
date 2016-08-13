@@ -2,7 +2,7 @@ package com.reimaginebanking.api.nessieandroidsdk;
 
 import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionMedium;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
 
 import org.junit.Test;
@@ -46,6 +46,8 @@ public class WithdrawalTest extends NessieTest {
     /* POST /accounts/{id}/withdrawals */
     @Test
     public void testCreateWithdrawal() throws Exception {
+        // TODO: fix this test
+
         Withdrawal withdrawal = new Withdrawal.Builder()
             .medium(TransactionMedium.BALANCE)
             .transaction_date("2016-08-09")
@@ -74,7 +76,7 @@ public class WithdrawalTest extends NessieTest {
         client.WITHDRAWAL.updateWithdrawal("123", withdrawal, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
+                PutDeleteResponse response = (PutDeleteResponse) result;
                 assertEquals(202, response.getCode());
                 assertEquals("Accepted withdrawal modification", response.getMessage());
             }
@@ -87,7 +89,7 @@ public class WithdrawalTest extends NessieTest {
         client.WITHDRAWAL.deleteWithdrawal("123", new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
+                PutDeleteResponse response = (PutDeleteResponse) result;
                 assertEquals(204, response.getCode());
                 assertEquals("Withdrawal Deleted", response.getMessage());
             }

@@ -1,130 +1,159 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionMedium;
 import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionType;
 
 /**
- * Created by kco942 on 4/9/15.
+ * A class representing a Transfer object.
  */
 public class Transfer {
-    private String _id;
-    private String transaction_date;
-    private String status;
-    private TransactionType type;
-    private TransactionMedium medium;
-    private String payer_id;
-    private String payee_id;
-    private double amount;
-    private String description;
+
+    @SerializedName("_id")
+    private String mId;
+
+    @SerializedName("transaction_date")
+    private String mTransactionDate;
+
+    @SerializedName("status")
+    private String mStatus;
+
+    @SerializedName("type")
+    private TransactionType mType;
+
+    @SerializedName("medium")
+    private TransactionMedium mMedium;
+
+    @SerializedName("payer_id")
+    private String mPayerId;
+
+    @SerializedName("payee_id")
+    private String mPayeeId;
+
+    @SerializedName("amount")
+    private Double mAmount;
+
+    @SerializedName("description")
+    private String mDescription;
 
     public Transfer(Builder builder){
-        this.status = builder.status;
-        this.medium = builder.medium;
-        this.payee_id = builder.payee_id;
-        this.amount = builder.amount;
-        this.description = builder.description;
-        this.transaction_date = builder.transaction_date;
+        mStatus = builder.bStatus;
+        mMedium = builder.bMedium;
+        mPayeeId = builder.bPayeeId;
+        mAmount = builder.bAmount;
+        mDescription = builder.bDescription;
+        mTransactionDate = builder.bTransactionDate;
     }
 
     public Transfer(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payer_id, String payee_id, double amount, String description) {
-        this._id = _id;
-        this.transaction_date = transaction_date;
-        this.status = status;
-        this.type = type;
-        this.medium = medium;
-        this.payer_id = payer_id;
-        this.payee_id = payee_id;
-        this.amount = amount;
-        this.description = description;
+        mId = _id;
+        mTransactionDate = transaction_date;
+        mStatus = status;
+        mType = type;
+        mMedium = medium;
+        mPayerId = payer_id;
+        mPayeeId = payee_id;
+        mAmount = amount;
+        mDescription = description;
     }
 
-    public double getAmount() {
-        return amount;
+    public Double getAmount() {
+        return mAmount;
     }
 
-    public String get_id() {
-        return _id;
+    public String getId() {
+        return mId;
     }
 
-    public String getTransaction_date() {
-        return transaction_date;
+    public String getTransactionDate() {
+        return mTransactionDate;
     }
 
     public String getStatus() {
-        return status;
+        return mStatus;
     }
 
     public TransactionType getType() {
-        return type;
+        return mType;
     }
 
     public TransactionMedium getMedium(){
-        return medium;
+        return mMedium;
     }
 
-    public String getPayer_id() {
-        return payer_id;
+    public String getPayerId() {
+        return mPayerId;
     }
 
-    public String getPayee_id() {
-        return payee_id;
+    public String getPayeeId() {
+        return mPayeeId;
     }
 
     public String getDescription(){
-        return description;
+        return mDescription;
     }
 
     @Override
     public String toString() {
         return "Transfer{" +
-                "_id='" + _id + '\'' +
-                ", transactionDate='" + transaction_date + '\'' +
-                ", status='" + status + '\'' +
-                ", type='" + type + '\'' +
-                ", payer_id='" + payer_id + '\'' +
-                ", payee_id='" + payee_id + '\'' +
-                ", amount=" + amount +
-                ", description=" + description +
+                "mId='" + mId + '\'' +
+                ", transactionDate='" + mTransactionDate + '\'' +
+                ", mStatus='" + mStatus + '\'' +
+                ", mType='" + mType + '\'' +
+                ", mPayerId='" + mPayerId + '\'' +
+                ", mPayeeId='" + mPayeeId + '\'' +
+                ", mAmount=" + mAmount +
+                ", mDescription=" + mDescription +
                 '}';
     }
 
     public static class Builder{
-        private String status;
-        private String payee_id;
-        private double amount;
-        private TransactionMedium medium;
-        private String description;
-        private String transaction_date;
+        private String bStatus;
+        private String bPayeeId;
+        private Double bAmount;
+        private TransactionMedium bMedium;
+        private String bDescription;
+        private String bTransactionDate;
 
         public Builder(){}
 
+        public Builder(Transfer transfer) {
+            bStatus = transfer.getStatus();
+            bPayeeId = transfer.getPayeeId();
+            bAmount = transfer.getAmount();
+            bMedium = transfer.getMedium();
+            bDescription = transfer.getDescription();
+            bTransactionDate = transfer.getTransactionDate();
+        }
+
         public Builder status(String status){
-            this.status = status;
+            bStatus = status;
             return this;
         }
 
         public Builder medium(TransactionMedium medium){
-            this.medium = medium;
+            bMedium = medium;
             return this;
         }
-        public Builder payee_id(String payee_id){
-            this.payee_id = payee_id;
+        public Builder payeeId(String payee_id){
+            bPayeeId = payee_id;
             return this;
         }
 
         public Builder amount(double amount){
-            this.amount = amount;
+            bAmount = amount;
             return this;
         }
 
         public Builder description(String description){
-            this.description = description;
+            bDescription = description;
             return this;
         }
 
-        public Builder transaction_date(String transaction_date){
-            this.transaction_date = transaction_date;
+        public Builder transactionDate(String transaction_date){
+            bTransactionDate = transaction_date;
             return this;
         }
 

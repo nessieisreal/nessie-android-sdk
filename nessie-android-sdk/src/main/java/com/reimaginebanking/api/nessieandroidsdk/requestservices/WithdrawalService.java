@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
 
 import java.util.List;
@@ -31,8 +31,8 @@ public interface WithdrawalService {
 
     @PUT("/withdrawals/{withdrawalId}")
     void updateWithdrawal(@Query("key") String key, @Path("withdrawalId") String accountId, @Body Withdrawal transaction,
-        Callback<RequestResponse> cb);
+        Callback<PutDeleteResponse> cb);
 
     @DELETE("/withdrawals/{withdrawalId}")
-    void deleteWithdrawal(@Query("key") String key, @Path("withdrawalId") String accountId, Callback<RequestResponse> cb);
+    void deleteWithdrawal(@Query("key") String key, @Path("withdrawalId") String accountId, Callback<PutDeleteResponse> cb);
 }

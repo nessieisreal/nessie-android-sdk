@@ -1,87 +1,102 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Created by hxp347 on 9/3/15.
+ * A class representing a Merchant object.
  */
 public class Merchant {
-    private String _id;
-    private String name;
-    private Address address;
-    private Geocode geocode;
+
+    @SerializedName("_id")
+    private String mId;
+
+    @SerializedName("name")
+    private String mName;
+
+    @SerializedName("category")
+    private String mCategory;
+
+    @SerializedName("address")
+    private Address mAddress;
+
+    @SerializedName("geocode")
+    private Geocode mGeocode;
 
     public Merchant(Builder builder){
-        this.name = builder.name;
-        this.address = builder.address;
-        this.geocode = builder.geocode;
+        mName = builder.bName;
+        mCategory = builder.bCategory;
+        mAddress = builder.bAddress;
+        mGeocode = builder.bGeocode;
     }
 
-    public Merchant(String _id, String name, Address address, Geocode geocode) {
-        this._id = _id;
-        this.name = name;
-        this.address = address;
-        this.geocode = geocode;
+    public Merchant(String _id, String name, String category, Address address, Geocode geocode) {
+        mId = _id;
+        mName = name;
+        mCategory = category;
+        mAddress = address;
+        mGeocode = geocode;
     }
 
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
+    public String getId() {
+        return mId;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getCategory() { return mCategory; }
 
     public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+        return mAddress;
     }
 
     public Geocode getGeocode() {
-        return geocode;
-    }
-
-    public void setGeocode(Geocode geocode) {
-        this.geocode = geocode;
+        return mGeocode;
     }
 
     @Override
     public String toString() {
         return "Merchant{" +
-                "_id='" + _id + '\'' +
-                ", name='" + name + '\'' +
-                ", address=" + address +
-                ", geocode=" + geocode +
-                '}';
+            "mId='" + mId + '\'' +
+            ", mName='" + mName + '\'' +
+            ", mCategory='" + mCategory + '\'' +
+            ", mAddress=" + mAddress +
+            ", mGeocode=" + mGeocode +
+            '}';
     }
 
     public static class Builder{
-        private String name;
-        private Address address;
-        private Geocode geocode;
+        private String bName;
+        private String bCategory;
+        private Address bAddress;
+        private Geocode bGeocode;
 
         public Builder(){}
 
+        public Builder(Merchant merchant) {
+            bName = merchant.getName();
+            bCategory = merchant.getCategory();
+            bAddress = merchant.getAddress();
+            bGeocode = merchant.getGeocode();
+        }
+
         public Builder name(String name){
-            this.name = name;
+            this.bName = name;
+            return this;
+        }
+
+        public Builder category(String category) {
+            this.bCategory = category;
             return this;
         }
 
         public Builder address(Address address){
-            this.address = address;
+            this.bAddress = address;
             return this;
         }
         public Builder geocode(Geocode geocode){
-            this.geocode = geocode;
+            this.bGeocode = geocode;
             return this;
         }
 

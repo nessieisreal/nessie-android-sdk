@@ -4,7 +4,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.DepositService;
 
 import java.util.List;
@@ -80,10 +80,10 @@ public class DepositClient {
     }
 
     public void updateDeposit(String depositId, Deposit deposit, final NessieResultsListener mlistener){
-        service.updateDeposit(this.key, depositId, deposit, new Callback<RequestResponse>() {
+        service.updateDeposit(this.key, depositId, deposit, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             @Override
@@ -94,11 +94,11 @@ public class DepositClient {
     }
 
     public void deleteDeposit(String depositId, final NessieResultsListener mlistener){
-        service.deleteDeposit(this.key, depositId, new Callback<RequestResponse>() {
+        service.deleteDeposit(this.key, depositId, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                requestResponse = new RequestResponse(response.getStatus(), "Deposit Deleted");
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse deleteResponse, Response response) {
+                deleteResponse = new PutDeleteResponse(response.getStatus(), "Deposit Deleted");
+                mlistener.onSuccess(deleteResponse);
             }
 
             @Override
