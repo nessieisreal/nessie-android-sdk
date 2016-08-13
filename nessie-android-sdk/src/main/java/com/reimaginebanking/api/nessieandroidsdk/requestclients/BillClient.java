@@ -3,6 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.BillService;
 
@@ -123,9 +124,9 @@ public class BillClient {
     }
 
     public void createBill(String accountID, Bill newBill, final NessieResultsListener mlistener){
-        service.createBill(this.key, accountID, newBill, new Callback<PutDeleteResponse>() {
-            public void success(PutDeleteResponse putDeleteResponse, Response response) {
-                mlistener.onSuccess(putDeleteResponse);
+        service.createBill(this.key, accountID, newBill, new Callback<PostResponse<Bill>>() {
+            public void success(PostResponse<Bill> postResponse, Response response) {
+                mlistener.onSuccess(postResponse);
             }
 
             public void failure(RetrofitError error) {

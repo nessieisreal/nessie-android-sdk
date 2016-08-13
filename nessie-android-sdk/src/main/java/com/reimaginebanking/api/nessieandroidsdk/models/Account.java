@@ -24,7 +24,7 @@ public class Account {
     @SerializedName("balance")
     private Integer mBalance;
 
-    @SerializedName("accountNumber")
+    @SerializedName("account_number")
     private String mAccountNumber;
 
     @SerializedName("customer_id")

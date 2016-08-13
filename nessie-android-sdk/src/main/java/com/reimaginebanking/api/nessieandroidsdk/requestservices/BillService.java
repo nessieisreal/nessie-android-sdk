@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import java.util.List;
@@ -28,9 +29,8 @@ public interface BillService {
     @GET("/customers/{id}/bills")
     void getCustomerBills(@Query("key") String key, @Path("id") String id, Callback<List<Bill>> cb);
 
-    @Headers("Content-Type: application/json")
     @POST("/accounts/{id}/bills")
-    void createBill(@Query("key") String key, @Path("id") String id, @Body Bill bill, Callback<PutDeleteResponse> cb);
+    void createBill(@Query("key") String key, @Path("id") String id, @Body Bill bill, Callback<PostResponse<Bill>> cb);
 
     @Headers("Content-Type: application/json")
     @PUT("/bills/{bill_id}")
