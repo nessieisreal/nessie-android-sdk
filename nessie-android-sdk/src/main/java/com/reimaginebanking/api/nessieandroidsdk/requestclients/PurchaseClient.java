@@ -3,7 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Purchase;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.PurchaseService;
 
 import java.util.List;
@@ -64,11 +64,11 @@ public class PurchaseClient {
     }
 
     public void createPurchase(String accountId, Purchase purchase, final NessieResultsListener mlistener){
-        service.createPurchase(this.key, accountId, purchase, new Callback<RequestResponse>() {
+        service.createPurchase(this.key, accountId, purchase, new Callback<PutDeleteResponse>() {
 
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse putDeleteResponse, Response response) {
+                mlistener.onSuccess(putDeleteResponse);
             }
 
             @Override
@@ -79,10 +79,10 @@ public class PurchaseClient {
     }
 
     public void updatePurchase(String purchaseId, Purchase purchase, final NessieResultsListener mlistener){
-        service.updatePurchase(this.key, purchaseId, purchase, new Callback<RequestResponse>() {
+        service.updatePurchase(this.key, purchaseId, purchase, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             @Override
@@ -93,10 +93,11 @@ public class PurchaseClient {
     }
 
     public void deletePurchase(String merchantId, final NessieResultsListener mlistener){
-        service.deletePurchase(this.key, merchantId, new Callback<RequestResponse>() {
+        service.deletePurchase(this.key, merchantId, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse deleteResponse, Response response) {
+                deleteResponse = new PutDeleteResponse(response.getStatus(), "Purchase Deleted");
+                mlistener.onSuccess(deleteResponse);
             }
 
             @Override

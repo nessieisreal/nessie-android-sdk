@@ -3,7 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk;
 import com.reimaginebanking.api.nessieandroidsdk.models.Address;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import org.junit.Test;
 
@@ -107,7 +107,7 @@ public class CustomerTest extends NessieTest {
         client.CUSTOMER.updateCustomer("123", customer, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
+                PutDeleteResponse response = (PutDeleteResponse) result;
                 assertEquals("Accepted customer update", response.getMessage());
             }
         });

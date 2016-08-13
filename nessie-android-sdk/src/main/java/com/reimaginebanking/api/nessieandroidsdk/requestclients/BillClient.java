@@ -3,7 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.BillService;
 
 import java.util.List;
@@ -123,9 +123,9 @@ public class BillClient {
     }
 
     public void createBill(String accountID, Bill newBill, final NessieResultsListener mlistener){
-        service.createBill(this.key, accountID, newBill, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+        service.createBill(this.key, accountID, newBill, new Callback<PutDeleteResponse>() {
+            public void success(PutDeleteResponse putDeleteResponse, Response response) {
+                mlistener.onSuccess(putDeleteResponse);
             }
 
             public void failure(RetrofitError error) {
@@ -135,9 +135,9 @@ public class BillClient {
     }
 
     public void updateBill(String billID, Bill updatedBill, final NessieResultsListener mlistener){
-        service.updateBill(this.key, billID, updatedBill, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+        service.updateBill(this.key, billID, updatedBill, new Callback<PutDeleteResponse>() {
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             public void failure(RetrofitError error) {
@@ -147,10 +147,10 @@ public class BillClient {
     }
 
     public void deleteBill(String billId, final NessieResultsListener mlistener){
-        service.deleteBill(this.key, billId, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
-                requestResponse = new RequestResponse(response.getStatus(), "Bill Deleted");
-                mlistener.onSuccess(requestResponse);
+        service.deleteBill(this.key, billId, new Callback<PutDeleteResponse>() {
+            public void success(PutDeleteResponse deleteResponse, Response response) {
+                deleteResponse = new PutDeleteResponse(response.getStatus(), "Bill Deleted");
+                mlistener.onSuccess(deleteResponse);
             }
 
             public void failure(RetrofitError error) {

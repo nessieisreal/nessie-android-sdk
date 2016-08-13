@@ -1,167 +1,160 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionType;
 
 /**
- * Created by hxp347 on 9/3/15.
+ * A class representing a Purchase object.
  */
 public class Purchase {
-    private String _id;
-    private String purchase_date;
-    private String status;
-    private TransactionType type;
-    private String payer_id;
-    private String merchant_id;
-    private double amount;
-    private String description;
-    private String medium;
 
-    public Purchase(Builder builder){
-        this.status = builder.status;
-        this.merchant_id = builder.merchant_id;
-        this.purchase_date = builder.purchase_date;
-        this.amount = builder.amount;
-        this.description = builder.description;
-        this.medium = builder.medium;
-    }
+    @SerializedName("_id")
+    private String mId;
+
+    @SerializedName("purchase_date")
+    private String mPurchaseDate;
+
+    @SerializedName("status")
+    private String mStatus;
+
+    @SerializedName("type")
+    private TransactionType mType;
+
+    @SerializedName("payer_id")
+    private String mPayerId;
+
+    @SerializedName("merchant_id")
+    private String mMerchantId;
+
+    @SerializedName("amount")
+    private double mAmount;
+
+    @SerializedName("description")
+    private String mDescription;
+
+    @SerializedName("medium")
+    private String mMedium;
 
     public Purchase(String _id, String purchase_date, String status, TransactionType type, String payer_id, String merchant_id, double amount, String description, String medium) {
-        this._id = _id;
-        this.purchase_date = purchase_date;
-        this.status = status;
-        this.type = type;
-        this.payer_id = payer_id;
-        this.merchant_id = merchant_id;
-        this.amount = amount;
-        this.description = description;
-        this.medium = medium;
+        mId = _id;
+        mPurchaseDate = purchase_date;
+        mStatus = status;
+        mType = type;
+        mPayerId = payer_id;
+        mMerchantId = merchant_id;
+        mAmount = amount;
+        mDescription = description;
+        mMedium = medium;
     }
 
-    public String get_id() {
-        return _id;
+    public Purchase(Builder builder){
+        mStatus = builder.bStatus;
+        mMerchantId = builder.bMerchantId;
+        mPurchaseDate = builder.bPurchaseDate;
+        mAmount = builder.bAmount;
+        mDescription = builder.bDescription;
+        mMedium = builder.bMedium;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public String getId() {
+        return mId;
     }
 
-    public String getPurchase_date() {
-        return purchase_date;
-    }
-
-    public void setPurchase_date(String purchase_date) {
-        this.purchase_date = purchase_date;
+    public String getPurchaseDate() {
+        return mPurchaseDate;
     }
 
     public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+        return mStatus;
     }
 
     public TransactionType getType() {
-        return type;
+        return mType;
     }
 
-    public void setType(TransactionType type) {
-        this.type = type;
+    public String getPayerId() {
+        return mPayerId;
     }
 
-    public String getPayer_id() {
-        return payer_id;
-    }
-
-    public void setPayer_id(String payer_id) {
-        this.payer_id = payer_id;
-    }
-
-    public String getMerchant_id() {
-        return merchant_id;
-    }
-
-    public void setMerchant_id(String merchant_id) {
-        this.merchant_id = merchant_id;
+    public String getMerchantId() {
+        return mMerchantId;
     }
 
     public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
+        return mAmount;
     }
 
     public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+        return mDescription;
     }
 
     public String getMedium() {
-        return medium;
-    }
-
-    public void setMedium(String medium) {
-        this.medium = medium;
+        return mMedium;
     }
 
     @Override
     public String toString() {
         return "Purchase{" +
-                "_id='" + _id + '\'' +
-                ", purchase_date='" + purchase_date + '\'' +
-                ", status='" + status + '\'' +
-                ", type=" + type +
-                ", payer_id='" + payer_id + '\'' +
-                ", merchant_id='" + merchant_id + '\'' +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
-                ", medium=" + medium +
+                "mId='" + mId + '\'' +
+                ", mPurchaseDate='" + mPurchaseDate + '\'' +
+                ", mStatus='" + mStatus + '\'' +
+                ", mType=" + mType +
+                ", mPayerId='" + mPayerId + '\'' +
+                ", mMerchantId='" + mMerchantId + '\'' +
+                ", mAmount=" + mAmount +
+                ", mDescription='" + mDescription + '\'' +
+                ", mMedium=" + mMedium +
 
                 '}';
     }
 
     public static class Builder{
-        private String status;
-        private String purchase_date;
-        private double amount;
-        private String merchant_id;
-        private String description;
-        private String medium;
+        private String bStatus;
+        private String bPurchaseDate;
+        private double bAmount;
+        private String bMerchantId;
+        private String bDescription;
+        private String bMedium;
 
         public Builder(){}
 
+        public Builder(Purchase purchase) {
+            bStatus = purchase.getStatus();
+            bPurchaseDate = purchase.getPurchaseDate();
+            bAmount = purchase.getAmount();
+            bMerchantId = purchase.getMerchantId();
+            bDescription = purchase.getDescription();
+            bMedium = purchase.getMedium();
+        }
+
         public Builder status(String status){
-            this.status = status;
+            bStatus = status;
             return this;
         }
 
         public Builder merchant(String merchant_id){
-            this.merchant_id = merchant_id;
+            bMerchantId = merchant_id;
             return this;
         }
         public Builder purchase_date(String purchase_date){
-            this.purchase_date = purchase_date;
+            bPurchaseDate = purchase_date;
             return this;
         }
 
         public Builder amount(double amount){
-            this.amount = amount;
+            bAmount = amount;
             return this;
         }
 
         public Builder description(String description){
-            this.description = description;
+            bDescription = description;
             return this;
         }
 
         public Builder medium(String medium) {
-            this.medium = medium;
+            bMedium = medium;
             return this;
         }
 

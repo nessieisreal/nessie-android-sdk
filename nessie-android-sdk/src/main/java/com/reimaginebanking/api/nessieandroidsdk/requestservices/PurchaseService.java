@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Purchase;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import java.util.List;
 
@@ -26,12 +26,12 @@ public interface PurchaseService {
 
     @POST("/accounts/{accountId}/purchases")
     void createPurchase(@Query("key") String key, @Path("accountId") String accountId, @Body Purchase purchase,
-        Callback<RequestResponse> cb);
+        Callback<PutDeleteResponse> cb);
 
     @PUT("/purchases/{purchaseId}")
     void updatePurchase(@Query("key") String key, @Path("purchaseId") String purchaseId, @Body Purchase purchase,
-        Callback<RequestResponse> cb);
+        Callback<PutDeleteResponse> cb);
 
     @DELETE("/purchases/{purchaseId}")
-    void deletePurchase(@Query("key") String key, @Path("purchaseId") String purchaseId, Callback<RequestResponse> cb);
+    void deletePurchase(@Query("key") String key, @Path("purchaseId") String purchaseId, Callback<PutDeleteResponse> cb);
 }

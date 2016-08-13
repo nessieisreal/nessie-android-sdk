@@ -2,7 +2,8 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.TransferService;
 
@@ -64,11 +65,11 @@ public class TransferClient {
     }
 
     public void createTransfer(String accountId, Transfer transfer, final NessieResultsListener mlistener){
-        service.createTransfer(this.key, accountId, transfer, new Callback<RequestResponse>() {
+        service.createTransfer(this.key, accountId, transfer, new Callback<PostResponse<Transfer>>() {
 
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PostResponse<Transfer> postResponse, Response response) {
+                mlistener.onSuccess(postResponse);
             }
 
             @Override
@@ -79,10 +80,10 @@ public class TransferClient {
     }
 
     public void updateTransfer(String transferId, Transfer transfer, final NessieResultsListener mlistener){
-        service.updateTransfer(this.key, transferId, transfer, new Callback<RequestResponse>() {
+        service.updateTransfer(this.key, transferId, transfer, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             @Override
@@ -93,10 +94,11 @@ public class TransferClient {
     }
 
     public void deleteTransfer(String transferId, final NessieResultsListener mlistener){
-        service.deleteTransfer(this.key, transferId, new Callback<RequestResponse>() {
+        service.deleteTransfer(this.key, transferId, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse deleteResponse, Response response) {
+                deleteResponse = new PutDeleteResponse(response.getStatus(), "Transfer Deleted");
+                mlistener.onSuccess(deleteResponse);
             }
 
             @Override

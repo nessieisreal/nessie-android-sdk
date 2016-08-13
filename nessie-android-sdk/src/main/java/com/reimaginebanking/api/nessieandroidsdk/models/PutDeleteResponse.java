@@ -1,40 +1,38 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
 /**
- * A class representing a response after a customer is created successfully
+ * A class representing a response from the API for a PUT/DELETE request.
  */
-public class PostResponse<T> {
-
+public class PutDeleteResponse {
     private int code;
-
     private String message;
 
-    private T objectCreated;
-
-    public PostResponse(int code, String message, T objectCreated) {
+    public PutDeleteResponse(int code, String message) {
         this.code = code;
         this.message = message;
-        this.objectCreated = objectCreated;
     }
 
     public int getCode() {
         return code;
     }
 
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public String getMessage() {
         return message;
     }
 
-    public T getObjectCreated() {
-        return objectCreated;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public String toString() {
-        return "PostResponse{" +
+        return "PutDeleteResponse{" +
             "code=" + code +
             ", message='" + message + '\'' +
-            ", objectCreated=" + objectCreated +
             '}';
     }
 }

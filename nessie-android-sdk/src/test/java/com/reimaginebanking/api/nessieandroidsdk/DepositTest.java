@@ -3,7 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk;
 import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionMedium;
 import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import org.junit.Test;
 
@@ -73,7 +73,7 @@ public class DepositTest extends NessieTest {
         client.DEPOSIT.updateDeposit("123", deposit, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
+                PutDeleteResponse response = (PutDeleteResponse) result;
                 assertEquals(202, response.getCode());
                 assertEquals("Accepted deposit modification", response.getMessage());
             }
@@ -86,7 +86,7 @@ public class DepositTest extends NessieTest {
         client.DEPOSIT.deleteDeposit("123", new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                RequestResponse response = (RequestResponse) result;
+                PutDeleteResponse response = (PutDeleteResponse) result;
                 assertEquals(204, response.getCode());
             }
         });

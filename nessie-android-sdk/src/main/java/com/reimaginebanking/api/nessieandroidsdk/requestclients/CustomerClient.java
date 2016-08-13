@@ -5,7 +5,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.CustomerService;
 
 import java.util.List;
@@ -86,9 +86,9 @@ public class CustomerClient {
     }
 
     public void updateCustomer(String customerID, Customer updatedCustomer, final NessieResultsListener mlistener){
-        service.updateCustomer(this.key, customerID, updatedCustomer, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+        service.updateCustomer(this.key, customerID, updatedCustomer, new Callback<PutDeleteResponse>() {
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             public void failure(RetrofitError error) {

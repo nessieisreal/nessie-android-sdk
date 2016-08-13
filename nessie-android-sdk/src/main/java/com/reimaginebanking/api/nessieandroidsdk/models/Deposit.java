@@ -118,26 +118,26 @@ public class Deposit {
         }
 
         public Builder status(String status){
-            this.bStatus = status;
+            bStatus = status;
             return this;
         }
 
         public Builder medium(TransactionMedium medium){
-            this.bMedium = medium;
+            bMedium = medium;
             return this;
         }
         public Builder transactionDate(String transaction_date){
-            this.bTransactionDate = transaction_date;
+            bTransactionDate = transaction_date;
             return this;
         }
 
         public Builder amount(double amount){
-            this.bAmount = amount;
+            bAmount = amount;
             return this;
         }
 
         public Builder description(String description){
-            this.bDescription = description;
+            bDescription = description;
             return this;
         }
 

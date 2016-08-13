@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
 /**
- * Created by kco942 on 4/9/15.
+ * A class representing a Geocode object.
  */
 public class Geocode {
 

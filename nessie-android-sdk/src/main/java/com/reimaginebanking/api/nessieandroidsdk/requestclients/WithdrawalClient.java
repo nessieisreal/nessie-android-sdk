@@ -3,7 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.WithdrawalService;
 
@@ -80,10 +80,10 @@ public class WithdrawalClient {
     }
 
     public void updateWithdrawal(String withdrawalId, Withdrawal withdrawal, final NessieResultsListener mlistener){
-        service.updateWithdrawal(this.key, withdrawalId, withdrawal, new Callback<RequestResponse>() {
+        service.updateWithdrawal(this.key, withdrawalId, withdrawal, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             @Override
@@ -94,11 +94,11 @@ public class WithdrawalClient {
     }
 
     public void deleteWithdrawal(String withdrawalId, final NessieResultsListener mlistener){
-        service.deleteWithdrawal(this.key, withdrawalId, new Callback<RequestResponse>() {
+        service.deleteWithdrawal(this.key, withdrawalId, new Callback<PutDeleteResponse>() {
             @Override
-            public void success(RequestResponse requestResponse, Response response) {
-                requestResponse = new RequestResponse(response.getStatus(), "Withdrawal Deleted");
-                mlistener.onSuccess(requestResponse);
+            public void success(PutDeleteResponse deleteResponse, Response response) {
+                deleteResponse = new PutDeleteResponse(response.getStatus(), "Withdrawal Deleted");
+                mlistener.onSuccess(deleteResponse);
             }
 
             @Override

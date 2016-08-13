@@ -5,7 +5,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
-import com.reimaginebanking.api.nessieandroidsdk.models.RequestResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.AccountService;
 
 import java.util.List;
@@ -76,8 +76,8 @@ public class AccountClient {
 
     public void createAccount(String customerID, Account newAccount, final NessieResultsListener mlistener){
         service.createAccount(this.key, customerID, newAccount, new Callback<PostResponse<Account>>() {
-            public void success(PostResponse<Account> requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+            public void success(PostResponse<Account> postResponse, Response response) {
+                mlistener.onSuccess(postResponse);
             }
 
             public void failure(RetrofitError error) {
@@ -87,9 +87,9 @@ public class AccountClient {
     }
 
     public void updateAccount(String accountId, Account updatedAccount, final NessieResultsListener mlistener){
-        service.updateAccount(this.key, accountId, updatedAccount, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+        service.updateAccount(this.key, accountId, updatedAccount, new Callback<PutDeleteResponse>() {
+            public void success(PutDeleteResponse putResponse, Response response) {
+                mlistener.onSuccess(putResponse);
             }
 
             public void failure(RetrofitError error) {
@@ -99,10 +99,10 @@ public class AccountClient {
     }
 
     public void deleteAccount(String accountID, final NessieResultsListener mlistener){
-        service.deleteAccount(this.key, accountID, new Callback<RequestResponse>() {
-            public void success(RequestResponse requestResponse, Response response) {
-                requestResponse = new RequestResponse(response.getStatus(), "Account Deleted");
-                mlistener.onSuccess(requestResponse);
+        service.deleteAccount(this.key, accountID, new Callback<PutDeleteResponse>() {
+            public void success(PutDeleteResponse deleteResponse, Response response) {
+                deleteResponse = new PutDeleteResponse(response.getStatus(), "Account Deleted");
+                mlistener.onSuccess(deleteResponse);
             }
 
             public void failure(RetrofitError error) {

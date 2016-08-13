@@ -3,54 +3,118 @@ package com.reimaginebanking.api.nessieandroidsdk.models;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by kco942 on 4/9/15.
+ * A class representing an Address object.
  */
 public class Address {
 
-    private String state;
+    @SerializedName("state")
+    private String mState;
+
     @SerializedName("street_name")
-    private String streetName;
+    private String mStreetName;
+
     @SerializedName("street_number")
-    private String streetNumber;
-    private String city;
-    private String zip;
+    private String mStreetNumber;
+
+    @SerializedName("city")
+    private String mCity;
+
+    @SerializedName("zip")
+    private String mZip;
 
     public Address(String state, String streetName, String streetNumber, String city, String zip) {
-        this.state = state;
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-        this.city = city;
-        this.zip = zip;
+        mState = state;
+        mStreetName = streetName;
+        mStreetNumber = streetNumber;
+        mCity = city;
+        mZip = zip;
     }
 
-    public String getState() {
-        return state;
+    public Address(Builder builder) {
+        mState = builder.bState;
+        mStreetName = builder.bStreetName;
+        mStreetNumber = builder.bStreetNumber;
+        mCity = builder.bCity;
+        mZip = builder.bZip;
+    }
+
+    public String getmState() {
+        return mState;
     }
 
     public String getStreetName() {
-        return streetName;
+        return mStreetName;
     }
 
     public String getStreetNumber(){
-        return streetNumber;
+        return mStreetNumber;
     }
 
     public String getCity() {
-        return city;
+        return mCity;
     }
 
     public String getZip() {
-        return zip;
+        return mZip;
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "state='" + state + '\'' +
-                ", streetName='" + streetName + '\'' +
-                ", streetNumber='" + streetNumber + '\'' +
-                ", city='" + city + '\'' +
-                ", zip='" + zip + '\'' +
+                "mState='" + mState + '\'' +
+                ", mStreetName='" + mStreetName + '\'' +
+                ", mStreetNumber='" + mStreetNumber + '\'' +
+                ", mCity='" + mCity + '\'' +
+                ", mZip='" + mZip + '\'' +
                 '}';
+    }
+
+    public static class Builder {
+
+        private String bState;
+        private String bStreetName;
+        private String bStreetNumber;
+        private String bCity;
+        private String bZip;
+
+        public Builder() {}
+
+        public Builder(Address address) {
+            bState = address.getmState();
+            bStreetName = address.getStreetName();
+            bStreetNumber = address.getStreetNumber();
+            bCity = address.getCity();
+            bZip = address.getZip();
+        }
+
+        public Builder state(String state) {
+            bState = state;
+            return this;
+        }
+
+        public Builder streetName(String streetName) {
+            bStreetName = streetName;
+            return this;
+        }
+
+        public Builder streetNumber(String streetNumber) {
+            bStreetNumber = streetNumber;
+            return this;
+        }
+
+        public Builder city(String city) {
+            bCity = city;
+            return this;
+        }
+
+        public Builder zip(String zip) {
+            bZip = zip;
+            return this;
+        }
+
+        public Address build(){
+            Address address = new Address(this);
+            return address;
+        }
     }
 }

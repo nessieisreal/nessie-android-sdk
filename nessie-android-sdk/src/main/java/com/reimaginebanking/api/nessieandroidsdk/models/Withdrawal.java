@@ -30,7 +30,7 @@ public class Withdrawal {
     private String mPayerId;
 
     @SerializedName("amount")
-    private double mAmount;
+    private Double mAmount;
 
     @SerializedName("description")
     private String mDescription;
@@ -78,7 +78,7 @@ public class Withdrawal {
         return mPayerId;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return mAmount;
     }
 
@@ -103,7 +103,7 @@ public class Withdrawal {
 
     public static class Builder{
         private String bStatus;
-        private double bAmount;
+        private Double bAmount;
         private TransactionMedium bMedium;
         private String bDescription;
         private String bTransactionDate;
@@ -119,27 +119,27 @@ public class Withdrawal {
         }
 
         public Builder status(String status){
-            this.bStatus = status;
+            bStatus = status;
             return this;
         }
 
         public Builder medium(TransactionMedium medium){
-            this.bMedium = medium;
+            bMedium = medium;
             return this;
         }
 
         public Builder amount(double amount){
-            this.bAmount = amount;
+            bAmount = amount;
             return this;
         }
 
         public Builder description(String description){
-            this.bDescription = description;
+            bDescription = description;
             return this;
         }
 
         public Builder transaction_date(String transaction_date){
-            this.bTransactionDate = transaction_date;
+            bTransactionDate = transaction_date;
             return this;
         }
 
