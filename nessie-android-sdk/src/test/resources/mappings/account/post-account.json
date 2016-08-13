@@ -12,7 +12,7 @@
     "bodyFileName" : "account/post-account.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Fri, 12 Aug 2016 03:12:45 GMT",
+      "Date" : "Sat, 13 Aug 2016 17:54:41 GMT",
       "Content-Type" : "application/json; charset=utf-8",
       "Content-Length" : "233",
       "Connection" : "keep-alive",

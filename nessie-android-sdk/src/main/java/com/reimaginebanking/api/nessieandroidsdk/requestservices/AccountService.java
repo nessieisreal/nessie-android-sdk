@@ -29,7 +29,6 @@ public interface AccountService {
     @GET("/customers/{id}/accounts")
     void getCustomerAccounts(@Query("key") String key, @Path("id") String id, Callback<List<Account>> cb);
 
-    @Headers("Content-Type: application/json")
     @POST("/customers/{id}/accounts")
     void createAccount(@Query("key") String key, @Path("id") String id, @Body Account account, Callback<PostResponse<Account>> cb);
 

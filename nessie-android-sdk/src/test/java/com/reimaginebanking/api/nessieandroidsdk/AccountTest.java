@@ -1,6 +1,5 @@
 package com.reimaginebanking.api.nessieandroidsdk;
 
-import com.github.tomakehurst.wiremock.client.WireMock;
 import com.reimaginebanking.api.nessieandroidsdk.Constants.AccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
@@ -10,9 +9,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -65,17 +61,9 @@ public class AccountTest extends NessieTest {
 
     }
 
-    // This test is failing need to debug...
     /* POST /customer/{id}/accounts */
-
     @Test
     public void testCreateAccount() throws Exception {
-
-        // TODO: remove this because we should be using the mapping file which is exact same request as from Swagger Docs
-        WireMock.stubFor(post(urlPathEqualTo("/customers/123/accounts"))
-            .willReturn(aResponse()
-                .withBodyFile("account/post-account.json")));
-
         Account account = new Account.Builder()
             .balance(10)
             .nickname("TEST")
@@ -116,7 +104,6 @@ public class AccountTest extends NessieTest {
 
 
     /* DELETE /accounts/{id} */
-
     @Test
     public void testDeleteAccountSuccess() throws Exception {
         client.ACCOUNT.deleteAccount("123", new NessieTestResultsListener() {
