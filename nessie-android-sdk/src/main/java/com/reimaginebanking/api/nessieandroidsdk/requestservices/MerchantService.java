@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public interface MerchantService {
     void getMerchant(@Query("key") String key, @Path("id") String merchantId, Callback<Merchant> cb);
 
     @POST("/merchants")
-    void createMerchant(@Query("key") String key, @Body Merchant merchant, Callback<PutDeleteResponse> cb);
+    void createMerchant(@Query("key") String key, @Body Merchant merchant, Callback<PostResponse<Merchant>> cb);
 
     @PUT("/merchants/{id}")
     void updateMerchant(@Query("key") String key, @Path("id") String merchantId, @Body Merchant merchant, Callback<PutDeleteResponse> cb);

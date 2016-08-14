@@ -17,10 +17,6 @@ public class Geocode {
         return lng;
     }
 
-    public void setLng(float lng) {
-        this.lng = lng;
-    }
-
     public float getLat() {
         return lat;
     }

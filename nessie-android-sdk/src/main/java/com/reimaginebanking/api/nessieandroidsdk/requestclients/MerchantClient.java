@@ -4,6 +4,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.MerchantService;
 
@@ -65,11 +66,11 @@ public class MerchantClient {
     }
 
     public void createMerchant(Merchant merchant, final NessieResultsListener mlistener){
-        service.createMerchant(this.key, merchant, new Callback<PutDeleteResponse>() {
+        service.createMerchant(this.key, merchant, new Callback<PostResponse<Merchant>>() {
 
             @Override
-            public void success(PutDeleteResponse putDeleteResponse, Response response) {
-                mlistener.onSuccess(putDeleteResponse);
+            public void success(PostResponse<Merchant> postResponse, Response response) {
+                mlistener.onSuccess(postResponse);
             }
 
             @Override
