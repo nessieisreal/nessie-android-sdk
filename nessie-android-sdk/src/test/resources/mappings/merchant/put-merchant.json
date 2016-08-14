@@ -9,7 +9,7 @@
   },
   "response" : {
     "status" : 202,
-    "bodyFileName" : "merchant.json",
+    "bodyFileName" : "merchant/put-merchant.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
       "Date" : "Fri, 12 Aug 2016 15:04:28 GMT",

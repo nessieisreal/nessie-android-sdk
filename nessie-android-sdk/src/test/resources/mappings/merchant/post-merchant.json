@@ -1,0 +1,25 @@
+{
+  "request" : {
+    "url" : "/merchants?key=12345",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\n  \"name\": \"Grocery Store\",\n  \"category\": \"Food\",\n  \"address\": {\n    \"street_number\": \"1111\",\n    \"street_name\": \"Pittsburgh St\",\n    \"city\": \"Pittsburgh\",\n    \"state\": \"PA\",\n    \"zip\": \"12345\"\n  },\n  \"geocode\": {\n    \"lat\": 100.0,\n    \"lng\": 100.0\n  }\n}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "merchant/post-merchant.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Sun, 14 Aug 2016 04:24:41 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "306",
+      "Connection" : "keep-alive",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With"
+    }
+  }
+}
