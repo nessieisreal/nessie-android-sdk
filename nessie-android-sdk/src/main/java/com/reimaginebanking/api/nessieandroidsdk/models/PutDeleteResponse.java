@@ -1,38 +1,44 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * A class representing a response from the API for a PUT/DELETE request.
  */
 public class PutDeleteResponse {
-    private int code;
-    private String message;
+
+    @SerializedName("code")
+    private int mCode;
+
+    @SerializedName("message")
+    private String mMessage;
 
     public PutDeleteResponse(int code, String message) {
-        this.code = code;
-        this.message = message;
+        mCode = code;
+        mMessage = message;
     }
 
     public int getCode() {
-        return code;
+        return mCode;
     }
 
     public void setCode(int code) {
-        this.code = code;
+        mCode = code;
     }
 
     public String getMessage() {
-        return message;
+        return mMessage;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        mMessage = message;
     }
 
     @Override
     public String toString() {
         return "PutDeleteResponse{" +
-            "code=" + code +
-            ", message='" + message + '\'' +
+            "mCode=" + mCode +
+            ", mMessage='" + mMessage + '\'' +
             '}';
     }
 }

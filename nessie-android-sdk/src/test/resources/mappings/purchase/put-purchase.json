@@ -3,7 +3,7 @@
     "url" : "/purchases/123?key=12345",
     "method" : "PUT",
     "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"payer_id\": \"56c66be6a73e492741507b31\",\n  \"medium\": \"balance\",\n  \"amount\": 101.0,\n  \"description\": \"Grocery purchase updated.\"\n}",
+      "equalToJson" : "{\n  \"amount\": 101.0,\n  \"description\": \"Grocery purchase updated.\"\n}",
       "jsonCompareMode" : "LENIENT"
     } ]
   },
@@ -12,15 +12,14 @@
     "bodyFileName" : "purchase/put-purchase.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
-      "Date" : "Fri, 12 Aug 2016 15:11:21 GMT",
+      "Date" : "Sat, 13 Aug 2016 19:25:10 GMT",
       "Content-Type" : "application/json; charset=utf-8",
       "Content-Length" : "55",
+      "Connection" : "keep-alive",
       "X-Powered-By" : "Express",
       "Access-Control-Allow-Origin" : "*",
       "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
-      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
-      "Connection" : "Keep-Alive",
-      "Age" : "0"
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With"
     }
   }
 }

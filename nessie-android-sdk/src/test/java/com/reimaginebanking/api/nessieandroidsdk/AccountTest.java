@@ -77,7 +77,6 @@ public class AccountTest extends NessieTest {
             public void onSuccess(Object result) {
                 PostResponse<Account> response = (PostResponse<Account>) result;
                 Account newAccount = response.getObjectCreated();
-
                 assertEquals(AccountType.CREDITCARD, newAccount.getType());
                 assertEquals(10, newAccount.getRewards(), 0);
             }
@@ -95,7 +94,6 @@ public class AccountTest extends NessieTest {
             @Override
             public void onSuccess(Object result) {
                 PutDeleteResponse response = (PutDeleteResponse) result;
-
                 assertEquals(202, response.getCode());
                 assertEquals("Accepted account update", response.getMessage());
             }

@@ -3,7 +3,7 @@
     "url" : "/accounts/123/purchases?key=12345",
     "method" : "POST",
     "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"merchant_id\": \"57ade559bc727e4b519f2651\",\n  \"medium\": \"balance\",\n  \"purchase_date\": \"2016-08-12\",\n  \"amount\": 100.0,\n  \"status\": \"pending\",\n  \"description\": \"Grocery purchase.\"\n}",
+      "equalToJson" : "{\n  \"merchant_id\": \"123\",\n  \"medium\": \"balance\",\n  \"purchase_date\": \"2016-08-12\",\n  \"amount\": 100.0,\n  \"status\": \"pending\",\n  \"description\": \"Grocery purchase.\"\n}",
       "jsonCompareMode" : "LENIENT"
     } ]
   },
