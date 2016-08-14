@@ -1,15 +1,10 @@
 {
   "request" : {
-    "url" : "/purchases/123?key=8c9f951688f6cf33204c1711017c5660",
-    "method" : "DELETE",
-    "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"payer_id\": \"56c66be6a73e492741507b31\",\n  \"medium\": \"balance\",\n  \"amount\": 101.0,\n  \"description\": \"Grocery purchase updated.\"\n}",
-      "jsonCompareMode" : "LENIENT"
-    } ]
+    "url" : "/purchases/123?key=12345",
+    "method" : "DELETE"
   },
   "response" : {
     "status" : 204,
-    "bodyFileName" : "purchase/delete-purchase.json",
     "headers" : {
       "Server" : "nginx/1.4.6 (Ubuntu)",
       "Date" : "Fri, 12 Aug 2016 15:11:27 GMT",

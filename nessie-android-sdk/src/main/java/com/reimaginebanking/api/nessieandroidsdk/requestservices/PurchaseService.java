@@ -1,5 +1,6 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
+import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Purchase;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
@@ -19,14 +20,21 @@ import retrofit.http.Query;
  */
 public interface PurchaseService {
     @GET("/accounts/{accountId}/purchases")
-    void getPurchases(@Query("key") String key, @Path("accountId") String accountId, Callback<List<Purchase>> cb);
+    void getPurchasesByAccount(@Query("key") String key, @Path("accountId") String accountId, Callback<List<Purchase>> cb);
+
+    @GET("/merchants/{merchantId}/accounts/{accountId}/purchases")
+    void getPurchasesByMerchantAndAccount(@Query("key") String key, @Path("merchantId") String merchantId, @Path("accountId") String
+        accountId, Callback<List<Purchase>> cb);
+
+    @GET("/merchants/{merchantId}/purchases")
+    void getPurchasesByMerchant(@Query("key") String key, @Path("merchantId") String merchantId, Callback<List<Purchase>> cb);
 
     @GET("/purchases/{purchaseId}")
     void getPurchase(@Query("key") String key, @Path("purchaseId") String purchaseId, Callback<Purchase> cb);
 
     @POST("/accounts/{accountId}/purchases")
     void createPurchase(@Query("key") String key, @Path("accountId") String accountId, @Body Purchase purchase,
-        Callback<PutDeleteResponse> cb);
+        Callback<PostResponse<Purchase>> cb);
 
     @PUT("/purchases/{purchaseId}")
     void updatePurchase(@Query("key") String key, @Path("purchaseId") String purchaseId, @Body Purchase purchase,

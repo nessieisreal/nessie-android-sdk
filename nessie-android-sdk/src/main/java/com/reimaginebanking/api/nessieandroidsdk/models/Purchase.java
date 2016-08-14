@@ -29,7 +29,7 @@ public class Purchase {
     private String mMerchantId;
 
     @SerializedName("amount")
-    private double mAmount;
+    private Double mAmount;
 
     @SerializedName("description")
     private String mDescription;
@@ -82,7 +82,7 @@ public class Purchase {
         return mMerchantId;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return mAmount;
     }
 
@@ -113,7 +113,7 @@ public class Purchase {
     public static class Builder{
         private String bStatus;
         private String bPurchaseDate;
-        private double bAmount;
+        private Double bAmount;
         private String bMerchantId;
         private String bDescription;
         private String bMedium;
@@ -138,7 +138,8 @@ public class Purchase {
             bMerchantId = merchant_id;
             return this;
         }
-        public Builder purchase_date(String purchase_date){
+
+        public Builder purchaseDate(String purchase_date){
             bPurchaseDate = purchase_date;
             return this;
         }

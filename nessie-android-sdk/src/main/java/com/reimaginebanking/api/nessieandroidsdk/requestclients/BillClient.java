@@ -36,7 +36,7 @@ public class BillClient {
         return INSTANCE;
     }
 
-    public void getBills(String accountID, final NessieResultsListener mlistener){
+    public void getBillsByAccount(String accountID, final NessieResultsListener mlistener){
         /*final OkHttpClient client = new OkHttpClient();
         final String url = "http://api.reimaginebanking.com/accounts/" + accountID + "/bills?key=" + key;
         Request request = new Request.Builder()
@@ -86,7 +86,7 @@ public class BillClient {
         });
     }
 
-    public void getCustomerBills(String customerID, final NessieResultsListener mlistener){
+    public void getBillsByCustomer(String customerID, final NessieResultsListener mlistener){
         /*final OkHttpClient client = new OkHttpClient();
         final String url = "http://api.reimaginebanking.com/customers/" + customerID + "/bills?key=" + key;
         Request request = new Request.Builder()
