@@ -1,4 +1,4 @@
-package com.reimaginebanking.api.nessieandroidsdk.Constants;
+package com.reimaginebanking.api.nessieandroidsdk.constants;
 
 /**
  * The types of transactions that are possible

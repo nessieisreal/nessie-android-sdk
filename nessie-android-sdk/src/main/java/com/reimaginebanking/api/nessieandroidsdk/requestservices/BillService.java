@@ -21,13 +21,13 @@ import retrofit.http.Query;
  */
 public interface BillService {
     @GET("/accounts/{account_id}/bills")
-    void getBills(@Query("key") String key, @Path("account_id") String id, Callback<List<Bill>> cb);
+    void getBillsByAccount(@Query("key") String key, @Path("account_id") String id, Callback<List<Bill>> cb);
 
     @GET("/bills/{bill_id}")
     void getBill(@Query("key") String key, @Path("bill_id") String bill_id, Callback<Bill> cb);
 
     @GET("/customers/{id}/bills")
-    void getCustomerBills(@Query("key") String key, @Path("id") String id, Callback<List<Bill>> cb);
+    void getBillsByCustomer(@Query("key") String key, @Path("id") String id, Callback<List<Bill>> cb);
 
     @POST("/accounts/{id}/bills")
     void createBill(@Query("key") String key, @Path("id") String id, @Body Bill bill, Callback<PostResponse<Bill>> cb);

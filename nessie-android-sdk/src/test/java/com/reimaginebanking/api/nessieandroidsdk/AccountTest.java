@@ -1,6 +1,6 @@
 package com.reimaginebanking.api.nessieandroidsdk;
 
-import com.reimaginebanking.api.nessieandroidsdk.Constants.AccountType;
+import com.reimaginebanking.api.nessieandroidsdk.constants.AccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;

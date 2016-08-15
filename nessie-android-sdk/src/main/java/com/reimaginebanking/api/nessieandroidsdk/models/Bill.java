@@ -2,7 +2,7 @@ package com.reimaginebanking.api.nessieandroidsdk.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.reimaginebanking.api.nessieandroidsdk.Constants.BillStatus;
+import com.reimaginebanking.api.nessieandroidsdk.constants.BillStatus;
 
 /**
  * A class representing a Bill object.
@@ -24,19 +24,23 @@ public class Bill {
     @SerializedName("creation_date")
     private String mCreationDate;
 
-    @SerializedName("payment_ate")
+    @SerializedName("payment_date")
     private String mPaymentDate;
 
-    @SerializedName("recurringDate")
-    private int mRecurringDate;
+    @SerializedName("recurring_date")
+    private Integer mRecurringDate;
 
     @SerializedName("upcoming_payment_date")
     private String mUpcomingPaymentDate;
 
-    @SerializedName("paymentAmount")
-    private double mPaymentAmount;
+    @SerializedName("payment_amount")
+    private Double mPaymentAmount;
 
-    public Bill(String _id, BillStatus status, String payee, String nickname, String creation_date, String payment_date, int recurring_date, String upcoming_payment_date, double payment_amount) {
+    @SerializedName("account_id")
+    private String mAccount;
+
+    public Bill(String _id, BillStatus status, String payee, String nickname, String creation_date, String payment_date, int
+        recurring_date, String upcoming_payment_date, double payment_amount, String account_id) {
         mId = _id;
         mStatus = status;
         mPayee = payee;
@@ -46,6 +50,7 @@ public class Bill {
         mRecurringDate = recurring_date;
         mUpcomingPaymentDate = upcoming_payment_date;
         mPaymentAmount = payment_amount;
+        mAccount = account_id;
     }
 
     public Bill(Builder builder) {
@@ -55,6 +60,7 @@ public class Bill {
         mPaymentDate = builder.bPaymentDate;
         mRecurringDate = builder.bRecurringDate;
         mPaymentAmount = builder.bPaymentAmount;
+        mAccount = builder.bAccount;
     }
 
     public String getId() {
@@ -81,7 +87,7 @@ public class Bill {
         return mPaymentDate;
     }
 
-    public int getRecurringDate() {
+    public Integer getRecurringDate() {
         return mRecurringDate;
     }
 
@@ -89,44 +95,12 @@ public class Bill {
         return mUpcomingPaymentDate;
     }
 
-    public double getPaymentAmount() {
+    public Double getPaymentAmount() {
         return mPaymentAmount;
     }
 
-    public void setId(String _id) {
-        mId = _id;
-    }
-
-    public void setStatus(BillStatus status) {
-        mStatus = status;
-    }
-
-    public void setPayee(String mPayee) {
-        mPayee = mPayee;
-    }
-
-    public void setNickname(String nickname) {
-        mNickname = nickname;
-    }
-
-    public void setCreationDate(String creation_date) {
-        mCreationDate = creation_date;
-    }
-
-    public void setPaymentDate(String payment_date) {
-        mPaymentDate = payment_date;
-    }
-
-    public void setRecurringDate(int recurring_date) {
-        mRecurringDate = recurring_date;
-    }
-
-    public void setUpcomingPaymentDate(String upcoming_payment_date) {
-        mUpcomingPaymentDate = upcoming_payment_date;
-    }
-
-    public void setPaymentAmount(double payment_amount) {
-        mPaymentAmount = payment_amount;
+    public String getAccountId() {
+        return mAccount;
     }
 
     @Override
@@ -142,6 +116,7 @@ public class Bill {
                 ", mRecurringDate=" + mRecurringDate +
                 ", mUpcomingPaymentDate='" + mUpcomingPaymentDate + '\'' +
                 ", mPaymentAmount=" + mPaymentAmount +
+                ", mAccount=" + mAccount +
                 '}';
     }
 
@@ -150,8 +125,9 @@ public class Bill {
         private String bPayee;
         private String bNickname;
         private String bPaymentDate;
-        private int bRecurringDate;
-        private double bPaymentAmount;
+        private Integer bRecurringDate;
+        private Double bPaymentAmount;
+        private String bAccount;
 
         public Builder(){}
 
@@ -162,6 +138,7 @@ public class Bill {
             bPaymentDate = bill.getPaymentDate();
             bRecurringDate = bill.getRecurringDate();
             bPaymentAmount = bill.getPaymentAmount();
+            bAccount = bill.getAccountId();
         }
 
         public Builder status(BillStatus status){
@@ -191,6 +168,11 @@ public class Bill {
 
         public Builder paymentAmount(double payment_amount){
             bPaymentAmount = payment_amount;
+            return this;
+        }
+
+        public Builder account(String account) {
+            bAccount = account;
             return this;
         }
 

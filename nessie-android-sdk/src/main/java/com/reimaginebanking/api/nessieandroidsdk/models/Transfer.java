@@ -3,8 +3,8 @@ package com.reimaginebanking.api.nessieandroidsdk.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionMedium;
-import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionType;
+import com.reimaginebanking.api.nessieandroidsdk.constants.TransactionMedium;
+import com.reimaginebanking.api.nessieandroidsdk.constants.TransactionType;
 
 /**
  * A class representing a Transfer object.

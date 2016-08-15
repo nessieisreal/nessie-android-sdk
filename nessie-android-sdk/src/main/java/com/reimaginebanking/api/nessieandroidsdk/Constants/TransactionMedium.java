@@ -1,4 +1,4 @@
-package com.reimaginebanking.api.nessieandroidsdk.Constants;
+package com.reimaginebanking.api.nessieandroidsdk.constants;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -3,8 +3,6 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import com.reimaginebanking.api.nessieandroidsdk.Adapters.BillTypeAdapter;
-import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.AccountService;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.AtmService;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.BillService;
@@ -82,7 +80,6 @@ public class NessieClient {
         this.key = key;
 
         Gson gson = new GsonBuilder()
-            .registerTypeAdapter(Bill.class, new BillTypeAdapter())
             .create();
 
         RestAdapter restAdapter;

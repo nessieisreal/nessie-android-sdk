@@ -1,4 +1,4 @@
-package com.reimaginebanking.api.nessieandroidsdk.Constants;
+package com.reimaginebanking.api.nessieandroidsdk.constants;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public enum BillStatus {
     @SerializedName("pending")
     PENDING("pending"),
-    @SerializedName("canceled")
+    @SerializedName("cancelled")
     CANCELLED("canceled"),
     @SerializedName("completed")
     COMPLETED("completed"),
