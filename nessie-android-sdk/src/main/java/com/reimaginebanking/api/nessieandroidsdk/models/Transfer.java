@@ -59,10 +59,6 @@ public class Transfer {
         mDescription = description;
     }
 
-    public Double getAmount() {
-        return mAmount;
-    }
-
     public String getId() {
         return mId;
     }
@@ -91,41 +87,39 @@ public class Transfer {
         return mPayeeId;
     }
 
+    public Double getAmount() {
+        return mAmount;
+    }
+
     public String getDescription(){
         return mDescription;
     }
 
-    @Override
-    public String toString() {
-        return "Transfer{" +
-                "mId='" + mId + '\'' +
-                ", transactionDate='" + mTransactionDate + '\'' +
-                ", mStatus='" + mStatus + '\'' +
-                ", mType='" + mType + '\'' +
-                ", mPayerId='" + mPayerId + '\'' +
-                ", mPayeeId='" + mPayeeId + '\'' +
-                ", mAmount=" + mAmount +
-                ", mDescription=" + mDescription +
-                '}';
-    }
+
 
     public static class Builder{
+        private String bTransactionDate;
         private String bStatus;
+        private TransactionMedium bMedium;
         private String bPayeeId;
         private Double bAmount;
-        private TransactionMedium bMedium;
         private String bDescription;
-        private String bTransactionDate;
 
         public Builder(){}
 
         public Builder(Transfer transfer) {
+            bTransactionDate = transfer.getTransactionDate();
             bStatus = transfer.getStatus();
+            bMedium = transfer.getMedium();
             bPayeeId = transfer.getPayeeId();
             bAmount = transfer.getAmount();
-            bMedium = transfer.getMedium();
             bDescription = transfer.getDescription();
-            bTransactionDate = transfer.getTransactionDate();
+
+        }
+
+        public Builder transactionDate(String transaction_date){
+            bTransactionDate = transaction_date;
+            return this;
         }
 
         public Builder status(String status){
@@ -149,11 +143,6 @@ public class Transfer {
 
         public Builder description(String description){
             bDescription = description;
-            return this;
-        }
-
-        public Builder transactionDate(String transaction_date){
-            bTransactionDate = transaction_date;
             return this;
         }
 

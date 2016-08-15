@@ -7,22 +7,22 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Address {
 
-    @SerializedName("state")
-    private String mState;
+    @SerializedName("street_number")
+    private String mStreetNumber;
 
     @SerializedName("street_name")
     private String mStreetName;
 
-    @SerializedName("street_number")
-    private String mStreetNumber;
-
     @SerializedName("city")
     private String mCity;
+
+    @SerializedName("state")
+    private String mState;
 
     @SerializedName("zip")
     private String mZip;
 
-    public Address(String state, String streetName, String streetNumber, String city, String zip) {
+    public Address(String streetNumber, String streetName, String city, String state, String zip) {
         mState = state;
         mStreetName = streetName;
         mStreetNumber = streetNumber;
@@ -38,20 +38,20 @@ public class Address {
         mZip = builder.bZip;
     }
 
-    public String getmState() {
-        return mState;
+    public String getStreetNumber(){
+        return mStreetNumber;
     }
 
     public String getStreetName() {
         return mStreetName;
     }
 
-    public String getStreetNumber(){
-        return mStreetNumber;
-    }
-
     public String getCity() {
         return mCity;
+    }
+
+    public String getmState() {
+        return mState;
     }
 
     public String getZip() {
@@ -61,34 +61,34 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "mState='" + mState + '\'' +
+                "mStreetNumber='" + mStreetNumber + '\'' +
                 ", mStreetName='" + mStreetName + '\'' +
-                ", mStreetNumber='" + mStreetNumber + '\'' +
                 ", mCity='" + mCity + '\'' +
+                ", mState='" + mState + '\'' +
                 ", mZip='" + mZip + '\'' +
                 '}';
     }
 
     public static class Builder {
 
-        private String bState;
-        private String bStreetName;
         private String bStreetNumber;
+        private String bStreetName;
         private String bCity;
+        private String bState;
         private String bZip;
 
         public Builder() {}
 
         public Builder(Address address) {
-            bState = address.getmState();
-            bStreetName = address.getStreetName();
             bStreetNumber = address.getStreetNumber();
+            bStreetName = address.getStreetName();
             bCity = address.getCity();
+            bState = address.getmState();
             bZip = address.getZip();
         }
 
-        public Builder state(String state) {
-            bState = state;
+        public Builder streetNumber(String streetNumber) {
+            bStreetNumber = streetNumber;
             return this;
         }
 
@@ -97,13 +97,13 @@ public class Address {
             return this;
         }
 
-        public Builder streetNumber(String streetNumber) {
-            bStreetNumber = streetNumber;
+        public Builder city(String city) {
+            bCity = city;
             return this;
         }
 
-        public Builder city(String city) {
-            bCity = city;
+        public Builder state(String state) {
+            bState = state;
             return this;
         }
 

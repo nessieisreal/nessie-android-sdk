@@ -102,20 +102,26 @@ public class Withdrawal {
     }
 
     public static class Builder{
-        private String bStatus;
-        private Double bAmount;
-        private TransactionMedium bMedium;
-        private String bDescription;
         private String bTransactionDate;
+        private String bStatus;
+        private TransactionMedium bMedium;
+        private Double bAmount;
+        private String bDescription;
 
         public Builder(){}
 
         public Builder(Withdrawal withdrawal) {
-            bStatus = withdrawal.getStatus();
-            bAmount = withdrawal.getAmount();
-            bMedium = withdrawal.getMedium();
-            bDescription = withdrawal.getDescription();
             bTransactionDate = withdrawal.getTransactionDate();
+            bStatus = withdrawal.getStatus();
+            bMedium = withdrawal.getMedium();
+            bAmount = withdrawal.getAmount();
+            bDescription = withdrawal.getDescription();
+
+        }
+
+        public Builder transaction_date(String transaction_date){
+            bTransactionDate = transaction_date;
+            return this;
         }
 
         public Builder status(String status){
@@ -135,11 +141,6 @@ public class Withdrawal {
 
         public Builder description(String description){
             bDescription = description;
-            return this;
-        }
-
-        public Builder transaction_date(String transaction_date){
-            bTransactionDate = transaction_date;
             return this;
         }
 

@@ -61,7 +61,13 @@ public class CustomerTest extends NessieTest {
     /* POST /customers */
     @Test
     public void testCreateCustomer() throws Exception {
-        Address address = new Address("PA", "Test", "1111", "Pittsburgh", "00000");
+        Address address = new Address.Builder()
+        .streetNumber("1111")
+        .streetName("TEST")
+        .city("Pittsburgh")
+        .state("PA")
+        .zip("00000")
+        .build();
 
         Customer customer = new Customer.Builder()
             .firstName("New")
@@ -101,7 +107,7 @@ public class CustomerTest extends NessieTest {
     @Test
     public void testUpdateCustomer() throws Exception {
         Customer customer = new Customer.Builder()
-            .address(new Address(null, null, "0000", null, null))
+            .address(new Address.Builder().zip("00000").build())
             .build();
 
         client.CUSTOMER.updateCustomer("123", customer, new NessieTestResultsListener() {

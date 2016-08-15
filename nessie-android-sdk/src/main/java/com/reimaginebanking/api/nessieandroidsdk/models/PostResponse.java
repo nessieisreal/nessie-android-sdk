@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk.models;
 
 /**
- * A class representing a response after a customer is created successfully
+ * A class representing a response after an object is created successfully with a POST request
  */
 public class PostResponse<T> {
 
