@@ -19,15 +19,15 @@ import retrofit.client.Response;
  */
 public class CustomerClient {
 
-    private CustomerService service;
+    private CustomerService mService;
 
-    private String key;
+    private String mKey;
 
     private static CustomerClient INSTANCE;
 
     private CustomerClient(String key, CustomerService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static CustomerClient getInstance(String key, CustomerService service){
@@ -37,62 +37,62 @@ public class CustomerClient {
         return INSTANCE;
     }
 
-    public void getAccountCustomer(String accountID, final NessieResultsListener mlistener){
-        service.getAccountCustomer(this.key, accountID, new Callback<Customer>() {
+    public void getAccountCustomer(String accountID, final NessieResultsListener listener){
+        mService.getAccountCustomer(mKey, accountID, new Callback<Customer>() {
             public void success(Customer customer, Response response) {
-                mlistener.onSuccess(customer);
+                listener.onSuccess(customer);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getCustomers(final NessieResultsListener mlistener){
-        service.getCustomers(this.key, new Callback<List<Customer>>() {
+    public void getCustomers(final NessieResultsListener listener){
+        mService.getCustomers(mKey, new Callback<List<Customer>>() {
             public void success(List<Customer> customers, Response response) {
-                mlistener.onSuccess(customers);
+                listener.onSuccess(customers);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getCustomer(String customerID, final NessieResultsListener mlistener){
-        service.getCustomer(this.key, customerID, new Callback<Customer>() {
+    public void getCustomer(String customerID, final NessieResultsListener listener){
+        mService.getCustomer(mKey, customerID, new Callback<Customer>() {
             public void success(Customer customer, Response response) {
-                mlistener.onSuccess(customer);
+                listener.onSuccess(customer);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void createCustomer(Customer newCustomer, final NessieResultsListener mlistener){
-        service.createCustomer(this.key, newCustomer, new Callback<PostResponse<Customer>>() {
+    public void createCustomer(Customer newCustomer, final NessieResultsListener listener){
+        mService.createCustomer(mKey, newCustomer, new Callback<PostResponse<Customer>>() {
             public void success(PostResponse<Customer> requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+                listener.onSuccess(requestResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void updateCustomer(String customerID, Customer updatedCustomer, final NessieResultsListener mlistener){
-        service.updateCustomer(this.key, customerID, updatedCustomer, new Callback<PutDeleteResponse>() {
+    public void updateCustomer(String customerID, Customer updatedCustomer, final NessieResultsListener listener){
+        mService.updateCustomer(mKey, customerID, updatedCustomer, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse putResponse, Response response) {
-                mlistener.onSuccess(putResponse);
+                listener.onSuccess(putResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }

@@ -18,15 +18,15 @@ import retrofit.client.Response;
  */
 public class WithdrawalClient {
 
-    private WithdrawalService service;
+    private WithdrawalService mService;
 
-    private String key;
+    private String mKey;
 
     private static WithdrawalClient INSTANCE;
 
     private WithdrawalClient(String key, WithdrawalService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static WithdrawalClient getInstance(String key, WithdrawalService service){
@@ -36,74 +36,74 @@ public class WithdrawalClient {
         return INSTANCE;
     }
 
-    public void getWithdrawals(String accountId, final NessieResultsListener mlistener){
-        service.getWithdrawals(this.key, accountId, new Callback<List<Withdrawal>>() {
+    public void getWithdrawals(String accountId, final NessieResultsListener listener){
+        mService.getWithdrawals(mKey, accountId, new Callback<List<Withdrawal>>() {
             @Override
             public void success(List<Withdrawal> transactions, Response response) {
-                mlistener.onSuccess(transactions);
+                listener.onSuccess(transactions);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getWithdrawal(String withdrawalId, final NessieResultsListener mlistener){
-        service.getWithdrawal(this.key, withdrawalId, new Callback<Withdrawal>() {
+    public void getWithdrawal(String withdrawalId, final NessieResultsListener listener){
+        mService.getWithdrawal(mKey, withdrawalId, new Callback<Withdrawal>() {
             @Override
             public void success(Withdrawal transaction, Response response) {
-                mlistener.onSuccess(transaction);
+                listener.onSuccess(transaction);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void createWithdrawal(String accountId, Withdrawal withdrawal, final NessieResultsListener mlistener){
-        service.createWithdrawal(this.key, accountId, withdrawal, new Callback<PostResponse<Withdrawal>>() {
+    public void createWithdrawal(String accountId, Withdrawal withdrawal, final NessieResultsListener listener){
+        mService.createWithdrawal(mKey, accountId, withdrawal, new Callback<PostResponse<Withdrawal>>() {
 
             @Override
             public void success(PostResponse<Withdrawal> requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+                listener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void updateWithdrawal(String withdrawalId, Withdrawal withdrawal, final NessieResultsListener mlistener){
-        service.updateWithdrawal(this.key, withdrawalId, withdrawal, new Callback<PutDeleteResponse>() {
+    public void updateWithdrawal(String withdrawalId, Withdrawal withdrawal, final NessieResultsListener listener){
+        mService.updateWithdrawal(mKey, withdrawalId, withdrawal, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
-                mlistener.onSuccess(putResponse);
+                listener.onSuccess(putResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void deleteWithdrawal(String withdrawalId, final NessieResultsListener mlistener){
-        service.deleteWithdrawal(this.key, withdrawalId, new Callback<PutDeleteResponse>() {
+    public void deleteWithdrawal(String withdrawalId, final NessieResultsListener listener){
+        mService.deleteWithdrawal(mKey, withdrawalId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {
                 deleteResponse = new PutDeleteResponse(response.getStatus(), "Withdrawal Deleted");
-                mlistener.onSuccess(deleteResponse);
+                listener.onSuccess(deleteResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }

@@ -17,15 +17,15 @@ import retrofit.client.Response;
  */
 public class AtmClient {
 
-    private AtmService service;
+    private AtmService mService;
 
-    private String key;
+    private String mKey;
 
     private static AtmClient INSTANCE;
 
     private AtmClient(String key, AtmService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static AtmClient getInstance(String key, AtmService service){
@@ -35,26 +35,26 @@ public class AtmClient {
         return INSTANCE;
     }
 
-    public void getATMs(final NessieResultsListener mlistener){
-        service.getATMs(this.key, new Callback<List<ATM>>() {
+    public void getATMs(final NessieResultsListener listener){
+        mService.getATMs(mKey, new Callback<List<ATM>>() {
             public void success(List<ATM> atms, Response response) {
-                mlistener.onSuccess(atms);
+                listener.onSuccess(atms);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getATM(String atmID, final NessieResultsListener mlistener){
-        service.getATM(this.key, atmID, new Callback<ATM>() {
+    public void getATM(String atmID, final NessieResultsListener listener){
+        mService.getATM(mKey, atmID, new Callback<ATM>() {
             public void success(ATM atm, Response response) {
-                mlistener.onSuccess(atm);
+                listener.onSuccess(atm);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }

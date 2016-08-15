@@ -19,15 +19,15 @@ import retrofit.client.Response;
  */
 public class MerchantClient {
 
-    private MerchantService service;
+    private MerchantService mService;
 
-    private String key;
+    private String mKey;
 
     private static MerchantClient INSTANCE;
 
     private MerchantClient(String key, MerchantService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static MerchantClient getInstance(String key, MerchantService service){
@@ -37,59 +37,59 @@ public class MerchantClient {
         return INSTANCE;
     }
 
-    public void getMerchants(final NessieResultsListener mlistener){
-        service.getMerchants(this.key, new Callback<List<Merchant>>() {
+    public void getMerchants(final NessieResultsListener listener){
+        mService.getMerchants(mKey, new Callback<List<Merchant>>() {
             @Override
             public void success(List<Merchant> merchants, Response response) {
-                mlistener.onSuccess(merchants);
+                listener.onSuccess(merchants);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getMerchant(String merchantId, final NessieResultsListener mlistener){
-        service.getMerchant(this.key, merchantId, new Callback<Merchant>() {
+    public void getMerchant(String merchantId, final NessieResultsListener listener){
+        mService.getMerchant(mKey, merchantId, new Callback<Merchant>() {
             @Override
             public void success(Merchant merchant, Response response) {
-                mlistener.onSuccess(merchant);
+                listener.onSuccess(merchant);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void createMerchant(Merchant merchant, final NessieResultsListener mlistener){
-        service.createMerchant(this.key, merchant, new Callback<PostResponse<Merchant>>() {
+    public void createMerchant(Merchant merchant, final NessieResultsListener listener){
+        mService.createMerchant(mKey, merchant, new Callback<PostResponse<Merchant>>() {
 
             @Override
             public void success(PostResponse<Merchant> postResponse, Response response) {
-                mlistener.onSuccess(postResponse);
+                listener.onSuccess(postResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void updateMerchant(String merchantId, Merchant updatedMerchant, final NessieResultsListener mlistener){
-        service.updateMerchant(this.key, merchantId, updatedMerchant, new Callback<PutDeleteResponse>() {
+    public void updateMerchant(String merchantId, Merchant updatedMerchant, final NessieResultsListener listener){
+        mService.updateMerchant(mKey, merchantId, updatedMerchant, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
-                mlistener.onSuccess(putResponse);
+                listener.onSuccess(putResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }

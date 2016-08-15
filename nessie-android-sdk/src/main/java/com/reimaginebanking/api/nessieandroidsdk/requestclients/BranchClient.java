@@ -17,15 +17,15 @@ import retrofit.client.Response;
  */
 public class BranchClient {
 
-    private BranchService service;
+    private BranchService mService;
 
-    private String key;
+    private String mKey;
 
     private static BranchClient INSTANCE;
 
     private BranchClient(String key, BranchService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static BranchClient getInstance(String key, BranchService service){
@@ -35,26 +35,26 @@ public class BranchClient {
         return INSTANCE;
     }
 
-    public void getBranches(final NessieResultsListener mlistener){
-        service.getBranches(this.key, new Callback<List<Branch>>() {
+    public void getBranches(final NessieResultsListener listener){
+        mService.getBranches(mKey, new Callback<List<Branch>>() {
             public void success(List<Branch> branches, Response response) {
-                mlistener.onSuccess(branches);
+                listener.onSuccess(branches);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getBranch(String branchID, final NessieResultsListener mlistener){
-        service.getBranch(this.key, branchID, new Callback<Branch>() {
+    public void getBranch(String branchID, final NessieResultsListener listener){
+        mService.getBranch(mKey, branchID, new Callback<Branch>() {
             public void success(Branch branch, Response response) {
-                mlistener.onSuccess(branch);
+                listener.onSuccess(branch);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }

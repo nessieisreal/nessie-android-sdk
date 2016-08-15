@@ -18,15 +18,15 @@ import retrofit.client.Response;
  */
 public class BillClient {
 
-    private BillService service;
+    private BillService mService;
 
-    private String key;
+    private String mKey;
 
     private static BillClient INSTANCE;
 
     private BillClient(String key, BillService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static BillClient getInstance(String key, BillService service){
@@ -36,81 +36,81 @@ public class BillClient {
         return INSTANCE;
     }
 
-    public void getBillsByAccount(String accountID, final NessieResultsListener mlistener){
-        service.getBillsByAccount(this.key, accountID, new Callback<List<Bill>>() {
+    public void getBillsByAccount(String accountID, final NessieResultsListener listener){
+        mService.getBillsByAccount(mKey, accountID, new Callback<List<Bill>>() {
             @Override
             public void success(List<Bill> bills, Response response) {
-                mlistener.onSuccess(bills);
+                listener.onSuccess(bills);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getBill(String billID, final NessieResultsListener mlistener){
-        service.getBill(this.key, billID, new Callback<Bill>() {
+    public void getBill(String billID, final NessieResultsListener listener){
+        mService.getBill(mKey, billID, new Callback<Bill>() {
             @Override
             public void success(Bill bill, Response response) {
-                mlistener.onSuccess(bill);
+                listener.onSuccess(bill);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getBillsByCustomer(String customerID, final NessieResultsListener mlistener){
-        service.getBillsByCustomer(this.key, customerID, new Callback<List<Bill>>() {
+    public void getBillsByCustomer(String customerID, final NessieResultsListener listener){
+        mService.getBillsByCustomer(mKey, customerID, new Callback<List<Bill>>() {
             @Override
             public void success(List<Bill> bills, Response response) {
-                mlistener.onSuccess(bills);
+                listener.onSuccess(bills);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void createBill(String accountID, Bill newBill, final NessieResultsListener mlistener){
-        service.createBill(this.key, accountID, newBill, new Callback<PostResponse<Bill>>() {
+    public void createBill(String accountID, Bill newBill, final NessieResultsListener listener){
+        mService.createBill(mKey, accountID, newBill, new Callback<PostResponse<Bill>>() {
             public void success(PostResponse<Bill> postResponse, Response response) {
-                mlistener.onSuccess(postResponse);
+                listener.onSuccess(postResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void updateBill(String billID, Bill updatedBill, final NessieResultsListener mlistener){
-        service.updateBill(this.key, billID, updatedBill, new Callback<PutDeleteResponse>() {
+    public void updateBill(String billID, Bill updatedBill, final NessieResultsListener listener){
+        mService.updateBill(mKey, billID, updatedBill, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse putResponse, Response response) {
-                mlistener.onSuccess(putResponse);
+                listener.onSuccess(putResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void deleteBill(String billId, final NessieResultsListener mlistener){
-        service.deleteBill(this.key, billId, new Callback<PutDeleteResponse>() {
+    public void deleteBill(String billId, final NessieResultsListener listener){
+        mService.deleteBill(mKey, billId, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse deleteResponse, Response response) {
                 deleteResponse = new PutDeleteResponse(response.getStatus(), "Bill Deleted");
-                mlistener.onSuccess(deleteResponse);
+                listener.onSuccess(deleteResponse);
             }
 
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }

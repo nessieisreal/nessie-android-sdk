@@ -18,15 +18,15 @@ import retrofit.client.Response;
  */
 public class DepositClient {
 
-    private DepositService service;
+    private DepositService mService;
 
-    private String key;
+    private String mKey;
 
     private static DepositClient INSTANCE;
 
     private DepositClient(String key, DepositService service) {
-        this.key = key;
-        this.service = service;
+        mKey = key;
+        mService = service;
     }
 
     public static DepositClient getInstance(String key, DepositService service){
@@ -36,74 +36,74 @@ public class DepositClient {
         return INSTANCE;
     }
 
-    public void getDeposits(String accountId, final NessieResultsListener mlistener){
-        service.getDeposits(this.key, accountId, new Callback<List<Deposit>>() {
+    public void getDeposits(String accountId, final NessieResultsListener listener){
+        mService.getDeposits(mKey, accountId, new Callback<List<Deposit>>() {
             @Override
             public void success(List<Deposit> transactions, Response response) {
-                mlistener.onSuccess(transactions);
+                listener.onSuccess(transactions);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void getDeposit(String depositId, final NessieResultsListener mlistener){
-        service.getDeposit(this.key, depositId, new Callback<Deposit>() {
+    public void getDeposit(String depositId, final NessieResultsListener listener){
+        mService.getDeposit(mKey, depositId, new Callback<Deposit>() {
             @Override
             public void success(Deposit transaction, Response response) {
-                mlistener.onSuccess(transaction);
+                listener.onSuccess(transaction);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void createDeposit(String accountId, Deposit deposit, final NessieResultsListener mlistener){
-        service.createDeposit(this.key, accountId, deposit, new Callback<PostResponse<Deposit>>() {
+    public void createDeposit(String accountId, Deposit deposit, final NessieResultsListener listener){
+        mService.createDeposit(mKey, accountId, deposit, new Callback<PostResponse<Deposit>>() {
 
             @Override
             public void success(PostResponse<Deposit> requestResponse, Response response) {
-                mlistener.onSuccess(requestResponse);
+                listener.onSuccess(requestResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void updateDeposit(String depositId, Deposit deposit, final NessieResultsListener mlistener){
-        service.updateDeposit(this.key, depositId, deposit, new Callback<PutDeleteResponse>() {
+    public void updateDeposit(String depositId, Deposit deposit, final NessieResultsListener listener){
+        mService.updateDeposit(mKey, depositId, deposit, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
-                mlistener.onSuccess(putResponse);
+                listener.onSuccess(putResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
 
-    public void deleteDeposit(String depositId, final NessieResultsListener mlistener){
-        service.deleteDeposit(this.key, depositId, new Callback<PutDeleteResponse>() {
+    public void deleteDeposit(String depositId, final NessieResultsListener listener){
+        mService.deleteDeposit(mKey, depositId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {
                 deleteResponse = new PutDeleteResponse(response.getStatus(), "Deposit Deleted");
-                mlistener.onSuccess(deleteResponse);
+                listener.onSuccess(deleteResponse);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                mlistener.onFailure(new NessieError(error));
+                listener.onFailure(new NessieError(error));
             }
         });
     }
