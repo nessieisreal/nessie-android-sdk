@@ -10,7 +10,6 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -97,8 +96,8 @@ public class CustomerTest extends NessieTest {
         client.CUSTOMER.createCustomer(invalidCustomer, new NessieTestResultsListener() {
             @Override
             public void onFailure(NessieError error) {
-                // TODO: need to update this once the NessieError object param contains the 'culprit'
-                assertTrue(true);
+                assertEquals(400, error.getCode());
+                assertEquals("first_name", error.getCulprit().get(0));
             }
         });
     }
