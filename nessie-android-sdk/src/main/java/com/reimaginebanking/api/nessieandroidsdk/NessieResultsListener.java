@@ -1,7 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk;
 
 /**
- * Created by hxp347 on 4/23/15.
+ * Custom results listener which defines callback methods for success and error on API response.
  */
 public interface NessieResultsListener {
     public void onSuccess(Object result);

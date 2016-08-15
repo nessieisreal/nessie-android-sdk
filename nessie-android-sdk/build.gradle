@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 
 
 // Version to use when deploying the artifact
-version = "0.1.3"
+version = "1.0.0"
 
 android {
     compileSdkVersion 23
