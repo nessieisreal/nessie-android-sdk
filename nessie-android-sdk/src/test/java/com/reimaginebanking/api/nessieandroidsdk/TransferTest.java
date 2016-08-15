@@ -1,6 +1,6 @@
 package com.reimaginebanking.api.nessieandroidsdk;
 
-import com.reimaginebanking.api.nessieandroidsdk.Constants.TransactionMedium;
+import com.reimaginebanking.api.nessieandroidsdk.constants.TransactionMedium;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;

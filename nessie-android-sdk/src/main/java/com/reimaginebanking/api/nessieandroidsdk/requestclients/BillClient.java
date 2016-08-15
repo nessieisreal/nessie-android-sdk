@@ -37,29 +37,7 @@ public class BillClient {
     }
 
     public void getBillsByAccount(String accountID, final NessieResultsListener mlistener){
-        /*final OkHttpClient client = new OkHttpClient();
-        final String url = "http://api.reimaginebanking.com/accounts/" + accountID + "/bills?key=" + key;
-        Request request = new Request.Builder()
-            .url(url)
-            .addHeader("Content-Type", "application/json")
-            .addHeader("Accept", "application/json")
-            .build();
-
-        client.newCall(request).enqueue(new com.squareup.okhttp.Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                mlistener.onSuccess(null, new NessieError(RetrofitError.networkError(url, e)));
-            }
-
-            @Override
-            public void onResponse(com.squareup.okhttp.Response response) throws IOException {
-                String body = response.body().string();
-                Gson gson = new Gson();
-                List<Bill> bills = gson.fromJson(body, new TypeToken<List<Bill>>(){}.getType());
-                mlistener.onSuccess(bills, null);
-            }
-        });*/
-        service.getBills(this.key, accountID, new Callback<List<Bill>>() {
+        service.getBillsByAccount(this.key, accountID, new Callback<List<Bill>>() {
             @Override
             public void success(List<Bill> bills, Response response) {
                 mlistener.onSuccess(bills);
@@ -87,14 +65,7 @@ public class BillClient {
     }
 
     public void getBillsByCustomer(String customerID, final NessieResultsListener mlistener){
-        /*final OkHttpClient client = new OkHttpClient();
-        final String url = "http://api.reimaginebanking.com/customers/" + customerID + "/bills?key=" + key;
-        Request request = new Request.Builder()
-            .url(url)
-            .addHeader("Content-Type", "application/json")
-            .addHeader("Accept", "application/json")
-            .build();*/
-        service.getCustomerBills(this.key, customerID, new Callback<List<Bill>>() {
+        service.getBillsByCustomer(this.key, customerID, new Callback<List<Bill>>() {
             @Override
             public void success(List<Bill> bills, Response response) {
                 mlistener.onSuccess(bills);
@@ -105,22 +76,6 @@ public class BillClient {
                 mlistener.onFailure(new NessieError(error));
             }
         });
-        /*
-        client.newCall(request).enqueue(new com.squareup.okhttp.Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                mlistener.onSuccess(null, new NessieError(RetrofitError.networkError(url, e)));
-            }
-
-            @Override
-            public void onResponse(com.squareup.okhttp.Response response) throws IOException {
-                String body = response.body().string();
-                Gson gson = new Gson();
-                List<Bill> bills = gson.fromJson(body, new TypeToken<List<Bill>>() {
-                }.getType());
-                mlistener.onSuccess(bills, null);
-            }
-        });*/
     }
 
     public void createBill(String accountID, Bill newBill, final NessieResultsListener mlistener){

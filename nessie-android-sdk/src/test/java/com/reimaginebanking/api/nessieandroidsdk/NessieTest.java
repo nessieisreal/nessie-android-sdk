@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
-import com.reimaginebanking.api.nessieandroidsdk.Adapters.BillTypeAdapter;
-import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
 import com.reimaginebanking.api.nessieandroidsdk.requestclients.NessieClient;
 
 import org.junit.Before;
@@ -29,7 +27,6 @@ public class NessieTest {
     @Before
     public void setup() {
         Gson gson = new GsonBuilder()
-            .registerTypeAdapter(Bill.class, new BillTypeAdapter())
             .create();
 
         RestAdapter restAdapter = new RestAdapter.Builder()

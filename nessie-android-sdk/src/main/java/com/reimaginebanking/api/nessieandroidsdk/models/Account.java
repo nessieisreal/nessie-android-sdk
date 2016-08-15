@@ -2,7 +2,7 @@ package com.reimaginebanking.api.nessieandroidsdk.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.reimaginebanking.api.nessieandroidsdk.Constants.AccountType;
+import com.reimaginebanking.api.nessieandroidsdk.constants.AccountType;
 
 /**
  * A class representing an Account object.

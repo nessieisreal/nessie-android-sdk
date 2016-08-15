@@ -3,7 +3,7 @@
     "url" : "/accounts/123/bills?key=12345",
     "method" : "POST",
     "bodyPatterns" : [ {
-      "equalToJson" : "{\n \"status\": \"pending\",\n  \"payee\": \"Verizon\",\n  \"nickname\": \"Cable Bill\",\n  \"payment_date\": \"2016-08-09\",\n  \"recurring_date\": 1,\n \"payment_amount\": 100\n}",
+      "equalToJson" : "{\n \"status\": \"pending\",\n  \"payee\": \"Verizon\",\n  \"nickname\": \"Cable Bill\",\n  \"payment_date\": \"2016-08-09\",\n  \"recurring_date\": 1,\n \"payment_amount\": 100.0\n}",
       "jsonCompareMode" : "LENIENT"
     } ]
   },
