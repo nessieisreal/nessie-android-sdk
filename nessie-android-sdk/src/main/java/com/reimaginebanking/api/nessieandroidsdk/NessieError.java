@@ -29,15 +29,15 @@ public class NessieError {
 
         if(r != null) {
             try {
-                this.mCode = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCode();
-                this.mMessage = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getMessage();
-                this.mCulprit = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCulprit();
+                mCode = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCode();
+                mMessage = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getMessage();
+                mCulprit = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCulprit();
             } catch (RuntimeException e) {
-                this.mCode = retrofitError.getResponse().getStatus();
-                this.mMessage = retrofitError.getResponse().getReason();
+                mCode = retrofitError.getResponse().getStatus();
+                mMessage = retrofitError.getResponse().getReason();
             }
         }else {
-            this.mMessage = retrofitError.getMessage();
+            mMessage = retrofitError.getMessage();
         }
     }
 
