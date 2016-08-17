@@ -13,7 +13,7 @@ public class ATM {
     private String mId;
 
     @SerializedName("accessibility")
-    private String mAccessibility;
+    private Boolean mAccessibility;
 
     @SerializedName("name")
     private String mName;
@@ -34,7 +34,7 @@ public class ATM {
     private Geocode mGeocode;
 
 
-    public ATM(String _id, String accessibility, String name, List<String> language_list, List<String> hours, Address address, long amount_left, Geocode geocode) {
+    public ATM(String _id, Boolean accessibility, String name, List<String> language_list, List<String> hours, Address address, long amount_left, Geocode geocode) {
         mId = _id;
         mAccessibility = accessibility;
         mName = name;
@@ -49,7 +49,7 @@ public class ATM {
         return mId;
     }
 
-    public String getAccessibility() {
+    public Boolean getAccessibility() {
         return mAccessibility;
     }
 

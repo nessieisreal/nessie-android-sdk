@@ -28,9 +28,14 @@ public class NessieError {
         mCulprit = new ArrayList<>();
 
         if(r != null) {
-            this.mCode = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCode();
-            this.mMessage = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getMessage();
-            this.mCulprit = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCulprit();
+            try {
+                this.mCode = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCode();
+                this.mMessage = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getMessage();
+                this.mCulprit = ((NessieError) retrofitError.getBodyAs(NessieError.class)).getCulprit();
+            } catch (RuntimeException e) {
+                this.mCode = retrofitError.getResponse().getStatus();
+                this.mMessage = retrofitError.getResponse().getReason();
+            }
         }else {
             this.mMessage = retrofitError.getMessage();
         }
