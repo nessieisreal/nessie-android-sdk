@@ -43,4 +43,15 @@ public class AtmTest extends NessieTest {
     }
 
     /* GET /atms/{id} */
+    @Test
+    public void testGetATM() throws Exception {
+        client.ATM.getATM("123", new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                ATM atm = (ATM) result;
+
+                assertEquals("56c66be5a73e492741506f56", atm.getId());
+            }
+        });
+    }
 }

@@ -1,0 +1,22 @@
+{
+  "request" : {
+    "url" : "/atms/123?key=12345",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "atm/atm.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Wed, 17 Aug 2016 03:37:59 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "389",
+      "Connection" : "keep-alive",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"185-6f064475\""
+    }
+  }
+}
