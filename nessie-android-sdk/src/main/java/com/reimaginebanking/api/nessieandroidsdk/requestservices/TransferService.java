@@ -1,5 +1,6 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
+import com.reimaginebanking.api.nessieandroidsdk.constants.TransferAccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
@@ -20,7 +21,8 @@ import retrofit.http.Query;
  */
 public interface TransferService {
     @GET("/accounts/{accountId}/transfers")
-    void getTransfers(@Query("key") String key, @Path("accountId") String accountId, Callback<List<Transfer>> cb);
+    void getTransfers(@Query("key") String key, @Path("accountId") String accountId, @Query("type") TransferAccountType type,
+        Callback<List<Transfer>> cb);
 
     @GET("/transfers/{transferId}")
     void getTransfer(@Query("key") String key, @Path("transferId") String transferId, Callback<Transfer> cb);

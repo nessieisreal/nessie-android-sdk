@@ -1,5 +1,6 @@
 package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 
+import com.reimaginebanking.api.nessieandroidsdk.constants.AccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
@@ -21,7 +22,7 @@ import retrofit.http.Query;
  */
 public interface AccountService {
     @GET("/accounts")
-    void getAccounts(@Query("key") String key, Callback<List<Account>> cb);
+    void getAccounts(@Query("key") String key, @Query("type") AccountType type, Callback<List<Account>> cb);
 
     @GET("/accounts/{id}")
     void getAccount(@Query("key") String key, @Path("id") String id, Callback<Account> cb);

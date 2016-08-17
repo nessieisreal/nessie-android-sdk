@@ -20,7 +20,20 @@ public class MerchantTest extends NessieTest {
     /* GET /merchants */
     @Test
     public void testGetMerchants() throws Exception {
-        client.MERCHANT.getMerchants(new NessieTestResultsListener() {
+        client.MERCHANT.getMerchants(null, null, null, new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                List<Merchant> merchants = (List<Merchant>) result;
+                assertEquals(4, merchants.size());
+                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
+                assertEquals("Jetro", merchants.get(3).getName());
+            }
+        });
+    }
+
+    @Test
+    public void testGetMerchantsByLocation() throws Exception {
+        client.MERCHANT.getMerchants(-75.1652f, 39.9526f, 1.0f, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
                 List<Merchant> merchants = (List<Merchant>) result;

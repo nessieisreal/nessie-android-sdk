@@ -36,6 +36,12 @@ public class BillClient {
         return INSTANCE;
     }
 
+    /**
+     * Retrieve bills for a specific account.
+     *
+     * @param accountID The id of the account to retrieve bills for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getBillsByAccount(String accountID, final NessieResultsListener listener){
         mService.getBillsByAccount(mKey, accountID, new Callback<List<Bill>>() {
             @Override
@@ -50,6 +56,12 @@ public class BillClient {
         });
     }
 
+    /**
+     * Retrieve a single bill.
+     *
+     * @param billID The id of the bill to retrieve
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getBill(String billID, final NessieResultsListener listener){
         mService.getBill(mKey, billID, new Callback<Bill>() {
             @Override
@@ -64,6 +76,12 @@ public class BillClient {
         });
     }
 
+    /**
+     * Retrieve bills for a specific customer.
+     *
+     * @param customerID The id of the customer to retrieve bills for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getBillsByCustomer(String customerID, final NessieResultsListener listener){
         mService.getBillsByCustomer(mKey, customerID, new Callback<List<Bill>>() {
             @Override
@@ -78,6 +96,13 @@ public class BillClient {
         });
     }
 
+    /**
+     * Create a bill.
+     *
+     * @param accountID The id of the account which the bill is for
+     * @param newBill The bill object to create
+     * @param listener The listener object which will implement the callback interface
+     */
     public void createBill(String accountID, Bill newBill, final NessieResultsListener listener){
         mService.createBill(mKey, accountID, newBill, new Callback<PostResponse<Bill>>() {
             public void success(PostResponse<Bill> postResponse, Response response) {
@@ -90,6 +115,13 @@ public class BillClient {
         });
     }
 
+    /**
+     * Update a bill.
+     *
+     * @param billID The id of the bill to update
+     * @param updatedBill The bill object which includes the updates
+     * @param listener The listener object which will implement the callback interface
+     */
     public void updateBill(String billID, Bill updatedBill, final NessieResultsListener listener){
         mService.updateBill(mKey, billID, updatedBill, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse putResponse, Response response) {
@@ -102,6 +134,12 @@ public class BillClient {
         });
     }
 
+    /**
+     * Delete a bill.
+     *
+     * @param billId The id of the bill to delete
+     * @param listener The listener object which will implement the callback interface
+     */
     public void deleteBill(String billId, final NessieResultsListener listener){
         mService.deleteBill(mKey, billId, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse deleteResponse, Response response) {

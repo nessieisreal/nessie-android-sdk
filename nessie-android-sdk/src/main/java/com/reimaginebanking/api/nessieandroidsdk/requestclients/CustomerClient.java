@@ -37,6 +37,12 @@ public class CustomerClient {
         return INSTANCE;
     }
 
+    /**
+     * Retrieve the customer for a specific account.
+     *
+     * @param accountID The account to retrieve customer for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getAccountCustomer(String accountID, final NessieResultsListener listener){
         mService.getAccountCustomer(mKey, accountID, new Callback<Customer>() {
             public void success(Customer customer, Response response) {
@@ -49,6 +55,11 @@ public class CustomerClient {
         });
     }
 
+    /**
+     * Retrieve all customers.
+     *
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getCustomers(final NessieResultsListener listener){
         mService.getCustomers(mKey, new Callback<List<Customer>>() {
             public void success(List<Customer> customers, Response response) {
@@ -61,6 +72,12 @@ public class CustomerClient {
         });
     }
 
+    /**
+     * Retrieve a single customer.
+     *
+     * @param customerID The id of the customer to retrieve
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getCustomer(String customerID, final NessieResultsListener listener){
         mService.getCustomer(mKey, customerID, new Callback<Customer>() {
             public void success(Customer customer, Response response) {
@@ -73,6 +90,12 @@ public class CustomerClient {
         });
     }
 
+    /**
+     * Create a customer.
+     *
+     * @param newCustomer The customer object to create
+     * @param listener The listener object which will implement the callback interface
+     */
     public void createCustomer(Customer newCustomer, final NessieResultsListener listener){
         mService.createCustomer(mKey, newCustomer, new Callback<PostResponse<Customer>>() {
             public void success(PostResponse<Customer> requestResponse, Response response) {
@@ -85,6 +108,13 @@ public class CustomerClient {
         });
     }
 
+    /**
+     * Update a customer.
+     *
+     * @param customerID The id of the customer to update.
+     * @param updatedCustomer The customer object which includes the updates
+     * @param listener The listener object which will implement the callback interface
+     */
     public void updateCustomer(String customerID, Customer updatedCustomer, final NessieResultsListener listener){
         mService.updateCustomer(mKey, customerID, updatedCustomer, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse putResponse, Response response) {

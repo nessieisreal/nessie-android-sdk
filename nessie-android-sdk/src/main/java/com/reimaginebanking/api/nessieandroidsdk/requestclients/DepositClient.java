@@ -36,6 +36,12 @@ public class DepositClient {
         return INSTANCE;
     }
 
+    /**
+     * Retrieve deposits for a specific account.
+     *
+     * @param accountId The id of the account to retrieve deposits for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getDeposits(String accountId, final NessieResultsListener listener){
         mService.getDeposits(mKey, accountId, new Callback<List<Deposit>>() {
             @Override
@@ -50,6 +56,12 @@ public class DepositClient {
         });
     }
 
+    /**
+     * Retrieve a single deposit.
+     *
+     * @param depositId The id of the deposit to retrieve
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getDeposit(String depositId, final NessieResultsListener listener){
         mService.getDeposit(mKey, depositId, new Callback<Deposit>() {
             @Override
@@ -64,6 +76,13 @@ public class DepositClient {
         });
     }
 
+    /**
+     * Create a deposit.
+     *
+     * @param accountId The id of the account the deposit will be for
+     * @param deposit The deposit object to create
+     * @param listener The listener object which will implement the callback interface
+     */
     public void createDeposit(String accountId, Deposit deposit, final NessieResultsListener listener){
         mService.createDeposit(mKey, accountId, deposit, new Callback<PostResponse<Deposit>>() {
 
@@ -79,6 +98,13 @@ public class DepositClient {
         });
     }
 
+    /**
+     * Update a deposit. A deposit can only be updated before it is executed.
+     *
+     * @param depositId The id of the deposit to update
+     * @param deposit The deposit object which includes the updates
+     * @param listener The listener object which will implement the callback interface
+     */
     public void updateDeposit(String depositId, Deposit deposit, final NessieResultsListener listener){
         mService.updateDeposit(mKey, depositId, deposit, new Callback<PutDeleteResponse>() {
             @Override
@@ -93,6 +119,12 @@ public class DepositClient {
         });
     }
 
+    /**
+     * Delete a deposit.  A deposit can only be deleted before it is executed.
+     *
+     * @param depositId The id of the deposit to delete
+     * @param listener The listener object which will implement the callback interface
+     */
     public void deleteDeposit(String depositId, final NessieResultsListener listener){
         mService.deleteDeposit(mKey, depositId, new Callback<PutDeleteResponse>() {
             @Override

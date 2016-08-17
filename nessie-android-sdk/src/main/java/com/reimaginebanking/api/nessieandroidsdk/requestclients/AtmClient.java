@@ -75,7 +75,7 @@ public class AtmClient {
     }
 
     /**
-     * Retrieve all ATMs within a specific area, but specify the page that you want to retrive in the paginated response.
+     * Retrieve all ATMs within a specific area, but specify the page that you want to retrieve in the paginated response.
      *
      * Note: Response will be paginated
      *

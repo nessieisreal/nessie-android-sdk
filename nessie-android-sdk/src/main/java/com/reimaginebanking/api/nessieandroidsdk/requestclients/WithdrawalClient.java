@@ -36,6 +36,12 @@ public class WithdrawalClient {
         return INSTANCE;
     }
 
+    /**
+     * Retrieve withdrawals for a specific account.
+     *
+     * @param accountId The id of the account to retrieve withdrawals for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getWithdrawals(String accountId, final NessieResultsListener listener){
         mService.getWithdrawals(mKey, accountId, new Callback<List<Withdrawal>>() {
             @Override
@@ -50,6 +56,12 @@ public class WithdrawalClient {
         });
     }
 
+    /**
+     * Retrieve a specific withdrawal.
+     *
+     * @param withdrawalId The id of the withdrawal to retrieve
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getWithdrawal(String withdrawalId, final NessieResultsListener listener){
         mService.getWithdrawal(mKey, withdrawalId, new Callback<Withdrawal>() {
             @Override
@@ -64,6 +76,13 @@ public class WithdrawalClient {
         });
     }
 
+    /**
+     * Create a withdrawal.
+     *
+     * @param accountId The id of the account the withdrawal will go into
+     * @param withdrawal The withdrawal object to create
+     * @param listener The listener object which will implement the callback interface
+     */
     public void createWithdrawal(String accountId, Withdrawal withdrawal, final NessieResultsListener listener){
         mService.createWithdrawal(mKey, accountId, withdrawal, new Callback<PostResponse<Withdrawal>>() {
 
@@ -79,6 +98,13 @@ public class WithdrawalClient {
         });
     }
 
+    /**
+     * Update a withdrawal. A withdrawal can only be updated before it is executed.
+     *
+     * @param withdrawalId The id of the withdrawal to update
+     * @param withdrawal The withdrawal object which includes the updates
+     * @param listener The listener object which will implement the callback interface
+     */
     public void updateWithdrawal(String withdrawalId, Withdrawal withdrawal, final NessieResultsListener listener){
         mService.updateWithdrawal(mKey, withdrawalId, withdrawal, new Callback<PutDeleteResponse>() {
             @Override
@@ -93,6 +119,12 @@ public class WithdrawalClient {
         });
     }
 
+    /**
+     * Delete a withdrawal. A withdrawal can only be deleted before it is executed.
+     *
+     * @param withdrawalId The id of the withdrawal to delete
+     * @param listener The listener object which will implement the callback interface
+     */
     public void deleteWithdrawal(String withdrawalId, final NessieResultsListener listener){
         mService.deleteWithdrawal(mKey, withdrawalId, new Callback<PutDeleteResponse>() {
             @Override

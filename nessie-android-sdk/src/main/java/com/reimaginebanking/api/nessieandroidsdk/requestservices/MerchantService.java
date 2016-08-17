@@ -19,7 +19,8 @@ import retrofit.http.Query;
  */
 public interface MerchantService {
     @GET("/merchants")
-    void getMerchants(@Query("key") String key, Callback<List<Merchant>> cb);
+    void getMerchants(@Query("key") String key, @Query("lat") Float latitude, @Query("lng") Float longitude, @Query("rad") Float radius,
+        Callback<List<Merchant>> cb);
 
     @GET("/merchants/{id}")
     void getMerchant(@Query("key") String key, @Path("id") String merchantId, Callback<Merchant> cb);

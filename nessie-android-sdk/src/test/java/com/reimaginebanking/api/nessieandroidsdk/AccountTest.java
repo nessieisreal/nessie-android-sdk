@@ -31,6 +31,19 @@ public class AccountTest extends NessieTest {
         });
     }
 
+    @Test
+    public void testGetAccountsByType() throws Exception {
+        client.ACCOUNT.getAccounts(AccountType.CHECKING, new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                List<Account> accounts = (List<Account>) result;
+                assertEquals(accounts.size(), 5);
+                assertEquals(AccountType.CHECKING, accounts.get(0).getType());
+                assertEquals(38998, accounts.get(0).getBalance(), 0);
+            }
+        });
+    }
+
     /* GET /account/{id} */
     @Test
     public void testGetAccount() throws Exception {

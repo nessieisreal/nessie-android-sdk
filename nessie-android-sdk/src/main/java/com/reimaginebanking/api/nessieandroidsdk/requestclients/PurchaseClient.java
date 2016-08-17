@@ -36,6 +36,12 @@ public class PurchaseClient {
         return INSTANCE;
     }
 
+    /**
+     * Retrieve purchases for a specific account.
+     *
+     * @param accountId The id of the account to retrieve purchases for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getPurchasesByAccount(String accountId, final NessieResultsListener listener){
         mService.getPurchasesByAccount(mKey, accountId, new Callback<List<Purchase>>() {
             @Override
@@ -50,6 +56,13 @@ public class PurchaseClient {
         });
     }
 
+    /**
+     * Retrieve purchases for a specific account at a specific merchant.
+     *
+     * @param merchantId The id of the merchant the purchases were made at
+     * @param accountId The id of the account to retrieve purchases for
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getPurchasesByMerchantAndAccount(String merchantId, String accountId, final NessieResultsListener listener) {
         mService.getPurchasesByMerchantAndAccount(mKey, merchantId, accountId, new Callback<List<Purchase>>() {
             @Override
@@ -64,6 +77,12 @@ public class PurchaseClient {
         });
     }
 
+    /**
+     * Retrieve purchases made at a specific merchant.
+     *
+     * @param merchantId The id of the merchant the purchases were made at
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getPurchasesByMerchant(String merchantId, final NessieResultsListener listener) {
         mService.getPurchasesByMerchant(mKey, merchantId, new Callback<List<Purchase>>() {
             @Override
@@ -78,6 +97,12 @@ public class PurchaseClient {
         });
     }
 
+    /**
+     * Retrieve a single purchase.
+     *
+     * @param purchaseId The id of the purchase to retrieve
+     * @param listener The listener object which will implement the callback interface
+     */
     public void getPurchase(String purchaseId, final NessieResultsListener listener){
         mService.getPurchase(mKey, purchaseId, new Callback<Purchase>() {
             @Override
@@ -92,6 +117,13 @@ public class PurchaseClient {
         });
     }
 
+    /**
+     * Create a purchase.
+     *
+     * @param accountId the id of the account that made the purchase
+     * @param purchase The purchase object to create
+     * @param listener The listener object which will implement the callback interface
+     */
     public void createPurchase(String accountId, Purchase purchase, final NessieResultsListener listener){
         mService.createPurchase(mKey, accountId, purchase, new Callback<PostResponse<Purchase>>() {
 
@@ -107,6 +139,13 @@ public class PurchaseClient {
         });
     }
 
+    /**
+     * Update a purchase. A transfer can only be updated before it is executed.
+     *
+     * @param purchaseId The id of the purchase to update
+     * @param purchase The purchase object which includes the updates
+     * @param listener The listener object which will implement the callback interface
+     */
     public void updatePurchase(String purchaseId, Purchase purchase, final NessieResultsListener listener){
         mService.updatePurchase(mKey, purchaseId, purchase, new Callback<PutDeleteResponse>() {
             @Override
@@ -121,8 +160,14 @@ public class PurchaseClient {
         });
     }
 
-    public void deletePurchase(String merchantId, final NessieResultsListener listener){
-        mService.deletePurchase(mKey, merchantId, new Callback<PutDeleteResponse>() {
+    /**
+     * Delete a purchase.  A purchase can only be deleted before it is executed.
+     *
+     * @param purchaseId The id of the purchase to delet
+     * @param listener The listener object which will implement the callback interface
+     */
+    public void deletePurchase(String purchaseId, final NessieResultsListener listener){
+        mService.deletePurchase(mKey, purchaseId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {
                 deleteResponse = new PutDeleteResponse(response.getStatus(), "Purchase Deleted");

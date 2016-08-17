@@ -1,0 +1,22 @@
+{
+  "request" : {
+    "url" : "/accounts?key=12345&type=Checking",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "account/accounts.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Wed, 17 Aug 2016 17:53:38 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"9e-cefafd4b\"",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}

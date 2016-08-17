@@ -1,0 +1,23 @@
+{
+  "request" : {
+    "url" : "/accounts/123/transfers?key=12345&type=payer",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "transfer/transfers-by-account.json",
+    "headers" : {
+      "Server" : "nginx/1.4.6 (Ubuntu)",
+      "Date" : "Wed, 17 Aug 2016 17:47:43 GMT",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Content-Length" : "973",
+      "X-Powered-By" : "Express",
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers" : "Content-Type, Authorization, Content-Length, X-Requested-With",
+      "ETag" : "W/\"3cd-c205f287\"",
+      "Connection" : "Keep-Alive",
+      "Age" : "0"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 package com.reimaginebanking.api.nessieandroidsdk;
 
 import com.reimaginebanking.api.nessieandroidsdk.constants.TransactionMedium;
+import com.reimaginebanking.api.nessieandroidsdk.constants.TransferAccountType;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
@@ -26,6 +27,18 @@ public class TransferTest extends NessieTest {
                 assertEquals(3, transfers.size());
                 assertEquals("57adeba6bc727e4b519f2658", transfers.get(0).getId());
                 assertEquals("cancelled", transfers.get(2).getStatus());
+            }
+        });
+    }
+
+    @Test
+    public void testGetTransfersByAccountWithType() throws Exception {
+        client.TRANSFER.getTransfers("123", TransferAccountType.PAYER, new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                List<Transfer> transfers = (List<Transfer>) result;
+                assertEquals(3, transfers.size());
+                assertEquals("57adeba6bc727e4b519f2658", transfers.get(0).getId());
             }
         });
     }
