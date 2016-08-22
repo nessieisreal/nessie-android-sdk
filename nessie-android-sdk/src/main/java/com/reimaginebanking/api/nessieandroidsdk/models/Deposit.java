@@ -30,7 +30,7 @@ public class Deposit {
     private String mPayeeId;
 
     @SerializedName("amount")
-    private double mAmount;
+    private Double mAmount;
 
     @SerializedName("description")
     private String mDescription;
@@ -47,7 +47,6 @@ public class Deposit {
     }
 
     public Deposit(Builder builder){
-        mStatus = builder.bStatus;
         mMedium = builder.bMedium;
         mTransactionDate = builder.bTransactionDate;
         mAmount = builder.bAmount;
@@ -78,7 +77,7 @@ public class Deposit {
         return mPayeeId;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return mAmount;
     }
 
@@ -101,25 +100,18 @@ public class Deposit {
     }
 
     public static class Builder{
-        private String bStatus;
         private String bTransactionDate;
-        private double bAmount;
+        private Double bAmount;
         private TransactionMedium bMedium;
         private String bDescription;
 
         public Builder(){}
 
         public Builder(Deposit deposit) {
-            bStatus = deposit.getStatus();
             bTransactionDate = deposit.getTransactionDate();
             bAmount = deposit.getAmount();
             bMedium = deposit.getMedium();
             bDescription = deposit.getDescription();
-        }
-
-        public Builder status(String status){
-            bStatus = status;
-            return this;
         }
 
         public Builder medium(TransactionMedium medium){

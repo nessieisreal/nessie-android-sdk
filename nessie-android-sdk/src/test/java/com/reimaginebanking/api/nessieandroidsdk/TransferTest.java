@@ -63,7 +63,6 @@ public class TransferTest extends NessieTest {
             .medium(TransactionMedium.BALANCE)
             .payeeId("56c66be6a73e492741507b32")
             .transactionDate("2016-08-12")
-            .status("pending")
             .amount(100.0)
             .description("Transferring money.")
             .build();

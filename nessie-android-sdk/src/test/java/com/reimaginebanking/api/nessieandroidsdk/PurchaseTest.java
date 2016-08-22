@@ -74,7 +74,6 @@ public class PurchaseTest extends NessieTest {
             .medium("balance")
             .purchaseDate("2016-08-12")
             .amount(100.0)
-            .status("pending")
             .description("Grocery purchase.")
             .build();
 

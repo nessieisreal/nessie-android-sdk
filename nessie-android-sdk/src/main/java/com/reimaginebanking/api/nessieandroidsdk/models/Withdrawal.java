@@ -35,14 +35,6 @@ public class Withdrawal {
     @SerializedName("description")
     private String mDescription;
 
-    public Withdrawal(Builder builder){
-        mStatus = builder.bStatus;
-        mMedium = builder.bMedium;
-        mAmount = builder.bAmount;
-        mDescription = builder.bDescription;
-        mTransactionDate = builder.bTransactionDate;
-    }
-
     public Withdrawal(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payer_id, double amount, String description) {
         mId = _id;
         mTransactionDate = transaction_date;
@@ -52,6 +44,13 @@ public class Withdrawal {
         mPayerId = payer_id;
         mAmount = amount;
         mDescription = description;
+    }
+
+    public Withdrawal(Builder builder){
+        mMedium = builder.bMedium;
+        mAmount = builder.bAmount;
+        mDescription = builder.bDescription;
+        mTransactionDate = builder.bTransactionDate;
     }
 
     public String getId() {
@@ -103,7 +102,6 @@ public class Withdrawal {
 
     public static class Builder{
         private String bTransactionDate;
-        private String bStatus;
         private TransactionMedium bMedium;
         private Double bAmount;
         private String bDescription;
@@ -112,7 +110,6 @@ public class Withdrawal {
 
         public Builder(Withdrawal withdrawal) {
             bTransactionDate = withdrawal.getTransactionDate();
-            bStatus = withdrawal.getStatus();
             bMedium = withdrawal.getMedium();
             bAmount = withdrawal.getAmount();
             bDescription = withdrawal.getDescription();
@@ -121,11 +118,6 @@ public class Withdrawal {
 
         public Builder transaction_date(String transaction_date){
             bTransactionDate = transaction_date;
-            return this;
-        }
-
-        public Builder status(String status){
-            bStatus = status;
             return this;
         }
 

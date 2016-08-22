@@ -38,15 +38,6 @@ public class Transfer {
     @SerializedName("description")
     private String mDescription;
 
-    public Transfer(Builder builder){
-        mStatus = builder.bStatus;
-        mMedium = builder.bMedium;
-        mPayeeId = builder.bPayeeId;
-        mAmount = builder.bAmount;
-        mDescription = builder.bDescription;
-        mTransactionDate = builder.bTransactionDate;
-    }
-
     public Transfer(String _id, String transaction_date, String status, TransactionType type, TransactionMedium medium, String payer_id, String payee_id, double amount, String description) {
         mId = _id;
         mTransactionDate = transaction_date;
@@ -57,6 +48,14 @@ public class Transfer {
         mPayeeId = payee_id;
         mAmount = amount;
         mDescription = description;
+    }
+
+    public Transfer(Builder builder){
+        mMedium = builder.bMedium;
+        mPayeeId = builder.bPayeeId;
+        mAmount = builder.bAmount;
+        mDescription = builder.bDescription;
+        mTransactionDate = builder.bTransactionDate;
     }
 
     public String getId() {
@@ -99,7 +98,6 @@ public class Transfer {
 
     public static class Builder{
         private String bTransactionDate;
-        private String bStatus;
         private TransactionMedium bMedium;
         private String bPayeeId;
         private Double bAmount;
@@ -109,7 +107,6 @@ public class Transfer {
 
         public Builder(Transfer transfer) {
             bTransactionDate = transfer.getTransactionDate();
-            bStatus = transfer.getStatus();
             bMedium = transfer.getMedium();
             bPayeeId = transfer.getPayeeId();
             bAmount = transfer.getAmount();
@@ -119,11 +116,6 @@ public class Transfer {
 
         public Builder transactionDate(String transaction_date){
             bTransactionDate = transaction_date;
-            return this;
-        }
-
-        public Builder status(String status){
-            bStatus = status;
             return this;
         }
 

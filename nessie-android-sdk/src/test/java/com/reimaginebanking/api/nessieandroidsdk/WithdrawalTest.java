@@ -51,7 +51,6 @@ public class WithdrawalTest extends NessieTest {
         Withdrawal withdrawal = new Withdrawal.Builder()
             .medium(TransactionMedium.BALANCE)
             .transaction_date("2016-08-09")
-            .status("pending")
             .amount(100.0)
             .description("TEST")
             .build();

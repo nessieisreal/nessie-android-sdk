@@ -3,7 +3,7 @@
     "url" : "/customers/123?key=12345",
     "method" : "PUT",
     "bodyPatterns" : [ {
-      "equalToJson" : "{\n  \"address\": {\n    \"street_number\": \"0000\"\n  }\n}",
+      "equalToJson" : "{\n  \"address\": {\n    \"zip\": \"00000\"\n  }\n}",
       "jsonCompareMode" : "LENIENT"
     } ]
   },

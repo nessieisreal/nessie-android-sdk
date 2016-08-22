@@ -48,7 +48,6 @@ public class DepositTest extends NessieTest {
         Deposit deposit = new Deposit.Builder()
             .amount(100)
             .description("DEPOSIT")
-            .status("pending")
             .transactionDate("2016-08-09")
             .medium(TransactionMedium.BALANCE)
             .build();

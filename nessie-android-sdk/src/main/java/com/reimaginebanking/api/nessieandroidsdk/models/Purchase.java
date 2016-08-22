@@ -50,7 +50,6 @@ public class Purchase {
     }
 
     public Purchase(Builder builder){
-        mStatus = builder.bStatus;
         mMerchantId = builder.bMerchantId;
         mPurchaseDate = builder.bPurchaseDate;
         mAmount = builder.bAmount;
@@ -111,7 +110,6 @@ public class Purchase {
     }
 
     public static class Builder{
-        private String bStatus;
         private String bPurchaseDate;
         private Double bAmount;
         private String bMerchantId;
@@ -121,17 +119,11 @@ public class Purchase {
         public Builder(){}
 
         public Builder(Purchase purchase) {
-            bStatus = purchase.getStatus();
             bPurchaseDate = purchase.getPurchaseDate();
             bAmount = purchase.getAmount();
             bMerchantId = purchase.getMerchantId();
             bDescription = purchase.getDescription();
             bMedium = purchase.getMedium();
-        }
-
-        public Builder status(String status){
-            bStatus = status;
-            return this;
         }
 
         public Builder merchant(String merchant_id){
