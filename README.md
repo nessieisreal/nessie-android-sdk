@@ -40,7 +40,7 @@ client.CUSTOMER.getCustomers(new NessieResultsListener() {
 	public void onFailure(NessieError error) {
 		// handle error
 	}
-})
+});
 
 ```
 
@@ -107,6 +107,24 @@ client.ATM.getATMs(lat, lng, rad, new NessieResultsListener() {
 	public void onFailure(NessieError error) {
 		// handle error
 	}
-})
+});
+```
 
+### Enterprise Endpoint  
+
+A request to an enterprise endpoint can be made in the same way as the other GET requests above.  
+
+```java
+client.ENTERPRISE.getCustomersAsEnterprise(new NessieResultsListener() {
+@Override
+	public void onSuccess(Object result) {
+		List<Customer> customers = (List<Customer) result;
+		// do something with the list of customers here
+	}
+
+	@Override
+	public void onFailure(NessieError error) {
+		// handle error
+	}
+});
 ```
