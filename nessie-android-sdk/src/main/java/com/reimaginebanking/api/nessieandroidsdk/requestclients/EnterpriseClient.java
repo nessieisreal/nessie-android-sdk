@@ -5,6 +5,7 @@ import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
+import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
@@ -181,6 +182,31 @@ public class EnterpriseClient {
         mService.getWithdrawalAsEnterprise(mKey, withdrawalID, new Callback<Withdrawal>() {
             public void success(Withdrawal withdrawal, Response response) {
                 listener.onSuccess(withdrawal);
+            }
+
+            public void failure(RetrofitError error) {
+                listener.onFailure(new NessieError(error));
+            }
+        });
+    }
+
+    //ENTERPRISE DEPOSIT
+    public void getDepositsAsEnterprise(final NessieResultsListener listener){
+        mService.getDepositsAsEnterprise(mKey, new Callback<List<Deposit>>() {
+            public void success(List<Deposit> deposits, Response response) {
+                listener.onSuccess(deposits);
+            }
+
+            public void failure(RetrofitError error) {
+                listener.onFailure(new NessieError(error));
+            }
+        });
+    }
+
+    public void getDepositAsEnterprise(String depositId, final NessieResultsListener listener){
+        mService.getDepositAsEnterprise(mKey, depositId, new Callback<Deposit>() {
+            public void success(Deposit deposit, Response response) {
+                listener.onSuccess(deposit);
             }
 
             public void failure(RetrofitError error) {

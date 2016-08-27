@@ -46,8 +46,6 @@ public class WithdrawalTest extends NessieTest {
     /* POST /accounts/{id}/withdrawals */
     @Test
     public void testCreateWithdrawal() throws Exception {
-        // TODO: fix this test
-
         Withdrawal withdrawal = new Withdrawal.Builder()
             .medium(TransactionMedium.BALANCE)
             .transaction_date("2016-08-09")

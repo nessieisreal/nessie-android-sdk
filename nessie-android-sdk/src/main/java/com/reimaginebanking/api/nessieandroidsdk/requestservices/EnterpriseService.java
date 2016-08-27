@@ -3,6 +3,7 @@ package com.reimaginebanking.api.nessieandroidsdk.requestservices;
 import com.reimaginebanking.api.nessieandroidsdk.models.Account;
 import com.reimaginebanking.api.nessieandroidsdk.models.Bill;
 import com.reimaginebanking.api.nessieandroidsdk.models.Customer;
+import com.reimaginebanking.api.nessieandroidsdk.models.Deposit;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
 import com.reimaginebanking.api.nessieandroidsdk.models.Transfer;
 import com.reimaginebanking.api.nessieandroidsdk.models.Withdrawal;
@@ -59,4 +60,11 @@ public interface EnterpriseService {
 
     @GET("/enterprise/withdrawals/{id}")
     void getWithdrawalAsEnterprise(@Query("key") String key, @Path("id") String id, Callback<Withdrawal> cb);
+
+    //ENTERPRISE DEPOSIT
+    @GET("/enterprise/deposits")
+    void getDepositsAsEnterprise(@Query("key") String key, Callback<List<Deposit>> cb);
+
+    @GET("/enterprise/deposits/{id}")
+    void getDepositAsEnterprise(@Query("key") String key, @Path("id") String id, Callback<Deposit> cb);
 }
