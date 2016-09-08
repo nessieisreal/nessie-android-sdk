@@ -2,6 +2,8 @@ package com.reimaginebanking.api.nessieandroidsdk.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * A class representing a Merchant object.
  */
@@ -14,7 +16,7 @@ public class Merchant {
     private String mName;
 
     @SerializedName("category")
-    private String mCategory;
+    private List<String> mCategories;
 
     @SerializedName("address")
     private Address mAddress;
@@ -24,15 +26,15 @@ public class Merchant {
 
     public Merchant(Builder builder){
         mName = builder.bName;
-        mCategory = builder.bCategory;
+        mCategories = builder.bCategories;
         mAddress = builder.bAddress;
         mGeocode = builder.bGeocode;
     }
 
-    public Merchant(String _id, String name, String category, Address address, Geocode geocode) {
+    public Merchant(String _id, String name, List<String> categories, Address address, Geocode geocode) {
         mId = _id;
         mName = name;
-        mCategory = category;
+        mCategories = categories;
         mAddress = address;
         mGeocode = geocode;
     }
@@ -45,7 +47,7 @@ public class Merchant {
         return mName;
     }
 
-    public String getCategory() { return mCategory; }
+    public List<String> getCategories() { return mCategories; }
 
     public Address getAddress() {
         return mAddress;
@@ -60,7 +62,7 @@ public class Merchant {
         return "Merchant{" +
             "mId='" + mId + '\'' +
             ", mName='" + mName + '\'' +
-            ", mCategory='" + mCategory + '\'' +
+            ", mCategory='" + mCategories + '\'' +
             ", mAddress=" + mAddress +
             ", mGeocode=" + mGeocode +
             '}';
@@ -68,7 +70,7 @@ public class Merchant {
 
     public static class Builder{
         private String bName;
-        private String bCategory;
+        private List<String> bCategories;
         private Address bAddress;
         private Geocode bGeocode;
 
@@ -76,7 +78,7 @@ public class Merchant {
 
         public Builder(Merchant merchant) {
             bName = merchant.getName();
-            bCategory = merchant.getCategory();
+            bCategories = merchant.getCategories();
             bAddress = merchant.getAddress();
             bGeocode = merchant.getGeocode();
         }
@@ -86,8 +88,8 @@ public class Merchant {
             return this;
         }
 
-        public Builder category(String category) {
-            this.bCategory = category;
+        public Builder categories(List<String> categories) {
+            this.bCategories = categories;
             return this;
         }
 

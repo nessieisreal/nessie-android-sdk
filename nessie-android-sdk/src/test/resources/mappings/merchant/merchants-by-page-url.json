@@ -1,6 +1,6 @@
 {
   "request" : {
-    "url" : "/merchants?key=12345&page=2",
+    "url" : "/merchants?key=12345&lat=-75.1652&lng=39.9526&rad=1.0&page=1",
     "method" : "GET"
   },
   "response" : {

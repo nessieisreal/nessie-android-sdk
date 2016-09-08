@@ -3,11 +3,13 @@ package com.reimaginebanking.api.nessieandroidsdk;
 import com.reimaginebanking.api.nessieandroidsdk.models.Address;
 import com.reimaginebanking.api.nessieandroidsdk.models.Geocode;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
+import com.reimaginebanking.api.nessieandroidsdk.models.PaginatedResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -19,44 +21,47 @@ public class MerchantTest extends NessieTest {
 
     /* GET /merchants */
 
-    // this test needs updated to support pagination for merchants
+    // check that pagination exists and is working
     @Test
     public void testGetMerchantsByLocation() throws Exception {
         client.MERCHANT.getMerchants(-75.1652f, 39.9526f, 1.0f, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                List<Merchant> merchants = (List<Merchant>) result;
-                assertEquals(4, merchants.size());
-                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
-                assertEquals("Jetro", merchants.get(3).getName());
+                PaginatedResponse<Merchant> paginatedResponse = (PaginatedResponse<Merchant>) result;
+                assertEquals(20, paginatedResponse.getObjectList().size());
+                assertEquals("57cf75cea73e494d8675ec49", paginatedResponse.getObjectList().get(0).getId());
+                assertEquals("Taughannock Farms Inn", paginatedResponse.getObjectList().get(3).getName());
+                assertEquals("/merchants?key=12345&page=2", paginatedResponse.getPagingObject().getNextPage());
             }
         });
     }
 
-    // this test should test that pagination is working
+    // check that pagination url can be used to get merchants
     @Test
     public void testGetMerchantsPagination() throws Exception {
-        client.MERCHANT.getMerchants(null, null, null, new NessieTestResultsListener() {
+        client.MERCHANT.getMerchants("/merchants?key=12345&page=2", new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                List<Merchant> merchants = (List<Merchant>) result;
-                assertEquals(4, merchants.size());
-                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
-                assertEquals("Jetro", merchants.get(3).getName());
+                PaginatedResponse<Merchant> paginatedResponse = (PaginatedResponse<Merchant>) result;
+                assertEquals(20, paginatedResponse.getObjectList().size());
+                assertEquals("57cf75cea73e494d8675ec49", paginatedResponse.getObjectList().get(0).getId());
+                assertEquals("Taughannock Farms Inn", paginatedResponse.getObjectList().get(3).getName());
+                assertEquals("/merchants?key=12345&page=2", paginatedResponse.getPagingObject().getNextPage());
             }
         });
     }
 
-    // this test should test that we can ask for a specific page
+    // check that a specific page of merchants can be found
     @Test
     public void testGetMerchantsPaginationSpecifyPage() throws Exception {
         client.MERCHANT.getMerchants(null, null, null, 3, new NessieTestResultsListener() {
             @Override
             public void onSuccess(Object result) {
-                List<Merchant> merchants = (List<Merchant>) result;
-                assertEquals(4, merchants.size());
-                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
-                assertEquals("Jetro", merchants.get(3).getName());
+                PaginatedResponse<Merchant> paginatedResponse = (PaginatedResponse<Merchant>) result;
+                assertEquals(20, paginatedResponse.getObjectList().size());
+                assertEquals("57cf75cea73e494d8675ec49", paginatedResponse.getObjectList().get(0).getId());
+                assertEquals("Taughannock Farms Inn", paginatedResponse.getObjectList().get(3).getName());
+                assertEquals("/merchants?key=12345&page=2", paginatedResponse.getPagingObject().getNextPage());
             }
         });
     }
@@ -87,9 +92,12 @@ public class MerchantTest extends NessieTest {
 
         Geocode geocode = new Geocode(100, 100);
 
+        List<String> categories = new ArrayList<>();
+        categories.add("Food");
+
         Merchant merchant = new Merchant.Builder()
             .name("Grocery Store")
-            .category("Food")
+            .categories(categories)
             .address(address)
             .geocode(geocode)
             .build();
