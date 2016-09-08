@@ -18,19 +18,8 @@ import static org.junit.Assert.assertEquals;
 public class MerchantTest extends NessieTest {
 
     /* GET /merchants */
-    @Test
-    public void testGetMerchants() throws Exception {
-        client.MERCHANT.getMerchants(null, null, null, new NessieTestResultsListener() {
-            @Override
-            public void onSuccess(Object result) {
-                List<Merchant> merchants = (List<Merchant>) result;
-                assertEquals(4, merchants.size());
-                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
-                assertEquals("Jetro", merchants.get(3).getName());
-            }
-        });
-    }
 
+    // this test needs updated to support pagination for merchants
     @Test
     public void testGetMerchantsByLocation() throws Exception {
         client.MERCHANT.getMerchants(-75.1652f, 39.9526f, 1.0f, new NessieTestResultsListener() {
@@ -43,6 +32,35 @@ public class MerchantTest extends NessieTest {
             }
         });
     }
+
+    // this test should test that pagination is working
+    @Test
+    public void testGetMerchantsPagination() throws Exception {
+        client.MERCHANT.getMerchants(null, null, null, new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                List<Merchant> merchants = (List<Merchant>) result;
+                assertEquals(4, merchants.size());
+                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
+                assertEquals("Jetro", merchants.get(3).getName());
+            }
+        });
+    }
+
+    // this test should test that we can ask for a specific page
+    @Test
+    public void testGetMerchantsPaginationSpecifyPage() throws Exception {
+        client.MERCHANT.getMerchants(null, null, null, 3, new NessieTestResultsListener() {
+            @Override
+            public void onSuccess(Object result) {
+                List<Merchant> merchants = (List<Merchant>) result;
+                assertEquals(4, merchants.size());
+                assertEquals("56c66be6a73e492741507624", merchants.get(0).getId());
+                assertEquals("Jetro", merchants.get(3).getName());
+            }
+        });
+    }
+
 
     /* GET /merchants/{id} */
     @Test

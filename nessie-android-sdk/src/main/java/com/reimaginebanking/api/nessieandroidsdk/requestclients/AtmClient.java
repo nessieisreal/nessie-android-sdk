@@ -40,7 +40,7 @@ public class AtmClient {
     /**
      * Retrieve ATMs using a {@link PagingObject} previous or next URL.
      *
-     * @param paginationUrl The URL which specified which ATMs to retrive
+     * @param paginationUrl The URL which specifies which ATMs to retrive
      * @param listener The listener object which will implement the callback interface
      */
     public void getATMs(String paginationUrl, final NessieResultsListener listener) {

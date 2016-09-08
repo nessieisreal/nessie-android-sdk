@@ -4,11 +4,11 @@ package com.reimaginebanking.api.nessieandroidsdk.requestclients;
 import com.reimaginebanking.api.nessieandroidsdk.NessieError;
 import com.reimaginebanking.api.nessieandroidsdk.NessieResultsListener;
 import com.reimaginebanking.api.nessieandroidsdk.models.Merchant;
+import com.reimaginebanking.api.nessieandroidsdk.models.PaginatedResponse;
+import com.reimaginebanking.api.nessieandroidsdk.models.PagingObject;
 import com.reimaginebanking.api.nessieandroidsdk.models.PostResponse;
 import com.reimaginebanking.api.nessieandroidsdk.models.PutDeleteResponse;
 import com.reimaginebanking.api.nessieandroidsdk.requestservices.MerchantService;
-
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -38,6 +38,29 @@ public class MerchantClient {
     }
 
     /**
+     * Retrieve Merchants using a {@link PagingObject} previous or next URL.
+     *
+     * @param paginationUrl The URL which specifies which Merchants to retrive
+     * @param listener The listener object which will implement the callback interface
+     */
+    public void getMerchants(String paginationUrl, final NessieResultsListener listener) {
+        if (paginationUrl.length() > 0) {
+            paginationUrl = paginationUrl.substring(1);
+        }
+        mService.getMerchantsFromPagination(paginationUrl, new Callback<PaginatedResponse<Merchant>>() {
+            @Override
+            public void success(PaginatedResponse<Merchant> merchantPaginatedResponse, Response response) {
+                listener.onSuccess(merchantPaginatedResponse);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                listener.onFailure(new NessieError(error));
+            }
+        });
+    }
+
+    /**
      * Retrieve all merchants within a specified area.
      *
      * @param latitude The latitude line for the merchant search
@@ -46,13 +69,26 @@ public class MerchantClient {
      * @param listener The listener object which will implement the callback interface
      */
     public void getMerchants(Float latitude, Float longitude, Float radius, final NessieResultsListener listener){
-        mService.getMerchants(mKey, latitude, longitude, radius, new Callback<List<Merchant>>() {
-            @Override
-            public void success(List<Merchant> merchants, Response response) {
+        getMerchants(latitude, longitude, radius, 1, listener);
+    }
+
+    /**
+     * Retrieve all Merchants within a specific area, but specify the page that you want to retrieve in the paginated response.
+     *
+     * Note: Response will be paginated
+     *
+     * @param latitude The latitude line for the Merchant search
+     * @param longitude The longitude line for Merchant search
+     * @param radius The radius from the lat/lng point to search within
+     * @param page The page number of results to retrive
+     * @param listener The listener object which will implement the callback interface
+     */
+    public void getMerchants(Float latitude, Float longitude, Float radius, Integer page, final NessieResultsListener listener){
+        mService.getMerchants(mKey, latitude, longitude, radius, page, new Callback<PaginatedResponse<Merchant>>() {
+            public void success(PaginatedResponse<Merchant> merchants, Response response) {
                 listener.onSuccess(merchants);
             }
 
-            @Override
             public void failure(RetrofitError error) {
                 listener.onFailure(new NessieError(error));
             }
