@@ -13,7 +13,7 @@ In your module-specific build.gradle file add the following dependency.
 ```java
 dependencies {
 	...
-    compile 'com.reimaginebanking.api:nessie-android-sdk:1.0.3'
+    compile 'com.reimaginebanking.api:nessie-android-sdk:1.0.4'
     ...
 }
 ```
