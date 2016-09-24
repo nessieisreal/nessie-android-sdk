@@ -32,7 +32,7 @@ Then use that client to access all of the API methods.
 client.CUSTOMER.getCustomers(new NessieResultsListener() {
 	@Override
 	public void onSuccess(Object result) {
-		List<Customer> customers = (List<Customer) result;
+		List<Customer> customers = (List<Customer>) result;
 		// do something with the list of customers here
 	}
 
