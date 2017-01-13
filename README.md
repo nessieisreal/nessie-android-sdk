@@ -13,7 +13,7 @@ In your module-specific build.gradle file add the following dependency.
 ```java
 dependencies {
 	...
-    compile 'com.reimaginebanking.api:nessie-android-sdk:1.0.3'
+    compile 'com.reimaginebanking.api:nessie-android-sdk:1.0.4'
     ...
 }
 ```
@@ -32,7 +32,7 @@ Then use that client to access all of the API methods.
 client.CUSTOMER.getCustomers(new NessieResultsListener() {
 	@Override
 	public void onSuccess(Object result) {
-		List<Customer> customers = (List<Customer) result;
+		List<Customer> customers = (List<Customer>) result;
 		// do something with the list of customers here
 	}
 
@@ -97,7 +97,7 @@ client.ATM.getATMs(lat, lng, rad, new NessieResultsListener() {
 	public void onSuccess(Object result) {
 		PaginatedResponse<ATM> response = (PaginatedResponse<ATM>) result;
 		// get the next set of ATMs
-		
+
 		client.ATM.getATMs(response.getPagingObject().getNextPage(), new NessieResultsListener() {
 			// implement callback interface here
 		})
@@ -118,7 +118,7 @@ A request to an enterprise endpoint can be made in the same way as the other GET
 client.ENTERPRISE.getCustomersAsEnterprise(new NessieResultsListener() {
 @Override
 	public void onSuccess(Object result) {
-		List<Customer> customers = (List<Customer) result;
+		List<Customer> customers = (List<Customer>) result;
 		// do something with the list of customers here
 	}
 
