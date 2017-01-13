@@ -19,10 +19,10 @@ public class Account {
     private String mNickname;
 
     @SerializedName("rewards")
-    private Integer mRewards;
+    private Double mRewards;
 
     @SerializedName("balance")
-    private Integer mBalance;
+    private Double mBalance;
 
     @SerializedName("account_number")
     private String mAccountNumber;
@@ -30,7 +30,7 @@ public class Account {
     @SerializedName("customer_id")
     private String mCustomer;
 
-    public Account(String _id, AccountType type, String nickname, int rewards, int balance, String account_number, String customer) {
+    public Account(String _id, AccountType type, String nickname, double rewards, double balance, String account_number, String customer) {
         mId = _id;
         mType = type;
         mNickname = nickname;
@@ -60,11 +60,11 @@ public class Account {
         return mNickname;
     }
 
-    public Integer getRewards() {
+    public Double getRewards() {
         return mRewards;
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return mBalance;
     }
 
@@ -92,8 +92,8 @@ public class Account {
     public static class Builder{
         private AccountType bType;
         private String bNickname;
-        private Integer bRewards;
-        private Integer bBalance;
+        private Double bRewards;
+        private Double bBalance;
         private String bAccountNumber;
 
         public Builder(){}
@@ -116,12 +116,12 @@ public class Account {
             return this;
         }
 
-        public Builder rewards(int rewards){
+        public Builder rewards(double rewards){
             bRewards = rewards;
             return this;
         }
 
-        public Builder balance(int balance){
+        public Builder balance(double balance){
             bBalance = balance;
             return this;
         }
