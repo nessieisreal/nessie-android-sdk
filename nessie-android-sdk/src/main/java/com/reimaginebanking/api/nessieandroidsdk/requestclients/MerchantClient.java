@@ -30,7 +30,7 @@ public class MerchantClient {
         mService = service;
     }
 
-    public static MerchantClient getInstance(String key, MerchantService service){
+    public static MerchantClient getInstance(String key, MerchantService service) {
         if (INSTANCE == null) {
             INSTANCE = new MerchantClient(key, service);
         }
@@ -68,7 +68,7 @@ public class MerchantClient {
      * @param radius The radius from the lat/lng point to search within
      * @param listener The listener object which will implement the callback interface
      */
-    public void getMerchants(Float latitude, Float longitude, Float radius, final NessieResultsListener listener){
+    public void getMerchants(Float latitude, Float longitude, Float radius, final NessieResultsListener listener) {
         getMerchants(latitude, longitude, radius, 1, listener);
     }
 
@@ -83,7 +83,7 @@ public class MerchantClient {
      * @param page The page number of results to retrive
      * @param listener The listener object which will implement the callback interface
      */
-    public void getMerchants(Float latitude, Float longitude, Float radius, Integer page, final NessieResultsListener listener){
+    public void getMerchants(Float latitude, Float longitude, Float radius, Integer page, final NessieResultsListener listener) {
         mService.getMerchants(mKey, latitude, longitude, radius, page, new Callback<PaginatedResponse<Merchant>>() {
             public void success(PaginatedResponse<Merchant> merchants, Response response) {
                 listener.onSuccess(merchants);
@@ -101,7 +101,7 @@ public class MerchantClient {
      * @param merchantId The id of the merchant to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getMerchant(String merchantId, final NessieResultsListener listener){
+    public void getMerchant(String merchantId, final NessieResultsListener listener) {
         mService.getMerchant(mKey, merchantId, new Callback<Merchant>() {
             @Override
             public void success(Merchant merchant, Response response) {
@@ -121,7 +121,7 @@ public class MerchantClient {
      * @param merchant The merchant object to create
      * @param listener The listener object which will implement the callback interface
      */
-    public void createMerchant(Merchant merchant, final NessieResultsListener listener){
+    public void createMerchant(Merchant merchant, final NessieResultsListener listener) {
         mService.createMerchant(mKey, merchant, new Callback<PostResponse<Merchant>>() {
 
             @Override
@@ -143,7 +143,7 @@ public class MerchantClient {
      * @param updatedMerchant The merchant object which includes the updates
      * @param listener The listener object which will implement the callback interface
      */
-    public void updateMerchant(String merchantId, Merchant updatedMerchant, final NessieResultsListener listener){
+    public void updateMerchant(String merchantId, Merchant updatedMerchant, final NessieResultsListener listener) {
         mService.updateMerchant(mKey, merchantId, updatedMerchant, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {

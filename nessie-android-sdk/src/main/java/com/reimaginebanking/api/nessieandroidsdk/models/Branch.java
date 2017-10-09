@@ -117,6 +117,5 @@ public class Branch {
             bHours = hours;
             return this;
         }
-
     }
 }

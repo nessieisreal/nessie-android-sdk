@@ -16,12 +16,12 @@ public enum TransactionMedium {
 
     private final String medium;
 
-    private TransactionMedium(String medium){
+    TransactionMedium(String medium) {
         this.medium = medium;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return medium;
     }
 }

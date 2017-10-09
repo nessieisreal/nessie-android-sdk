@@ -29,7 +29,7 @@ public class DepositClient {
         mService = service;
     }
 
-    public static DepositClient getInstance(String key, DepositService service){
+    public static DepositClient getInstance(String key, DepositService service) {
         if (INSTANCE == null) {
             INSTANCE = new DepositClient(key, service);
         }
@@ -42,7 +42,7 @@ public class DepositClient {
      * @param accountId The id of the account to retrieve deposits for
      * @param listener The listener object which will implement the callback interface
      */
-    public void getDeposits(String accountId, final NessieResultsListener listener){
+    public void getDeposits(String accountId, final NessieResultsListener listener) {
         mService.getDeposits(mKey, accountId, new Callback<List<Deposit>>() {
             @Override
             public void success(List<Deposit> transactions, Response response) {
@@ -62,7 +62,7 @@ public class DepositClient {
      * @param depositId The id of the deposit to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getDeposit(String depositId, final NessieResultsListener listener){
+    public void getDeposit(String depositId, final NessieResultsListener listener) {
         mService.getDeposit(mKey, depositId, new Callback<Deposit>() {
             @Override
             public void success(Deposit transaction, Response response) {
@@ -83,7 +83,7 @@ public class DepositClient {
      * @param deposit The deposit object to create
      * @param listener The listener object which will implement the callback interface
      */
-    public void createDeposit(String accountId, Deposit deposit, final NessieResultsListener listener){
+    public void createDeposit(String accountId, Deposit deposit, final NessieResultsListener listener) {
         mService.createDeposit(mKey, accountId, deposit, new Callback<PostResponse<Deposit>>() {
 
             @Override
@@ -105,7 +105,7 @@ public class DepositClient {
      * @param deposit The deposit object which includes the updates
      * @param listener The listener object which will implement the callback interface
      */
-    public void updateDeposit(String depositId, Deposit deposit, final NessieResultsListener listener){
+    public void updateDeposit(String depositId, Deposit deposit, final NessieResultsListener listener) {
         mService.updateDeposit(mKey, depositId, deposit, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
@@ -125,7 +125,7 @@ public class DepositClient {
      * @param depositId The id of the deposit to delete
      * @param listener The listener object which will implement the callback interface
      */
-    public void deleteDeposit(String depositId, final NessieResultsListener listener){
+    public void deleteDeposit(String depositId, final NessieResultsListener listener) {
         mService.deleteDeposit(mKey, depositId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {

@@ -14,12 +14,12 @@ public enum TransactionType {
 
     private final String type;
 
-    private TransactionType(String type){
+    TransactionType(String type) {
         this.type = type;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return type;
     }
 }

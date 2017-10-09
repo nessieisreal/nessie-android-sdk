@@ -18,14 +18,13 @@ public enum AccountType {
     CHECKING("Checking");
 
     private final String type;
-    private AccountType(String type){
+
+    AccountType(String type) {
         this.type = type;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return type;
     }
-
-
 }

@@ -22,12 +22,12 @@ public enum BillStatus {
 
     private final String status;
 
-    private BillStatus(final String status){
+    BillStatus(final String status) {
         this.status = status;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return status;
     }
 }

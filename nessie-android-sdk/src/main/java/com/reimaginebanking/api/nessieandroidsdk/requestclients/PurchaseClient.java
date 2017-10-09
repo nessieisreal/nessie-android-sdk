@@ -29,7 +29,7 @@ public class PurchaseClient {
         mService = service;
     }
 
-    public static PurchaseClient getInstance(String key, PurchaseService service){
+    public static PurchaseClient getInstance(String key, PurchaseService service) {
         if (INSTANCE == null) {
             INSTANCE = new PurchaseClient(key, service);
         }
@@ -42,7 +42,7 @@ public class PurchaseClient {
      * @param accountId The id of the account to retrieve purchases for
      * @param listener The listener object which will implement the callback interface
      */
-    public void getPurchasesByAccount(String accountId, final NessieResultsListener listener){
+    public void getPurchasesByAccount(String accountId, final NessieResultsListener listener) {
         mService.getPurchasesByAccount(mKey, accountId, new Callback<List<Purchase>>() {
             @Override
             public void success(List<Purchase> transactions, Response response) {
@@ -103,7 +103,7 @@ public class PurchaseClient {
      * @param purchaseId The id of the purchase to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getPurchase(String purchaseId, final NessieResultsListener listener){
+    public void getPurchase(String purchaseId, final NessieResultsListener listener) {
         mService.getPurchase(mKey, purchaseId, new Callback<Purchase>() {
             @Override
             public void success(Purchase transaction, Response response) {
@@ -124,7 +124,7 @@ public class PurchaseClient {
      * @param purchase The purchase object to create
      * @param listener The listener object which will implement the callback interface
      */
-    public void createPurchase(String accountId, Purchase purchase, final NessieResultsListener listener){
+    public void createPurchase(String accountId, Purchase purchase, final NessieResultsListener listener) {
         mService.createPurchase(mKey, accountId, purchase, new Callback<PostResponse<Purchase>>() {
 
             @Override
@@ -146,7 +146,7 @@ public class PurchaseClient {
      * @param purchase The purchase object which includes the updates
      * @param listener The listener object which will implement the callback interface
      */
-    public void updatePurchase(String purchaseId, Purchase purchase, final NessieResultsListener listener){
+    public void updatePurchase(String purchaseId, Purchase purchase, final NessieResultsListener listener) {
         mService.updatePurchase(mKey, purchaseId, purchase, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
@@ -166,7 +166,7 @@ public class PurchaseClient {
      * @param purchaseId The id of the purchase to delet
      * @param listener The listener object which will implement the callback interface
      */
-    public void deletePurchase(String purchaseId, final NessieResultsListener listener){
+    public void deletePurchase(String purchaseId, final NessieResultsListener listener) {
         mService.deletePurchase(mKey, purchaseId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {

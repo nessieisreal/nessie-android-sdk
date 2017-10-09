@@ -30,7 +30,7 @@ public class AtmClient {
         mService = service;
     }
 
-    public static AtmClient getInstance(String key, AtmService service){
+    public static AtmClient getInstance(String key, AtmService service) {
         if (INSTANCE == null) {
             INSTANCE = new AtmClient(key, service);
         }
@@ -85,7 +85,7 @@ public class AtmClient {
      * @param page The page number of results to retrive
      * @param listener The listener object which will implement the callback interface
      */
-    public void getATMs(Float latitude, Float longitude, Float radius, Integer page, final NessieResultsListener listener){
+    public void getATMs(Float latitude, Float longitude, Float radius, Integer page, final NessieResultsListener listener) {
         mService.getATMs(mKey, latitude, longitude, radius, page, new Callback<PaginatedResponse<ATM>>() {
             public void success(PaginatedResponse<ATM> atms, Response response) {
                 listener.onSuccess(atms);
@@ -103,7 +103,7 @@ public class AtmClient {
      * @param atmID The id of the ATM to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getATM(String atmID, final NessieResultsListener listener){
+    public void getATM(String atmID, final NessieResultsListener listener) {
         mService.getATM(mKey, atmID, new Callback<ATM>() {
             public void success(ATM atm, Response response) {
                 listener.onSuccess(atm);

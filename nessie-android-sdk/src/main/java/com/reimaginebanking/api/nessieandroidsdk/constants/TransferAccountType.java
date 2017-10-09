@@ -12,12 +12,12 @@ public enum TransferAccountType {
 
     private final String type;
 
-    private TransferAccountType(String type){
+    TransferAccountType(String type) {
         this.type = type;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return type;
     }
 }

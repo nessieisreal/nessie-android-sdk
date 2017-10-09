@@ -40,7 +40,7 @@ public class Account {
         mCustomer = customer;
     }
 
-    public Account(Builder builder){
+    public Account(Builder builder) {
         mType = builder.bType;
         mNickname = builder.bNickname;
         mRewards = builder.bRewards;
@@ -96,7 +96,7 @@ public class Account {
         private Double bBalance;
         private String bAccountNumber;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Account account) {
             bType = account.getType();
@@ -106,22 +106,22 @@ public class Account {
             bAccountNumber = account.getAccountNumber();
         }
 
-        public Builder type(AccountType type){
+        public Builder type(AccountType type) {
             bType = type;
             return this;
         }
 
-        public Builder nickname(String nickname){
+        public Builder nickname(String nickname) {
             bNickname = nickname;
             return this;
         }
 
-        public Builder rewards(double rewards){
+        public Builder rewards(double rewards) {
             bRewards = rewards;
             return this;
         }
 
-        public Builder balance(double balance){
+        public Builder balance(double balance) {
             bBalance = balance;
             return this;
         }
@@ -131,7 +131,7 @@ public class Account {
             return this;
         }
 
-        public Account build(){
+        public Account build() {
             Account account = new Account(this);
             return account;
         }

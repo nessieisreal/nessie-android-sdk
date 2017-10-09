@@ -33,7 +33,7 @@ public class EnterpriseClient {
         mService = service;
     }
 
-    public static EnterpriseClient getInstance(String key, EnterpriseService service){
+    public static EnterpriseClient getInstance(String key, EnterpriseService service) {
         if (INSTANCE == null) {
             INSTANCE = new EnterpriseClient(key, service);
         }
@@ -41,7 +41,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE ACCOUNT
-    public void getAccountsAsEnterprise(final NessieResultsListener listener){
+    public void getAccountsAsEnterprise(final NessieResultsListener listener) {
         mService.getAccountsAsEnterprise(mKey, new Callback<List<Account>>() {
             public void success(List<Account> accounts, Response response) {
                 listener.onSuccess(accounts);
@@ -53,7 +53,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getAccountAsEnterprise(String accountID, final NessieResultsListener listener){
+    public void getAccountAsEnterprise(String accountID, final NessieResultsListener listener) {
         mService.getAccountAsEnterprise(mKey, accountID, new Callback<Account>() {
             public void success(Account account, Response response) {
                 listener.onSuccess(account);
@@ -66,7 +66,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE BILL
-    public void getBillsAsEnterprise(final NessieResultsListener listener){
+    public void getBillsAsEnterprise(final NessieResultsListener listener) {
         mService.getBillsAsEnterprise(mKey, new Callback<List<Bill>>() {
             public void success(List<Bill> bills, Response response) {
                 listener.onSuccess(bills);
@@ -78,7 +78,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getBillAsEnterprise(String billID, final NessieResultsListener listener){
+    public void getBillAsEnterprise(String billID, final NessieResultsListener listener) {
         mService.getBillAsEnterprise(mKey, billID, new Callback<Bill>() {
             public void success(Bill bill, Response response) {
                 listener.onSuccess(bill);
@@ -91,7 +91,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE CUSTOMER
-    public void getCustomersAsEnterprise(final NessieResultsListener listener){
+    public void getCustomersAsEnterprise(final NessieResultsListener listener) {
         mService.getCustomersAsEnterprise(mKey, new Callback<List<Customer>>() {
             public void success(List<Customer> customers, Response response) {
                 listener.onSuccess(customers);
@@ -103,7 +103,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getCustomerAsEnterprise(String customerID, final NessieResultsListener listener){
+    public void getCustomerAsEnterprise(String customerID, final NessieResultsListener listener) {
         mService.getCustomerAsEnterprise(mKey, customerID, new Callback<Customer>() {
             public void success(Customer customer, Response response) {
                 listener.onSuccess(customer);
@@ -116,7 +116,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE MERCHANT
-    public void getMerchantsAsEnterprise(final NessieResultsListener listener){
+    public void getMerchantsAsEnterprise(final NessieResultsListener listener) {
         mService.getMerchantsAsEnterprise(mKey, new Callback<List<Merchant>>() {
             public void success(List<Merchant> customers, Response response) {
                 listener.onSuccess(customers);
@@ -128,7 +128,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getMerchantAsEnterprise(String merchantID, final NessieResultsListener listener){
+    public void getMerchantAsEnterprise(String merchantID, final NessieResultsListener listener) {
         mService.getMerchantAsEnterprise(mKey, merchantID, new Callback<Merchant>() {
             public void success(Merchant merchant, Response response) {
                 listener.onSuccess(merchant);
@@ -141,7 +141,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE TRANSFER
-    public void getTransfersAsEnterprise(final NessieResultsListener listener){
+    public void getTransfersAsEnterprise(final NessieResultsListener listener) {
         mService.getTransfersAsEnterprise(mKey, new Callback<List<Transfer>>() {
             public void success(List<Transfer> customers, Response response) {
                 listener.onSuccess(customers);
@@ -153,7 +153,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getTransferAsEnterprise(String transferID, final NessieResultsListener listener){
+    public void getTransferAsEnterprise(String transferID, final NessieResultsListener listener) {
         mService.getTransferAsEnterprise(mKey, transferID, new Callback<Transfer>() {
             public void success(Transfer transfer, Response response) {
                 listener.onSuccess(transfer);
@@ -166,7 +166,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE WITHDRAWAL
-    public void getWithdrawalsAsEnterprise(final NessieResultsListener listener){
+    public void getWithdrawalsAsEnterprise(final NessieResultsListener listener) {
         mService.getWithdrawalsAsEnterprise(mKey, new Callback<List<Withdrawal>>() {
             public void success(List<Withdrawal> withdrawals, Response response) {
                 listener.onSuccess(withdrawals);
@@ -178,7 +178,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getWithdrawalAsEnterprise(String withdrawalID, final NessieResultsListener listener){
+    public void getWithdrawalAsEnterprise(String withdrawalID, final NessieResultsListener listener) {
         mService.getWithdrawalAsEnterprise(mKey, withdrawalID, new Callback<Withdrawal>() {
             public void success(Withdrawal withdrawal, Response response) {
                 listener.onSuccess(withdrawal);
@@ -191,7 +191,7 @@ public class EnterpriseClient {
     }
 
     //ENTERPRISE DEPOSIT
-    public void getDepositsAsEnterprise(final NessieResultsListener listener){
+    public void getDepositsAsEnterprise(final NessieResultsListener listener) {
         mService.getDepositsAsEnterprise(mKey, new Callback<List<Deposit>>() {
             public void success(List<Deposit> deposits, Response response) {
                 listener.onSuccess(deposits);
@@ -203,7 +203,7 @@ public class EnterpriseClient {
         });
     }
 
-    public void getDepositAsEnterprise(String depositId, final NessieResultsListener listener){
+    public void getDepositAsEnterprise(String depositId, final NessieResultsListener listener) {
         mService.getDepositAsEnterprise(mKey, depositId, new Callback<Deposit>() {
             public void success(Deposit deposit, Response response) {
                 listener.onSuccess(deposit);
@@ -214,5 +214,4 @@ public class EnterpriseClient {
             }
         });
     }
-
 }

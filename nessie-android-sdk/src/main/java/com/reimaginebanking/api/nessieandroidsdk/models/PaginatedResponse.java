@@ -27,5 +27,4 @@ public class PaginatedResponse<T> {
     public PagingObject getPagingObject() {
         return mPagingObject;
     }
-
 }
