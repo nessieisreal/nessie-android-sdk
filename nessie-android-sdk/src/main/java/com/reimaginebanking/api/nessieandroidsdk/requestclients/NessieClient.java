@@ -93,7 +93,6 @@ public class NessieClient {
             restAdapter = ra;
         }
 
-
         // Instantiate services
         accountService = restAdapter.create(AccountService.class);
         atmService = restAdapter.create(AtmService.class);
@@ -121,7 +120,7 @@ public class NessieClient {
         WITHDRAWAL = WithdrawalClient.getInstance(this.key, withdrawalService);
     }
 
-    public static NessieClient getInstance(String key){
+    public static NessieClient getInstance(String key) {
         if (INSTANCE == null) {
             INSTANCE = new NessieClient(key, null);
         }

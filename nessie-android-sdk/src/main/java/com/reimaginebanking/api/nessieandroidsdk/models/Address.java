@@ -38,7 +38,7 @@ public class Address {
         mZip = builder.bZip;
     }
 
-    public String getStreetNumber(){
+    public String getStreetNumber() {
         return mStreetNumber;
     }
 
@@ -112,7 +112,7 @@ public class Address {
             return this;
         }
 
-        public Address build(){
+        public Address build() {
             Address address = new Address(this);
             return address;
         }

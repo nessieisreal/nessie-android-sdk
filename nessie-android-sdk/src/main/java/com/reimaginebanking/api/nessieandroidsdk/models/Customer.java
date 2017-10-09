@@ -19,7 +19,7 @@ public class Customer {
     @SerializedName("address")
     private Address mAddress;
 
-    public Customer(Address address){
+    public Customer(Address address) {
         this.mAddress = address;
     }
 
@@ -30,7 +30,7 @@ public class Customer {
         mAddress = address;
     }
 
-    public Customer(Builder builder){
+    public Customer(Builder builder) {
         mFirstName = builder.bFirstName;
         mLastName = builder.bLastName;
         mAddress = builder.bAddress;
@@ -67,7 +67,7 @@ public class Customer {
         private String bLastName;
         private Address bAddress;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Customer customer) {
             bFirstName = customer.getFirstName();
@@ -75,22 +75,22 @@ public class Customer {
             bAddress = customer.getAddress();
         }
 
-        public Builder firstName(String firstName){
+        public Builder firstName(String firstName) {
             bFirstName = firstName;
             return this;
         }
 
-        public Builder lastName(String lastName){
+        public Builder lastName(String lastName) {
             bLastName = lastName;
             return this;
         }
 
-        public Builder address(Address address){
+        public Builder address(Address address) {
             bAddress = address;
             return this;
         }
 
-        public Customer build(){
+        public Customer build() {
             Customer customer = new Customer(this);
             return customer;
         }

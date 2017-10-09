@@ -29,7 +29,7 @@ public class WithdrawalClient {
         mService = service;
     }
 
-    public static WithdrawalClient getInstance(String key, WithdrawalService service){
+    public static WithdrawalClient getInstance(String key, WithdrawalService service) {
         if (INSTANCE == null) {
             INSTANCE = new WithdrawalClient(key, service);
         }
@@ -42,7 +42,7 @@ public class WithdrawalClient {
      * @param accountId The id of the account to retrieve withdrawals for
      * @param listener The listener object which will implement the callback interface
      */
-    public void getWithdrawals(String accountId, final NessieResultsListener listener){
+    public void getWithdrawals(String accountId, final NessieResultsListener listener) {
         mService.getWithdrawals(mKey, accountId, new Callback<List<Withdrawal>>() {
             @Override
             public void success(List<Withdrawal> transactions, Response response) {
@@ -62,7 +62,7 @@ public class WithdrawalClient {
      * @param withdrawalId The id of the withdrawal to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getWithdrawal(String withdrawalId, final NessieResultsListener listener){
+    public void getWithdrawal(String withdrawalId, final NessieResultsListener listener) {
         mService.getWithdrawal(mKey, withdrawalId, new Callback<Withdrawal>() {
             @Override
             public void success(Withdrawal transaction, Response response) {
@@ -83,7 +83,7 @@ public class WithdrawalClient {
      * @param withdrawal The withdrawal object to create
      * @param listener The listener object which will implement the callback interface
      */
-    public void createWithdrawal(String accountId, Withdrawal withdrawal, final NessieResultsListener listener){
+    public void createWithdrawal(String accountId, Withdrawal withdrawal, final NessieResultsListener listener) {
         mService.createWithdrawal(mKey, accountId, withdrawal, new Callback<PostResponse<Withdrawal>>() {
 
             @Override
@@ -105,7 +105,7 @@ public class WithdrawalClient {
      * @param withdrawal The withdrawal object which includes the updates
      * @param listener The listener object which will implement the callback interface
      */
-    public void updateWithdrawal(String withdrawalId, Withdrawal withdrawal, final NessieResultsListener listener){
+    public void updateWithdrawal(String withdrawalId, Withdrawal withdrawal, final NessieResultsListener listener) {
         mService.updateWithdrawal(mKey, withdrawalId, withdrawal, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
@@ -125,7 +125,7 @@ public class WithdrawalClient {
      * @param withdrawalId The id of the withdrawal to delete
      * @param listener The listener object which will implement the callback interface
      */
-    public void deleteWithdrawal(String withdrawalId, final NessieResultsListener listener){
+    public void deleteWithdrawal(String withdrawalId, final NessieResultsListener listener) {
         mService.deleteWithdrawal(mKey, withdrawalId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {

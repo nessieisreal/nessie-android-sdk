@@ -46,7 +46,7 @@ public class Withdrawal {
         mDescription = description;
     }
 
-    public Withdrawal(Builder builder){
+    public Withdrawal(Builder builder) {
         mMedium = builder.bMedium;
         mAmount = builder.bAmount;
         mDescription = builder.bDescription;
@@ -85,7 +85,6 @@ public class Withdrawal {
         return mDescription;
     }
 
-
     @Override
     public String toString() {
         return "Withdrawal{" +
@@ -106,7 +105,7 @@ public class Withdrawal {
         private Double bAmount;
         private String bDescription;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Withdrawal withdrawal) {
             bTransactionDate = withdrawal.getTransactionDate();
@@ -116,27 +115,27 @@ public class Withdrawal {
 
         }
 
-        public Builder transaction_date(String transaction_date){
+        public Builder transaction_date(String transaction_date) {
             bTransactionDate = transaction_date;
             return this;
         }
 
-        public Builder medium(TransactionMedium medium){
+        public Builder medium(TransactionMedium medium) {
             bMedium = medium;
             return this;
         }
 
-        public Builder amount(double amount){
+        public Builder amount(double amount) {
             bAmount = amount;
             return this;
         }
 
-        public Builder description(String description){
+        public Builder description(String description) {
             bDescription = description;
             return this;
         }
 
-        public Withdrawal build(){
+        public Withdrawal build() {
             Withdrawal withdrawal = new Withdrawal(this);
             return withdrawal;
         }

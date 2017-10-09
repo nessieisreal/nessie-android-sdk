@@ -129,7 +129,7 @@ public class Bill {
         private Double bPaymentAmount;
         private String bAccount;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Bill bill) {
             bStatus = bill.getStatus();
@@ -141,32 +141,32 @@ public class Bill {
             bAccount = bill.getAccountId();
         }
 
-        public Builder status(BillStatus status){
+        public Builder status(BillStatus status) {
             bStatus = status;
             return this;
         }
 
-        public Builder payee(String payee){
+        public Builder payee(String payee) {
             bPayee = payee;
             return this;
         }
 
-        public Builder nickname(String nickname){
+        public Builder nickname(String nickname) {
             bNickname = nickname;
             return this;
         }
 
-        public Builder paymentDate(String payment_date){
+        public Builder paymentDate(String payment_date) {
             bPaymentDate = payment_date;
             return this;
         }
 
-        public Builder recurringDate(int recurring_date){
+        public Builder recurringDate(int recurring_date) {
             bRecurringDate = recurring_date;
             return this;
         }
 
-        public Builder paymentAmount(double payment_amount){
+        public Builder paymentAmount(double payment_amount) {
             bPaymentAmount = payment_amount;
             return this;
         }
@@ -176,7 +176,7 @@ public class Bill {
             return this;
         }
 
-        public Bill build(){
+        public Bill build() {
             Bill bill = new Bill(this);
             return bill;
         }

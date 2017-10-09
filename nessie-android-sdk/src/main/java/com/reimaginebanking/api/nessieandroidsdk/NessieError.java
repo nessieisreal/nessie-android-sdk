@@ -21,7 +21,7 @@ public class NessieError {
     @SerializedName("culprit")
     private List<String> mCulprit;
 
-    public NessieError(RetrofitError retrofitError){
+    public NessieError(RetrofitError retrofitError) {
         Response r = retrofitError.getResponse();
 
         // prevent the culprit list from being null
@@ -52,5 +52,4 @@ public class NessieError {
     public List<String> getCulprit() {
         return mCulprit;
     }
-
 }

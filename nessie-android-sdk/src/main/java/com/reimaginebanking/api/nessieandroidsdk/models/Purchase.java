@@ -49,7 +49,7 @@ public class Purchase {
         mMedium = medium;
     }
 
-    public Purchase(Builder builder){
+    public Purchase(Builder builder) {
         mMerchantId = builder.bMerchantId;
         mPurchaseDate = builder.bPurchaseDate;
         mAmount = builder.bAmount;
@@ -116,7 +116,7 @@ public class Purchase {
         private String bDescription;
         private String bMedium;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Purchase purchase) {
             bPurchaseDate = purchase.getPurchaseDate();
@@ -126,22 +126,22 @@ public class Purchase {
             bMedium = purchase.getMedium();
         }
 
-        public Builder merchant(String merchant_id){
+        public Builder merchant(String merchant_id) {
             bMerchantId = merchant_id;
             return this;
         }
 
-        public Builder purchaseDate(String purchase_date){
+        public Builder purchaseDate(String purchase_date) {
             bPurchaseDate = purchase_date;
             return this;
         }
 
-        public Builder amount(double amount){
+        public Builder amount(double amount) {
             bAmount = amount;
             return this;
         }
 
-        public Builder description(String description){
+        public Builder description(String description) {
             bDescription = description;
             return this;
         }
@@ -151,7 +151,7 @@ public class Purchase {
             return this;
         }
 
-        public Purchase build(){
+        public Purchase build() {
             Purchase purchase = new Purchase(this);
             return purchase;
         }

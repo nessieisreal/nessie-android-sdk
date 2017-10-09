@@ -5,5 +5,6 @@ package com.reimaginebanking.api.nessieandroidsdk;
  */
 public interface NessieResultsListener {
     void onSuccess(Object result);
+
     void onFailure(NessieError error);
 }

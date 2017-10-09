@@ -30,7 +30,7 @@ public class TransferClient {
         mService = service;
     }
 
-    public static TransferClient getInstance(String key, TransferService service){
+    public static TransferClient getInstance(String key, TransferService service) {
         if (INSTANCE == null) {
             INSTANCE = new TransferClient(key, service);
         }
@@ -43,7 +43,7 @@ public class TransferClient {
      * @param accountId The id of the account to retrieve transfers for
      * @param listener The listener object which will implement the callback interface
      */
-    public void getTransfers(String accountId, final NessieResultsListener listener){
+    public void getTransfers(String accountId, final NessieResultsListener listener) {
         getTransfers(accountId, null, listener);
     }
 
@@ -74,7 +74,7 @@ public class TransferClient {
      * @param transferId The id of the transfer to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getTransfer(String transferId, final NessieResultsListener listener){
+    public void getTransfer(String transferId, final NessieResultsListener listener) {
         mService.getTransfer(mKey, transferId, new Callback<Transfer>() {
             @Override
             public void success(Transfer transaction, Response response) {
@@ -95,7 +95,7 @@ public class TransferClient {
      * @param transfer The transfer object to create
      * @param listener The listener object which will implement the callback interface
      */
-    public void createTransfer(String accountId, Transfer transfer, final NessieResultsListener listener){
+    public void createTransfer(String accountId, Transfer transfer, final NessieResultsListener listener) {
         mService.createTransfer(mKey, accountId, transfer, new Callback<PostResponse<Transfer>>() {
 
             @Override
@@ -117,7 +117,7 @@ public class TransferClient {
      * @param transfer The transfer object which includes the updates
      * @param listener The listener object which will implement the callback interface
      */
-    public void updateTransfer(String transferId, Transfer transfer, final NessieResultsListener listener){
+    public void updateTransfer(String transferId, Transfer transfer, final NessieResultsListener listener) {
         mService.updateTransfer(mKey, transferId, transfer, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse putResponse, Response response) {
@@ -137,7 +137,7 @@ public class TransferClient {
      * @param transferId The id of the transfer to delete
      * @param listener The listener object which will implement the callback interface
      */
-    public void deleteTransfer(String transferId, final NessieResultsListener listener){
+    public void deleteTransfer(String transferId, final NessieResultsListener listener) {
         mService.deleteTransfer(mKey, transferId, new Callback<PutDeleteResponse>() {
             @Override
             public void success(PutDeleteResponse deleteResponse, Response response) {

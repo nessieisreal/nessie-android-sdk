@@ -31,7 +31,7 @@ public class AccountClient {
         mService = service;
     }
 
-    public static AccountClient getInstance(String key, AccountService service){
+    public static AccountClient getInstance(String key, AccountService service) {
         if (INSTANCE == null) {
             INSTANCE = new AccountClient(key, service);
         }
@@ -43,7 +43,7 @@ public class AccountClient {
      *
      * @param listener The listener object which will implement the callback interface
      */
-    public void getAccounts(final NessieResultsListener listener){
+    public void getAccounts(final NessieResultsListener listener) {
         getAccounts(null, listener);
     }
 
@@ -53,7 +53,7 @@ public class AccountClient {
      * @param type The type of account to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getAccounts(AccountType type, final NessieResultsListener listener){
+    public void getAccounts(AccountType type, final NessieResultsListener listener) {
         mService.getAccounts(mKey, type, new Callback<List<Account>>() {
             public void success(List<Account> accounts, Response response) {
                 listener.onSuccess(accounts);
@@ -71,7 +71,7 @@ public class AccountClient {
      * @param accountID The id of the account to retrieve
      * @param listener The listener object which will implement the callback interface
      */
-    public void getAccount(String accountID, final NessieResultsListener listener){
+    public void getAccount(String accountID, final NessieResultsListener listener) {
         mService.getAccount(mKey, accountID, new Callback<Account>() {
             public void success(Account account, Response response) {
                 listener.onSuccess(account);
@@ -89,7 +89,7 @@ public class AccountClient {
      * @param customerID The id of the customer to retrieve accounts for
      * @param listener The listener object which will implement the callback interface
      */
-    public void getCustomerAccounts(String customerID, final NessieResultsListener listener){
+    public void getCustomerAccounts(String customerID, final NessieResultsListener listener) {
         mService.getCustomerAccounts(mKey, customerID, new Callback<List<Account>>() {
             public void success(List<Account> accounts, Response response) {
                 listener.onSuccess(accounts);
@@ -101,7 +101,6 @@ public class AccountClient {
         });
     }
 
-
     /**
      * Create an account.
      *
@@ -109,7 +108,7 @@ public class AccountClient {
      * @param newAccount The account object to create
      * @param listener The listener object which will implement the callback interface
      */
-    public void createAccount(String customerID, Account newAccount, final NessieResultsListener listener){
+    public void createAccount(String customerID, Account newAccount, final NessieResultsListener listener) {
         mService.createAccount(mKey, customerID, newAccount, new Callback<PostResponse<Account>>() {
 
             @Override
@@ -131,7 +130,7 @@ public class AccountClient {
      * @param updatedAccount The account object which includes the updates
      * @param listener The listener object which will implement the callback interface
      */
-    public void updateAccount(String accountId, Account updatedAccount, final NessieResultsListener listener){
+    public void updateAccount(String accountId, Account updatedAccount, final NessieResultsListener listener) {
         mService.updateAccount(mKey, accountId, updatedAccount, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse putResponse, Response response) {
                 listener.onSuccess(putResponse);
@@ -149,7 +148,7 @@ public class AccountClient {
      * @param accountID The id of the account to delete
      * @param listener The listener object which will implement the callback interface
      */
-    public void deleteAccount(String accountID, final NessieResultsListener listener){
+    public void deleteAccount(String accountID, final NessieResultsListener listener) {
         mService.deleteAccount(mKey, accountID, new Callback<PutDeleteResponse>() {
             public void success(PutDeleteResponse deleteResponse, Response response) {
                 deleteResponse = new PutDeleteResponse(response.getStatus(), "Account Deleted");
@@ -161,5 +160,4 @@ public class AccountClient {
             }
         });
     }
-
 }

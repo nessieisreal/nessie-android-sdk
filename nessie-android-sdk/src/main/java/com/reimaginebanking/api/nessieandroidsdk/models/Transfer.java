@@ -50,7 +50,7 @@ public class Transfer {
         mDescription = description;
     }
 
-    public Transfer(Builder builder){
+    public Transfer(Builder builder) {
         mMedium = builder.bMedium;
         mPayeeId = builder.bPayeeId;
         mAmount = builder.bAmount;
@@ -74,7 +74,7 @@ public class Transfer {
         return mType;
     }
 
-    public TransactionMedium getMedium(){
+    public TransactionMedium getMedium() {
         return mMedium;
     }
 
@@ -90,11 +90,9 @@ public class Transfer {
         return mAmount;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return mDescription;
     }
-
-
 
     public static class Builder{
         private String bTransactionDate;
@@ -103,7 +101,7 @@ public class Transfer {
         private Double bAmount;
         private String bDescription;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Transfer transfer) {
             bTransactionDate = transfer.getTransactionDate();
@@ -114,31 +112,31 @@ public class Transfer {
 
         }
 
-        public Builder transactionDate(String transaction_date){
+        public Builder transactionDate(String transaction_date) {
             bTransactionDate = transaction_date;
             return this;
         }
 
-        public Builder medium(TransactionMedium medium){
+        public Builder medium(TransactionMedium medium) {
             bMedium = medium;
             return this;
         }
-        public Builder payeeId(String payee_id){
+        public Builder payeeId(String payee_id) {
             bPayeeId = payee_id;
             return this;
         }
 
-        public Builder amount(double amount){
+        public Builder amount(double amount) {
             bAmount = amount;
             return this;
         }
 
-        public Builder description(String description){
+        public Builder description(String description) {
             bDescription = description;
             return this;
         }
 
-        public Transfer build(){
+        public Transfer build() {
             Transfer transfer = new Transfer(this);
             return transfer;
         }

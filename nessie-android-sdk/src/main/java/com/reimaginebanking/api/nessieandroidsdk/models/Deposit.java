@@ -46,7 +46,7 @@ public class Deposit {
         mDescription = description;
     }
 
-    public Deposit(Builder builder){
+    public Deposit(Builder builder) {
         mMedium = builder.bMedium;
         mTransactionDate = builder.bTransactionDate;
         mAmount = builder.bAmount;
@@ -105,7 +105,7 @@ public class Deposit {
         private TransactionMedium bMedium;
         private String bDescription;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Deposit deposit) {
             bTransactionDate = deposit.getTransactionDate();
@@ -114,26 +114,26 @@ public class Deposit {
             bDescription = deposit.getDescription();
         }
 
-        public Builder medium(TransactionMedium medium){
+        public Builder medium(TransactionMedium medium) {
             bMedium = medium;
             return this;
         }
-        public Builder transactionDate(String transaction_date){
+        public Builder transactionDate(String transaction_date) {
             bTransactionDate = transaction_date;
             return this;
         }
 
-        public Builder amount(double amount){
+        public Builder amount(double amount) {
             bAmount = amount;
             return this;
         }
 
-        public Builder description(String description){
+        public Builder description(String description) {
             bDescription = description;
             return this;
         }
 
-        public Deposit build(){
+        public Deposit build() {
             Deposit deposit = new Deposit(this);
             return deposit;
         }

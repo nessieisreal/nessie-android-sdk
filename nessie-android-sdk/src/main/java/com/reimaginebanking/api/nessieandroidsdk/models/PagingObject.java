@@ -25,5 +25,4 @@ public class PagingObject {
     public String getNextPage() {
         return mNextPage;
     }
-
 }

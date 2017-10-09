@@ -24,7 +24,7 @@ public class Merchant {
     @SerializedName("geocode")
     private Geocode mGeocode;
 
-    public Merchant(Builder builder){
+    public Merchant(Builder builder) {
         mName = builder.bName;
         mCategories = builder.bCategories;
         mAddress = builder.bAddress;
@@ -47,7 +47,9 @@ public class Merchant {
         return mName;
     }
 
-    public List<String> getCategories() { return mCategories; }
+    public List<String> getCategories() {
+        return mCategories;
+    }
 
     public Address getAddress() {
         return mAddress;
@@ -74,7 +76,7 @@ public class Merchant {
         private Address bAddress;
         private Geocode bGeocode;
 
-        public Builder(){}
+        public Builder() {}
 
         public Builder(Merchant merchant) {
             bName = merchant.getName();
@@ -83,7 +85,7 @@ public class Merchant {
             bGeocode = merchant.getGeocode();
         }
 
-        public Builder name(String name){
+        public Builder name(String name) {
             this.bName = name;
             return this;
         }
@@ -93,16 +95,16 @@ public class Merchant {
             return this;
         }
 
-        public Builder address(Address address){
+        public Builder address(Address address) {
             this.bAddress = address;
             return this;
         }
-        public Builder geocode(Geocode geocode){
+        public Builder geocode(Geocode geocode) {
             this.bGeocode = geocode;
             return this;
         }
 
-        public Merchant build(){
+        public Merchant build() {
             Merchant merchant = new Merchant(this);
             return merchant;
         }
