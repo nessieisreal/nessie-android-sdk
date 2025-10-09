@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-
+apply plugin: 'maven-publish'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 // Version to use when deploying the artifact
 version = "1.0.5"
 
 android {
+    namespace "com.reimaginebanking.api.nessie"
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     resourcePrefix "nessie__"
@@ -23,11 +23,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 def gitUrl = 'https://github.com/nessieisreal/nessie-android-sdk'   // Git repository URL
 group = "com.reimaginebanking.api"
 
+// TODO: Replace this legacy publishing configuration with an updated Maven Publish setup once migration is complete.
+/*
 install {
     repositories.mavenInstaller {
         // Generates POM.xml with proper parameters
@@ -53,29 +58,38 @@ install {
         }
     }
 }
+*/
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    testCompile "com.github.tomakehurst:wiremock:2.1.9"
-    testCompile 'org.json:json:20140107'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.okhttp:okhttp:2.4.0-RC1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.core:core-ktx:1.13.1'
+
+    // Testing
+    testImplementation 'junit:junit:4.12'
+    testImplementation "com.github.tomakehurst:wiremock:2.1.9"
+    testImplementation 'org.json:json:20140107'
+
+    // AndroidX
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    // Networking
+    implementation 'com.squareup.retrofit:retrofit:1.9.0'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0-RC1'
 }
 
-task sourcesJar(type: Jar) {
+tasks.register('sourcesJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    archiveClassifier.set('sources')
 }
 
-task javadoc(type: Javadoc) {
+tasks.register('javadoc', Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
+    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
     //options.encoding = 'UTF-8'
 }
@@ -88,16 +102,3 @@ artifacts {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "NessieAndroidSDK"
-        vcsUrl = gitUrl
-        licenses = ['MIT']
-        publish = true
-    }
-}

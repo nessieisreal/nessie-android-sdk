@@ -61,18 +61,18 @@ public class CustomerTest extends NessieTest {
     @Test
     public void testCreateCustomer() throws Exception {
         Address address = new Address.Builder()
-        .streetNumber("1111")
-        .streetName("TEST")
-        .city("Pittsburgh")
-        .state("PA")
-        .zip("00000")
-        .build();
+                .streetNumber("1111")
+                .streetName("TEST")
+                .city("Pittsburgh")
+                .state("PA")
+                .zip("00000")
+                .build();
 
-        Customer customer = new Customer.Builder()
-            .firstName("New")
-            .lastName("Customer")
-            .address(address)
-            .build();
+        Customer customer = new Customer(
+                "New",
+                "Customer",
+                address,
+                null);
 
 
         client.CUSTOMER.createCustomer(customer, new NessieTestResultsListener() {
@@ -88,11 +88,7 @@ public class CustomerTest extends NessieTest {
 
     @Test
     public void testCreateCustomerFailure() throws Exception {
-        Customer invalidCustomer = new Customer.Builder()
-            .firstName("")
-            .lastName("")
-            .build();
-
+        Customer invalidCustomer = new Customer("", "", null, null);
         client.CUSTOMER.createCustomer(invalidCustomer, new NessieTestResultsListener() {
             @Override
             public void onFailure(NessieError error) {
@@ -105,9 +101,8 @@ public class CustomerTest extends NessieTest {
     /* POST /customers */
     @Test
     public void testUpdateCustomer() throws Exception {
-        Customer customer = new Customer.Builder()
-            .address(new Address.Builder().zip("00000").build())
-            .build();
+        Address address = new Address.Builder().zip("00000").build();
+        Customer customer = new Customer(null, null, address, null);
 
         client.CUSTOMER.updateCustomer("123", customer, new NessieTestResultsListener() {
             @Override

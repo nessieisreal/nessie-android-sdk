@@ -1,1 +1,2 @@
 include ':nessie-android-sdk'
+include ':nessie-client-tester'

@@ -86,7 +86,7 @@ public class NessieClient {
 
         if (ra == null) {
             restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://api.reimaginebanking.com")
+                .setEndpoint("http://api.nessieisreal.com")
                 .setConverter(new GsonConverter(gson))
                 .build();
         } else {
